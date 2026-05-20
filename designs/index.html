@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLP-1 Brain Mechanism Atlas — Visual Language v0.1</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="tokens.css" />
+
+  <style>
+    html, body, #root {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #d9d3c3;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      color: #1c1814;
+    }
+    /* Loading state */
+    .boot {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #d9d3c3;
+      color: #5a5247;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="boot">Atlas · loading visual language</div>
+  </div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="artboard-spec.jsx"></script>
+  <script type="text/babel" src="artboard-overview.jsx"></script>
+  <script type="text/babel" src="artboard-ppg-nts.jsx"></script>
+  <script type="text/babel" src="artboard-wanting.jsx"></script>
+  <script type="text/babel" src="artboard-phenom.jsx"></script>
+  <script type="text/babel" src="walkthrough-primitives.jsx"></script>
+  <script type="text/babel" src="walkthrough-surfaces.jsx"></script>
+  <script type="text/babel" src="walkthrough.jsx"></script>
+
+  <script type="text/babel">
+    const { useState: useStateApp } = React;
+
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "mode": "atlas-light",
+      "density": "regular",
+      "showBuildoutMarkers": true,
+      "tab": "spec"
+    }/*EDITMODE-END*/;
+
+    function TopTabs({ value, onChange }) {
+      const tabs = [
+        { id: "canvas", label: "Atlas Canvas", sub: "Hi-fi explorations" },
+        { id: "spec",   label: "Implementation Spec", sub: "Hand-off to Claude Code" },
+      ];
+      return (
+        <div className={"atlas " + (value === "spec" ? "atlas-light" : "atlas-light")} style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 50,
+          background: "var(--bg)",
+          borderBottom: "0.5px solid var(--rule-strong)",
+          display: "flex",
+          alignItems: "stretch",
+          justifyContent: "space-between",
+          padding: "0 24px",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 18, padding: "10px 0" }}>
+            <span className="eyebrow" style={{ color: "var(--ink-2)" }}>GLP-1 Brain Mechanism Atlas</span>
+            <span style={{ width: 1, height: 18, background: "var(--rule)" }} />
+            <span className="micro" style={{ color: "var(--ink-3)" }}>v0.1 · workbench</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "stretch" }}>
+            {tabs.map(t => {
+              const active = t.id === value;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => onChange(t.id)}
+                  style={{
+                    position: "relative",
+                    background: "transparent",
+                    border: 0,
+                    padding: "14px 22px 12px 22px",
+                    cursor: "pointer",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: 2,
+                    color: active ? "var(--ink-1)" : "var(--ink-3)",
+                    fontFamily: "var(--font-sans)",
+                  }}
+                >
+                  <span style={{
+                    fontFamily: "var(--font-sans)",
+                    fontSize: 12,
+                    fontWeight: active ? 600 : 500,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                  }}>{t.label}</span>
+                  <span className="micro" style={{ color: "var(--ink-3)", textTransform: "none", letterSpacing: 0, fontSize: 10.5, fontStyle: "italic", fontFamily: "var(--font-serif)" }}>
+                    {t.sub}
+                  </span>
+                  {active && (
+                    <span style={{
+                      position: "absolute",
+                      left: 22, right: 22, bottom: -1, height: 1.5,
+                      background: "var(--accent)",
+                    }} />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const mode = t.mode;
+      const tab = t.tab || "canvas";
+
+      return (
+        <div>
+          <TopTabs value={tab} onChange={(v) => setTweak("tab", v)} />
+          {tab === "spec" ? (
+            <Walkthrough mode={mode} />
+          ) : (
+            <CanvasView mode={mode} t={t} setTweak={setTweak} />
+          )}
+          <TweaksPanel>
+            <TweakSection label="Tab" />
+            <TweakRadio
+              label="View"
+              value={tab}
+              options={["canvas", "spec"]}
+              onChange={(v) => setTweak("tab", v)}
+            />
+            <TweakSection label="Color mode" />
+            <TweakRadio
+              label="Mode"
+              value={mode}
+              options={["atlas-light", "atlas-dark"]}
+              onChange={(v) => setTweak("mode", v)}
+            />
+            <TweakSection label="Display" />
+            <TweakToggle
+              label="Build-out markers"
+              value={t.showBuildoutMarkers}
+              onChange={(v) => setTweak("showBuildoutMarkers", v)}
+            />
+          </TweaksPanel>
+        </div>
+      );
+    }
+
+    function CanvasView({ mode, t, setTweak }) {
+      return (
+        <div>
+          <DesignCanvas>
+            <DCSection
+              id="vision"
+              title="GLP-1 Brain Mechanism Atlas — Visual Language v0.1"
+              subtitle="A workbench over a contested literature, not a review article. Hand-off to Claude Code."
+            >
+              <DCArtboard id="overview" label="00 · Overview Atlas — landing & lens system" width={1400} height={900}>
+                <OverviewArtboard width={1400} height={900} mode={mode} />
+              </DCArtboard>
+
+              <DCArtboard id="ppg-nts" label="02 · PPG-NTS — state dial (live)" width={1400} height={900}>
+                <PPGNTSArtboard width={1400} height={900} mode={mode} />
+              </DCArtboard>
+
+              <DCArtboard id="wanting" label="04 · Wanting — Kooji paired-claim" width={1400} height={900}>
+                <WantingArtboard width={1400} height={900} mode={mode} />
+              </DCArtboard>
+
+              <DCArtboard id="phenom" label="12 · Phenomenology mapper — sketch" width={1140} height={760}>
+                <PhenomArtboard width={1140} height={760} mode={mode} />
+              </DCArtboard>
+            </DCSection>
+
+            <DCSection
+              id="spec"
+              title="Visual language canon"
+              subtitle="Type · color · lens vocabulary · confidence · scope · components · anti-patterns."
+            >
+              <DCArtboard id="spec" label="Visual language · spec" width={1280} height={2900}>
+                <SpecArtboard width={1280} />
+              </DCArtboard>
+            </DCSection>
+          </DesignCanvas>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>

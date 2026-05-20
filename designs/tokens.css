@@ -1,0 +1,455 @@
+/* Atlas tokens — scientific atlas / Tufte register
+   Dual-mode (light = warm paper, dark = cool deep ink), single restrained accent. */
+
+:root,
+.atlas-light {
+  /* Surface */
+  --bg: #f4f0e6;
+  --bg-paper: #faf6ec;
+  --bg-elev: #fdfaf2;
+  --bg-tint: rgba(60, 50, 30, 0.025);
+  --bg-sunk: #ece6d6;
+
+  /* Ink */
+  --ink-1: #1c1814;
+  --ink-2: #5a5247;
+  --ink-3: #8a8175;
+  --ink-4: #b0a797;
+
+  /* Hairlines */
+  --rule: #d4ccb8;
+  --rule-strong: #b3a98f;
+  --rule-soft: #e3dcc8;
+
+  /* Accent — oxide sienna, used sparingly */
+  --accent: #9a3a18;
+  --accent-soft: #b86a4a;
+  --accent-bg: rgba(154, 58, 24, 0.07);
+  --accent-rule: rgba(154, 58, 24, 0.35);
+
+  /* Cool counter-accent for confidence-bar fill in evidence lens */
+  --cool: #3a4a5e;
+
+  /* Confidence */
+  --conf-strong: var(--ink-1);
+  --conf-moderate: var(--ink-2);
+  --conf-speculative: var(--ink-3);
+  --conf-contradicted: var(--accent);
+  --conf-open: var(--ink-3);
+
+  --shadow-card: 0 0.5px 0 var(--rule), 0 1px 2px rgba(40, 30, 20, 0.04);
+  --shadow-hover: 0 0.5px 0 var(--rule-strong), 0 6px 18px rgba(40, 30, 20, 0.08);
+}
+
+.atlas-dark {
+  --bg: #15171b;
+  --bg-paper: #1a1d22;
+  --bg-elev: #20242a;
+  --bg-tint: rgba(255, 250, 240, 0.025);
+  --bg-sunk: #101216;
+
+  --ink-1: #ece6d8;
+  --ink-2: #b1a99a;
+  --ink-3: #7d7569;
+  --ink-4: #4d473e;
+
+  --rule: #2d3138;
+  --rule-strong: #444b54;
+  --rule-soft: #232730;
+
+  --accent: #d68260;
+  --accent-soft: #b06848;
+  --accent-bg: rgba(214, 130, 96, 0.10);
+  --accent-rule: rgba(214, 130, 96, 0.40);
+
+  --cool: #8aa2bc;
+
+  --conf-strong: var(--ink-1);
+  --conf-moderate: var(--ink-2);
+  --conf-speculative: var(--ink-3);
+  --conf-contradicted: var(--accent);
+  --conf-open: var(--ink-3);
+
+  --shadow-card: 0 0.5px 0 var(--rule), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 0.5px 0 var(--rule-strong), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Type ramp */
+.atlas {
+  --font-serif: "Source Serif 4", "Source Serif Pro", "Iowan Old Style", Charter, Cambria, Georgia, serif;
+  --font-sans: "IBM Plex Sans", "Söhne", "Inter Tight", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  font-family: var(--font-serif);
+  color: var(--ink-1);
+  background: var(--bg);
+
+  /* Tabular numerics across the board */
+  font-feature-settings: "ss01", "ss02", "lnum", "tnum";
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Type primitives — class-based, used by Atlas components */
+.atlas .eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss01", "tnum";
+}
+.atlas .micro {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .sans {
+  font-family: var(--font-sans);
+}
+.atlas .serif {
+  font-family: var(--font-serif);
+}
+
+/* Default link style — under-keeled, never blue */
+.atlas a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--rule-strong);
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 3px;
+}
+.atlas a:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* Hairline utility */
+.atlas .hr {
+  border: 0;
+  border-top: 0.5px solid var(--rule);
+  margin: 0;
+}
+.atlas .hr-strong {
+  border: 0;
+  border-top: 0.5px solid var(--rule-strong);
+  margin: 0;
+}
+
+/* Chip */
+.atlas .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  background: transparent;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.atlas .chip-glyph {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--ink-3);
+  border-radius: 1px;
+}
+.atlas .chip-glyph.glyph-empty {
+  background: transparent;
+  border: 0.5px solid var(--ink-3);
+}
+.atlas .chip.translation-fragile {
+  /* Rodent · central · acute → visually flag as translation-fragile.
+     This is the "anti-hype" anchor invariant. */
+  color: var(--accent);
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+}
+.atlas .chip.translation-fragile .chip-glyph {
+  background: var(--accent);
+}
+.atlas .chip.human-chronic {
+  /* The clinical translation register — slightly weightier. */
+  color: var(--ink-1);
+  border-color: var(--ink-3);
+}
+.atlas .chip.human-chronic .chip-glyph {
+  background: var(--ink-1);
+}
+
+/* Confidence — bars + label */
+.atlas .conf {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.atlas .conf-bars {
+  display: inline-flex;
+  gap: 2px;
+}
+.atlas .conf-bars span {
+  width: 8px;
+  height: 4px;
+  background: var(--ink-4);
+  display: block;
+  border-radius: 0.5px;
+}
+.atlas .conf-bars span.on {
+  background: var(--conf-strong);
+}
+.atlas .conf.contradicted {
+  color: var(--accent);
+}
+.atlas .conf.open {
+  color: var(--ink-3);
+}
+
+/* Claim card */
+.atlas .claim {
+  position: relative;
+  padding: 14px 16px 12px 16px;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow .15s, border-color .15s;
+}
+.atlas .claim:hover {
+  border-color: var(--rule-strong);
+}
+.atlas .claim-statement {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--ink-1);
+  margin: 0 0 10px 0;
+  text-wrap: pretty;
+  font-weight: 400;
+}
+.atlas .claim-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+.atlas .claim-meta .sep {
+  width: 6px;
+  height: 0.5px;
+  background: var(--rule-strong);
+  display: inline-block;
+}
+.atlas .claim-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 0.5px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .claim-cite {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 2px;
+}
+.atlas .claim-cite:hover {
+  color: var(--ink-1);
+  text-decoration-color: var(--accent);
+}
+
+/* Paired-claim tension node */
+.atlas .tension {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+}
+.atlas .tension > .claim:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+.atlas .tension > .claim:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+.atlas .tension-bridge {
+  position: relative;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(135deg, var(--accent-bg) 0 4px, transparent 4px 8px);
+  border-top: 0.5px solid var(--accent-rule);
+  border-bottom: 0.5px solid var(--accent-rule);
+}
+.atlas .tension-bridge-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  writing-mode: horizontal-tb;
+  background: var(--bg-paper);
+  padding: 4px 6px;
+  border: 0.5px solid var(--accent-rule);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* Lens switcher */
+.atlas .lens {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 0.5px solid var(--rule);
+  background: var(--bg);
+  font-family: var(--font-sans);
+}
+.atlas .lens-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  transition: color .15s;
+}
+.atlas .lens-btn:hover {
+  color: var(--ink-1);
+}
+.atlas .lens-btn .lens-key {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--ink-4);
+  border: 0.5px solid var(--rule);
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0;
+}
+.atlas .lens-btn.active {
+  color: var(--ink-1);
+}
+.atlas .lens-btn.active::after {
+  content: "";
+  position: absolute;
+  inset: auto 12px -0.5px 12px;
+  height: 1.5px;
+  background: var(--accent);
+}
+.atlas .lens-btn.active .lens-key {
+  color: var(--ink-2);
+  border-color: var(--rule-strong);
+}
+
+/* Margin annotation — Tufte-ish */
+.atlas .margin-note {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  font-style: italic;
+  text-wrap: pretty;
+}
+.atlas .margin-rule {
+  border-left: 0.5px solid var(--rule-strong);
+  padding-left: 10px;
+}
+
+/* Sectioning */
+.atlas .panel {
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+}
+.atlas .panel-sunk {
+  background: var(--bg-sunk);
+  border: 0.5px solid var(--rule-soft);
+  border-radius: 4px;
+}
+
+/* Tight tables */
+.atlas table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-1);
+}
+.atlas table.data th {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-3);
+  text-align: left;
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding: 6px 8px 6px 0;
+}
+.atlas table.data td {
+  padding: 6px 8px 6px 0;
+  border-bottom: 0.5px solid var(--rule-soft);
+  vertical-align: top;
+}
+
+/* Stewardship pip */
+.atlas .pip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .pip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink-4);
+}
+.atlas .pip-dot.fresh { background: var(--accent); }
+
+/* Scope-condition strip */
+.atlas .scope-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
