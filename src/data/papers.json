@@ -1,0 +1,151 @@
+[
+  {
+    "id": "gabery_2020",
+    "cite": "Gabery 2020",
+    "authors": ["Gabery S", "Salinas CG", "Paulsen SJ", "et al."],
+    "year": 2020,
+    "journal": "JCI Insight",
+    "doi": "10.1172/jci.insight.133429",
+    "note": "Semaglutide CNS access mapping — fluorophore-conjugated tracing shows access to circumventricular and hypothalamic sites, not broad parenchyma."
+  },
+  {
+    "id": "secher_2014",
+    "cite": "Secher 2014",
+    "authors": ["Secher A", "Jelsing J", "Baquero AF", "et al."],
+    "year": 2014,
+    "journal": "J Clin Invest",
+    "doi": "10.1172/JCI72117",
+    "note": "Liraglutide reaches the arcuate nucleus and acts on POMC/CART neurons; access via accessible-from-circulation routes."
+  },
+  {
+    "id": "kanoski_2011",
+    "cite": "Kanoski 2011",
+    "authors": ["Kanoski SE", "Fortin SM", "Arnold M", "et al."],
+    "year": 2011,
+    "journal": "Endocrinology",
+    "doi": "10.1210/en.2011-1443",
+    "note": "Vagal afferent and NTS contribution to GLP-1 / exendin-4 effects on food intake."
+  },
+  {
+    "id": "dickson_2012",
+    "cite": "Dickson 2012",
+    "authors": ["Dickson SL", "Shirazi RH", "Hansson C", "et al."],
+    "year": 2012,
+    "journal": "J Neurosci",
+    "doi": "10.1523/JNEUROSCI.5197-11.2012",
+    "note": "GLP-1R in the VTA and NAc; central exendin-4 reduces reward-driven food intake."
+  },
+  {
+    "id": "kooji_2024",
+    "cite": "Kooji 2024",
+    "authors": ["Kooji et al."],
+    "year": 2024,
+    "note": "In-vivo fibre photometry: consummatory VTA dopamine signals preserved or enhanced under semaglutide — complicates the simple blunting account. (Project-curated entry pending DOI verification.)"
+  },
+  {
+    "id": "whittenburg_2026",
+    "cite": "Whittenburg 2026",
+    "authors": ["Whittenburg et al."],
+    "year": 2026,
+    "note": "Systematic review of GLP-1RA effects on reward: lower progressive-ratio breakpoints and reduced food-cue striatal activation across human fMRI studies."
+  },
+  {
+    "id": "hendershot_2025",
+    "cite": "Hendershot 2025",
+    "authors": ["Hendershot CS", "et al."],
+    "year": 2025,
+    "journal": "JAMA Psychiatry",
+    "note": "Randomised trial: semaglutide reduces alcohol consumption and craving in adults with alcohol use disorder."
+  },
+  {
+    "id": "semalco_2026",
+    "cite": "SEMALCO 2026",
+    "authors": ["SEMALCO trial group"],
+    "year": 2026,
+    "note": "26-week randomised trial of semaglutide for alcohol use disorder; confirmatory reduction in heavy-drinking outcomes."
+  },
+  {
+    "id": "chuong_2023",
+    "cite": "Chuong 2023",
+    "authors": ["Chuong V", "Farokhnia M", "Khom S", "et al."],
+    "year": 2023,
+    "journal": "JCI Insight",
+    "doi": "10.1172/jci.insight.170671",
+    "note": "Semaglutide reduces alcohol intake; central amygdala GABAergic transmission implicated alongside dopaminergic effects."
+  },
+  {
+    "id": "ehr_sud_2024",
+    "cite": "EHR cohort 2024",
+    "authors": ["Wang W", "et al."],
+    "year": 2024,
+    "journal": "Nature Communications / Addiction",
+    "note": "Large electronic-health-record cohorts report markedly lower substance-use-disorder incidence under GLP-1RA prescription — observational, confounding-vulnerable."
+  },
+  {
+    "id": "wang_2024",
+    "cite": "Wang 2024",
+    "authors": ["Wang W", "Volkow ND", "et al."],
+    "year": 2024,
+    "journal": "Nature Medicine",
+    "doi": "10.1038/s41591-023-02672-2",
+    "note": "EHR analysis of semaglutide and suicidal ideation: no increased risk; signal leans weakly protective."
+  },
+  {
+    "id": "kinzig_2003",
+    "cite": "Kinzig 2003",
+    "authors": ["Kinzig KP", "D'Alessio DA", "Herman JP", "et al."],
+    "year": 2003,
+    "journal": "J Neurosci",
+    "doi": "10.1523/JNEUROSCI.23-15-06163.2003",
+    "note": "Central GLP-1 engages stress / HPA circuitry; central amygdala involvement in aversive and anxiety-like responses."
+  },
+  {
+    "id": "evoke_2025",
+    "cite": "EVOKE 2025",
+    "authors": ["Novo Nordisk", "EVOKE / EVOKE+ investigators"],
+    "year": 2025,
+    "note": "Phase-3 EVOKE and EVOKE+ trials of oral semaglutide in mild cognitive impairment / mild Alzheimer's disease did not meet cognitive endpoints (reported CTAD, December 2025)."
+  },
+  {
+    "id": "holscher_review",
+    "cite": "Hölscher review",
+    "authors": ["Hölscher C"],
+    "year": 2022,
+    "journal": "Neuropharmacology",
+    "note": "Review of preclinical GLP-1RA neuroprotection: BDNF, anti-inflammatory action, hippocampal plasticity in rodent and cellular models."
+  },
+  {
+    "id": "rinaman_2010",
+    "cite": "Rinaman 2010",
+    "authors": ["Rinaman L"],
+    "year": 2010,
+    "journal": "Am J Physiol Regul Integr Comp Physiol",
+    "note": "Hindbrain GLP-1 / PPG neurons are suppressed in negative energy balance; ablation does not alter ad libitum chow intake."
+  },
+  {
+    "id": "brierley_2021",
+    "cite": "Brierley 2021",
+    "authors": ["Brierley DI", "Holt MK", "Singh A", "et al."],
+    "year": 2021,
+    "journal": "Nature Metabolism",
+    "doi": "10.1038/s42255-021-00344-4",
+    "note": "Central PPG-NTS and peripheral GLP-1 systems suppress eating independently; vagal input to PPG neurons is not carried by GLP-1R afferents."
+  },
+  {
+    "id": "holt_2019",
+    "cite": "Holt 2019",
+    "authors": ["Holt MK", "Richards JE", "Cook DR", "et al."],
+    "year": 2019,
+    "journal": "Diabetes",
+    "doi": "10.2337/db18-1138",
+    "note": "Chemogenetic activation of PPG-NTS neurons suppresses food intake; the neurons fire phasically to gastric distension."
+  },
+  {
+    "id": "maniscalco_2015",
+    "cite": "Maniscalco 2015",
+    "authors": ["Maniscalco JW", "Rinaman L"],
+    "year": 2015,
+    "journal": "Physiology & Behavior",
+    "note": "Stress and visceral malaise recruit hindbrain GLP-1 neurons; their ablation blocks stress-induced hypophagia."
+  }
+]

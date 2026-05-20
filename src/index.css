@@ -1,6 +1,79 @@
 @import "tailwindcss";
 
-:root {
+/* ─────────────────────────────────────────────────────────────────────────
+   Atlas design tokens — scientific atlas / Tufte register.
+   Dual-mode (light = warm paper, dark = cool deep ink), one restrained accent.
+   Ported from designs/tokens.css — the authoritative visual language.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root,
+.atlas-light {
+  --bg: #f4f0e6;
+  --bg-paper: #faf6ec;
+  --bg-elev: #fdfaf2;
+  --bg-tint: rgba(60, 50, 30, 0.025);
+  --bg-sunk: #ece6d6;
+
+  --ink-1: #1c1814;
+  --ink-2: #5a5247;
+  --ink-3: #8a8175;
+  --ink-4: #b0a797;
+
+  --rule: #d4ccb8;
+  --rule-strong: #b3a98f;
+  --rule-soft: #e3dcc8;
+
+  --accent: #9a3a18;
+  --accent-soft: #b86a4a;
+  --accent-bg: rgba(154, 58, 24, 0.07);
+  --accent-rule: rgba(154, 58, 24, 0.35);
+
+  --cool: #3a4a5e;
+
+  --conf-strong: var(--ink-1);
+  --conf-moderate: var(--ink-2);
+  --conf-speculative: var(--ink-3);
+  --conf-contradicted: var(--accent);
+  --conf-open: var(--ink-3);
+
+  --shadow-card: 0 0.5px 0 var(--rule), 0 1px 2px rgba(40, 30, 20, 0.04);
+  --shadow-hover: 0 0.5px 0 var(--rule-strong), 0 6px 18px rgba(40, 30, 20, 0.08);
+
+  color-scheme: light;
+}
+
+.atlas-dark {
+  --bg: #15171b;
+  --bg-paper: #1a1d22;
+  --bg-elev: #20242a;
+  --bg-tint: rgba(255, 250, 240, 0.025);
+  --bg-sunk: #101216;
+
+  --ink-1: #ece6d8;
+  --ink-2: #b1a99a;
+  --ink-3: #7d7569;
+  --ink-4: #4d473e;
+
+  --rule: #2d3138;
+  --rule-strong: #444b54;
+  --rule-soft: #232730;
+
+  --accent: #d68260;
+  --accent-soft: #b06848;
+  --accent-bg: rgba(214, 130, 96, 0.1);
+  --accent-rule: rgba(214, 130, 96, 0.4);
+
+  --cool: #8aa2bc;
+
+  --conf-strong: var(--ink-1);
+  --conf-moderate: var(--ink-2);
+  --conf-speculative: var(--ink-3);
+  --conf-contradicted: var(--accent);
+  --conf-open: var(--ink-3);
+
+  --shadow-card: 0 0.5px 0 var(--rule), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 0.5px 0 var(--rule-strong), 0 6px 18px rgba(0, 0, 0, 0.35);
+
   color-scheme: dark;
 }
 
@@ -12,4 +85,326 @@ body,
 
 body {
   margin: 0;
+}
+
+/* Type ramp — the .atlas wrapper carries the register */
+.atlas {
+  --font-serif: "Source Serif 4", "Iowan Old Style", Charter, Cambria, Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  font-family: var(--font-serif);
+  color: var(--ink-1);
+  background: var(--bg);
+
+  font-feature-settings: "ss01", "ss02", "lnum", "tnum";
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Type primitives */
+.atlas .eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss01", "tnum";
+}
+.atlas .micro {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .sans {
+  font-family: var(--font-sans);
+}
+.atlas .serif {
+  font-family: var(--font-serif);
+}
+
+.atlas a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--rule-strong);
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 3px;
+}
+.atlas a:hover {
+  text-decoration-color: var(--accent);
+}
+
+.atlas .hr {
+  border: 0;
+  border-top: 0.5px solid var(--rule);
+  margin: 0;
+}
+.atlas .hr-strong {
+  border: 0;
+  border-top: 0.5px solid var(--rule-strong);
+  margin: 0;
+}
+
+/* Chip — scope condition */
+.atlas .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  background: transparent;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.atlas .chip-glyph {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--ink-3);
+  border-radius: 1px;
+}
+.atlas .chip-glyph.glyph-empty {
+  background: transparent;
+  border: 0.5px solid var(--ink-3);
+}
+.atlas .chip.translation-fragile {
+  color: var(--accent);
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+}
+.atlas .chip.translation-fragile .chip-glyph {
+  background: var(--accent);
+}
+.atlas .chip.human-chronic {
+  color: var(--ink-1);
+  border-color: var(--ink-3);
+}
+.atlas .chip.human-chronic .chip-glyph {
+  background: var(--ink-1);
+}
+
+/* Confidence — bars + label */
+.atlas .conf {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.atlas .conf-bars {
+  display: inline-flex;
+  gap: 2px;
+}
+.atlas .conf-bars span {
+  width: 8px;
+  height: 4px;
+  background: var(--ink-4);
+  display: block;
+  border-radius: 0.5px;
+}
+.atlas .conf-bars span.on {
+  background: var(--conf-strong);
+}
+.atlas .conf.contradicted {
+  color: var(--accent);
+}
+.atlas .conf.open {
+  color: var(--ink-3);
+}
+
+/* Claim card */
+.atlas .claim {
+  position: relative;
+  padding: 14px 16px 12px 16px;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.atlas .claim:hover {
+  border-color: var(--rule-strong);
+}
+.atlas .claim-statement {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--ink-1);
+  margin: 0 0 10px 0;
+  text-wrap: pretty;
+  font-weight: 400;
+}
+.atlas .claim-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+.atlas .claim-meta .sep {
+  width: 6px;
+  height: 0.5px;
+  background: var(--rule-strong);
+  display: inline-block;
+}
+.atlas .claim-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 0.5px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .claim-cite {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 2px;
+}
+.atlas .claim-cite:hover {
+  color: var(--ink-1);
+  text-decoration-color: var(--accent);
+}
+
+/* Lens switcher */
+.atlas .lens {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 0.5px solid var(--rule);
+  background: var(--bg);
+  font-family: var(--font-sans);
+}
+.atlas .lens-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  transition: color 0.15s;
+}
+.atlas .lens-btn:hover {
+  color: var(--ink-1);
+}
+.atlas .lens-btn .lens-key {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--ink-4);
+  border: 0.5px solid var(--rule);
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0;
+}
+.atlas .lens-btn.active {
+  color: var(--ink-1);
+}
+.atlas .lens-btn.active::after {
+  content: "";
+  position: absolute;
+  inset: auto 12px -0.5px 12px;
+  height: 1.5px;
+  background: var(--accent);
+}
+.atlas .lens-btn.active .lens-key {
+  color: var(--ink-2);
+  border-color: var(--rule-strong);
+}
+
+/* Margin annotation — Tufte-ish */
+.atlas .margin-note {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  font-style: italic;
+  text-wrap: pretty;
+}
+.atlas .margin-rule {
+  border-left: 0.5px solid var(--rule-strong);
+  padding-left: 10px;
+}
+
+/* Sectioning */
+.atlas .panel {
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+}
+.atlas .panel-sunk {
+  background: var(--bg-sunk);
+  border: 0.5px solid var(--rule-soft);
+  border-radius: 4px;
+}
+
+/* Stewardship pip */
+.atlas .pip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .pip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink-4);
+}
+.atlas .pip-dot.fresh {
+  background: var(--accent);
+}
+
+/* Scope-condition strip */
+.atlas .scope-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* Atlas graph node hit-area cursor */
+.atlas .node-hit {
+  cursor: pointer;
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .atlas *,
+  .atlas *::before,
+  .atlas *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

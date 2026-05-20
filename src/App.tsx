@@ -1,45 +1,126 @@
+import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import { sections } from './lib/sections'
+import Overview from './pages/Overview'
+import PpgNts from './pages/PpgNts'
 import SectionPage from './pages/SectionPage'
 
+const PPG_PATH = '/mechanisms/ppg-nts'
+
+type Theme = 'atlas-light' | 'atlas-dark'
+
 export default function App() {
+  const [theme, setTheme] = useState<Theme>(
+    () => (localStorage.getItem('atlas-theme') as Theme) || 'atlas-light',
+  )
+
+  useEffect(() => {
+    localStorage.setItem('atlas-theme', theme)
+  }, [theme])
+
   return (
-    <div className="flex min-h-full bg-neutral-950 text-neutral-300">
-      <nav className="w-64 shrink-0 border-r border-neutral-800 p-4">
-        <div className="px-2 pb-4">
-          <p className="text-sm font-medium text-neutral-100">GLP-1 Atlas</p>
-          <p className="text-xs text-neutral-500">Brain Mechanism Explorer</p>
+    <div className={`atlas ${theme}`} style={{ height: '100%', display: 'flex' }}>
+      <nav
+        style={{
+          width: 232,
+          flexShrink: 0,
+          borderRight: '0.5px solid var(--rule)',
+          background: 'var(--bg)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'auto',
+        }}
+      >
+        <div style={{ padding: '18px 20px 12px 20px' }}>
+          <div className="eyebrow">GLP-1 Brain Mechanism Atlas</div>
+          <p
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 13,
+              color: 'var(--ink-2)',
+              margin: '6px 0 0 0',
+              lineHeight: 1.4,
+              fontStyle: 'italic',
+            }}
+          >
+            A workbench over a moving literature.
+          </p>
         </div>
-        <ul className="space-y-0.5">
-          {sections.map((s) => (
+        <hr className="hr" />
+
+        <ul style={{ listStyle: 'none', margin: 0, padding: '8px 0', flex: 1 }}>
+          {sections.map((s, i) => (
             <li key={s.path}>
               <NavLink
                 to={s.path}
                 end={s.path === '/'}
-                className={({ isActive }) =>
-                  `block rounded px-2 py-1.5 text-sm transition-colors ${
-                    isActive
-                      ? 'bg-violet-500/15 text-violet-300'
-                      : 'text-neutral-400 hover:bg-neutral-800/60 hover:text-neutral-200'
-                  }`
-                }
+                style={({ isActive }) => ({
+                  display: 'grid',
+                  gridTemplateColumns: '26px 1fr',
+                  gap: 8,
+                  alignItems: 'baseline',
+                  padding: '7px 20px',
+                  textDecoration: 'none',
+                  background: isActive ? 'var(--accent-bg)' : 'transparent',
+                  borderLeft: isActive
+                    ? '1.5px solid var(--accent)'
+                    : '1.5px solid transparent',
+                })}
               >
-                {s.title}
+                {({ isActive }) => (
+                  <>
+                    <span className="micro" style={{ color: 'var(--ink-3)' }}>
+                      {String(i).padStart(2, '0')}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: 13,
+                        lineHeight: 1.3,
+                        color: isActive ? 'var(--ink-1)' : 'var(--ink-2)',
+                        fontWeight: isActive ? 500 : 400,
+                      }}
+                    >
+                      {s.title}
+                    </span>
+                  </>
+                )}
               </NavLink>
             </li>
           ))}
         </ul>
+
+        <hr className="hr" />
+        <button
+          type="button"
+          onClick={() =>
+            setTheme((t) => (t === 'atlas-light' ? 'atlas-dark' : 'atlas-light'))
+          }
+          className="micro"
+          style={{
+            margin: '10px 20px',
+            padding: '6px 8px',
+            background: 'transparent',
+            border: '0.5px solid var(--rule-strong)',
+            borderRadius: 2,
+            color: 'var(--ink-2)',
+            cursor: 'pointer',
+            textAlign: 'left',
+          }}
+        >
+          {theme === 'atlas-light' ? '◑ Deep ink' : '◐ Warm paper'}
+        </button>
       </nav>
 
-      <main className="flex-1 overflow-y-auto">
+      <main style={{ flex: 1, minWidth: 0, overflow: 'auto', background: 'var(--bg)' }}>
         <Routes>
-          {sections.map((s) => (
-            <Route
-              key={s.path}
-              path={s.path}
-              element={<SectionPage section={s} />}
-            />
-          ))}
+          <Route path="/" element={<Overview />} />
+          <Route path={PPG_PATH} element={<PpgNts />} />
+          {sections
+            .filter((s) => s.path !== '/' && s.path !== PPG_PATH)
+            .map((s) => (
+              <Route key={s.path} path={s.path} element={<SectionPage section={s} />} />
+            ))}
         </Routes>
       </main>
     </div>

@@ -1,0 +1,221 @@
+[
+  {
+    "id": "c_access_sparse",
+    "statement": "Peripheral GLP-1 receptor agonists do not substantially cross the intact blood-brain barrier; they reach brain targets via circumventricular organs, tanycytes, slow adsorptive transcytosis, and vagal/NTS relay.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "periph_tx", "chronicity": "subacute", "drug": "semaglutide", "assay": "fluorescence IHC" },
+    "evidenceIds": ["ev_gabery_access", "ev_secher_arc"],
+    "note": "Brain effect does not imply broad brain penetration — the central misconception this module exists to dissolve.",
+    "lastReviewed": "2026-04-12"
+  },
+  {
+    "id": "c_vagal_relay",
+    "statement": "Vagal afferents to the NTS carry a substantial portion of GLP-1's intake-suppressing signal; the relay is indirect and partial rather than the sole route.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "periph_ex", "chronicity": "acute", "drug": "exendin-4", "assay": "vagal deafferentation" },
+    "evidenceIds": ["ev_kanoski_vagal"],
+    "lastReviewed": "2026-03-02"
+  },
+  {
+    "id": "c_ppg_phasic",
+    "statement": "Brain PPG-NTS neurons are a phasic satiation and aversive-interoceptive signal — recruited by large meals, gastric distension, and visceral stress, and suppressed by fasting — not a tonic appetite regulator.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "ex_vivo", "chronicity": "acute", "drug": "endogenous GLP-1" },
+    "evidenceIds": ["ev_ppg_phasic"],
+    "note": "Pharmacological agonists sustain chronically a system nature deploys phasically — the framing that interprets both intended effects and side-effect spectra.",
+    "lastReviewed": "2026-04-12"
+  },
+  {
+    "id": "c_appetite",
+    "statement": "Arcuate and NTS circuits drive meal termination; the gut-brain satiety pathway is the standard-explainer surface and is visibly incomplete on its own.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "mouse", "route": "periph_tx", "chronicity": "subacute", "drug": "liraglutide", "assay": "receptor mapping + cFos" },
+    "evidenceIds": ["ev_secher_arc", "ev_kanoski_vagal"],
+    "lastReviewed": "2026-02-28"
+  },
+  {
+    "id": "c_wanting_rebalance",
+    "statement": "GLP-1RA reduces motivational salience for high-energy palatable rewards — lower progressive-ratio breakpoints and reduced food-cue striatal activation. The defensible synthesis is rebalancing of incentive salience, not blunting.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI cue-reactivity", "n": 412 },
+    "evidenceIds": ["ev_whittenburg_pr"],
+    "lastReviewed": "2026-04-30"
+  },
+  {
+    "id": "c_da_blunting",
+    "statement": "Cue-evoked mesolimbic dopamine signalling is reduced under GLP-1RA — the canonical 'dopamine down' account of reduced wanting.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI cue-reactivity" },
+    "evidenceIds": ["ev_whittenburg_pr"],
+    "note": "'Dopamine down' is not permitted as a final explanation — see the contradicting photometry claim.",
+    "lastReviewed": "2026-01-18"
+  },
+  {
+    "id": "c_kooji",
+    "statement": "In-vivo fibre photometry shows preserved or even enhanced consummatory VTA dopamine signals under semaglutide, alongside reduced cumulative consumption — directly complicating the simple blunting account.",
+    "confidence": "contradicted",
+    "polarity": "contradicts",
+    "scope": { "species": "mouse", "route": "periph_tx", "chronicity": "subacute", "drug": "semaglutide", "assay": "fibre photometry" },
+    "evidenceIds": ["ev_kooji_photometry"],
+    "contradicts": ["c_da_blunting"],
+    "note": "The contradiction is the feature: it renders as graph structure on the wanting outcome, not as a buried caveat.",
+    "lastReviewed": "2026-02-14"
+  },
+  {
+    "id": "c_vta_glp1r",
+    "statement": "The VTA expresses GLP-1R on a subset of TH+ dopamine neurons; local exendin-4 microinjection reduces palatable intake.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "parenchymal", "chronicity": "acute", "drug": "exendin-4", "assay": "VTA microinjection" },
+    "evidenceIds": ["ev_dickson_vta"],
+    "lastReviewed": "2026-03-20"
+  },
+  {
+    "id": "c_cross_alcohol",
+    "statement": "Multiple human randomised trials show GLP-1RA reduces alcohol consumption and craving — the strongest cross-reward evidence outside food.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "RCT clinical outcome", "n": 156 },
+    "evidenceIds": ["ev_hendershot_aud", "ev_semalco_aud"],
+    "lastReviewed": "2026-03-30"
+  },
+  {
+    "id": "c_cross_cea_gaba",
+    "statement": "Semaglutide's alcohol suppression involves central amygdala GABAergic modulation, not solely dopaminergic effects — the mechanism is not a dopamine monoculture.",
+    "confidence": "moderate",
+    "polarity": "modulates",
+    "scope": { "species": "rat", "route": "periph_tx", "chronicity": "subacute", "drug": "semaglutide", "assay": "ex-vivo electrophysiology" },
+    "evidenceIds": ["ev_chuong_cea"],
+    "lastReviewed": "2026-04-02"
+  },
+  {
+    "id": "c_cross_ehr",
+    "statement": "Large EHR cohorts report roughly 85% lower recorded substance-use outcomes under GLP-1RA — implausibly large as pure pharmacology, and best presented as suggestive rather than definitive.",
+    "confidence": "speculative",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "EHR cohort", "n": 83825 },
+    "evidenceIds": ["ev_ehr_sud"],
+    "lastReviewed": "2026-01-09"
+  },
+  {
+    "id": "c_cea_anxiogenic",
+    "statement": "Acute central GLP-1 in the central amygdala is reliably anxiogenic without robust HPA engagement.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "icv", "chronicity": "acute", "drug": "GLP-1(7-36)", "assay": "elevated plus maze" },
+    "evidenceIds": ["ev_kinzig_cea"],
+    "note": "Rodent · central · acute — translation-fragile. Not the same as chronic peripheral therapy in humans.",
+    "lastReviewed": "2026-02-22"
+  },
+  {
+    "id": "c_pvn_hpa",
+    "statement": "PVN GLP-1R drives HPA-axis activation (CRH, corticosterone) without anxiety-like behaviour — PVN and CeA dissociate on stress versus anxiety.",
+    "confidence": "moderate",
+    "polarity": "modulates",
+    "scope": { "species": "rat", "route": "icv", "chronicity": "acute", "drug": "GLP-1(7-36)", "assay": "CRH / corticosterone" },
+    "evidenceIds": ["ev_kinzig_pvn"],
+    "lastReviewed": "2026-03-11"
+  },
+  {
+    "id": "c_anx_neutral",
+    "statement": "Chronic peripheral therapeutic dosing in humans appears neutral to mildly favourable on affect; population-level suicidality signals do not support a causal link and lean weakly protective.",
+    "confidence": "moderate",
+    "polarity": "weakens",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "EHR cohort", "n": 240618 },
+    "evidenceIds": ["ev_wang_suicide"],
+    "lastReviewed": "2026-04-12"
+  },
+  {
+    "id": "c_cog_evoke",
+    "statement": "The phase-3 EVOKE and EVOKE+ trials did not show benefit of oral semaglutide on cognitive decline in mild cognitive impairment / mild Alzheimer's disease.",
+    "confidence": "strong",
+    "polarity": "weakens",
+    "scope": { "species": "human", "route": "oral", "chronicity": "chronic", "drug": "semaglutide", "assay": "RCT clinical outcome", "n": 3808 },
+    "evidenceIds": ["ev_evoke_ad"],
+    "note": "The cautionary precedent: observational neurocognitive signals can fail to replicate in randomised trials.",
+    "lastReviewed": "2026-04-12"
+  },
+  {
+    "id": "c_cog_rodent",
+    "statement": "Rodent and cellular work shows BDNF increase, anti-inflammatory action, and hippocampal plasticity — encouraging preclinically, but not borne out in human trials.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "mouse", "route": "periph_tx", "chronicity": "chronic", "drug": "liraglutide", "assay": "histology + plasticity" },
+    "evidenceIds": ["ev_holscher_rodent"],
+    "contradicts": ["c_cog_evoke"],
+    "note": "Held in tension with EVOKE — the atlas does not present GLP-1RAs as cognition-protective in humans.",
+    "lastReviewed": "2026-01-30"
+  },
+  {
+    "id": "c_dls",
+    "statement": "A dorsolateral-septum to lateral-hypothalamus projection may contribute to GLP-1 appetite effects.",
+    "confidence": "speculative",
+    "polarity": "modulates",
+    "scope": { "species": "mouse", "route": "parenchymal", "chronicity": "acute", "drug": "exendin-4", "assay": "circuit dissection" },
+    "evidenceIds": ["ev_dickson_vta"],
+    "openQuestion": "Does the septo-hypothalamic route carry an independent appetite signal?",
+    "lastReviewed": "2026-03-05"
+  },
+  {
+    "id": "c_pfc",
+    "statement": "Top-down prefrontal modulation of reward valuation under GLP-1RA is plausible but currently speculative.",
+    "confidence": "speculative",
+    "polarity": "modulates",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI resting-state" },
+    "evidenceIds": ["ev_whittenburg_pr"],
+    "openQuestion": "Is reduced cue reactivity driven by cortical reappraisal or by subcortical reweighting?",
+    "lastReviewed": "2026-02-10"
+  },
+  {
+    "id": "c_bnst",
+    "statement": "The BNST sustains negative affect; a CeA-to-BNST projection is implicated in the aversive-affect branch of GLP-1 signalling.",
+    "confidence": "moderate",
+    "polarity": "modulates",
+    "scope": { "species": "rat", "route": "icv", "chronicity": "acute", "drug": "GLP-1(7-36)", "assay": "circuit dissection" },
+    "evidenceIds": ["ev_kinzig_cea"],
+    "lastReviewed": "2026-03-18"
+  },
+  {
+    "id": "c_ppg_fasted",
+    "statement": "PPG-NTS neurons are suppressed during negative energy balance; their quiescence lifts inhibition on food-seeking and appetitive behaviour, and ablation does not alter ad libitum intake.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "ex_vivo", "chronicity": "acute", "drug": "endogenous GLP-1", "assay": "lesion + cFos" },
+    "evidenceIds": ["ev_rinaman_fasted"],
+    "note": "The clearest evidence against a tonic-appetite-regulator reading of the central GLP-1 system.",
+    "lastReviewed": "2026-02-14"
+  },
+  {
+    "id": "c_ppg_vagal_route",
+    "statement": "Vagal input to PPG-NTS neurons is not carried by GLP-1R-expressing afferents; peripheral GLP-1 does not principally engage PPG via the vagus — central and peripheral GLP-1 systems act largely independently.",
+    "confidence": "moderate",
+    "polarity": "modulates",
+    "scope": { "species": "mouse", "route": "ex_vivo", "chronicity": "acute", "drug": "endogenous GLP-1", "assay": "circuit dissection" },
+    "evidenceIds": ["ev_brierley_vagal"],
+    "lastReviewed": "2026-03-08"
+  },
+  {
+    "id": "c_ppg_large_burst",
+    "statement": "Gastric distension drives a phasic burst of PPG-NTS activity; chemogenetic activation potently suppresses eating — the canonical secondary-satiation 'stop' signal.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "mouse", "route": "parenchymal", "chronicity": "acute", "drug": "DREADD agonist", "assay": "chemogenetic activation" },
+    "evidenceIds": ["ev_holt_distension"],
+    "lastReviewed": "2026-04-05"
+  },
+  {
+    "id": "c_ppg_stress",
+    "statement": "Restraint stress and visceral malaise recruit PPG-NTS neurons strongly; ablating them blocks stress-induced hypophagia — the neurons do double duty as secondary satiation and aversive interoception.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "parenchymal", "chronicity": "acute", "drug": "lesion", "assay": "stress hypophagia" },
+    "evidenceIds": ["ev_maniscalco_stress"],
+    "lastReviewed": "2026-03-26"
+  }
+]

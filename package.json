@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "validate": "node scripts/validate-graph.ts",
+    "build": "node scripts/validate-graph.ts && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

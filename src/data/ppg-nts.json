@@ -1,0 +1,59 @@
+{
+  "states": [
+    {
+      "id": "fasted",
+      "label": "Fasted",
+      "glyph": "○",
+      "note": "PPG-NTS suppressed.",
+      "activity": 0.05,
+      "prose": "PPG-NTS neurons are suppressed during negative energy balance. Their quiescence lifts inhibition on food-seeking, drug self-administration, and exploratory behaviour. Ablation of these neurons does not alter ad libitum chow intake — they are not a tonic appetite regulator.",
+      "claimIds": ["c_ppg_fasted"]
+    },
+    {
+      "id": "fed",
+      "label": "Fed",
+      "glyph": "◔",
+      "note": "Mild postprandial recruitment.",
+      "activity": 0.25,
+      "prose": "Mild postprandial recruitment. The endogenous central GLP-1 signal is small under ordinary meal sizes; the heavy lifting is done by gut hormones acting at vagal afferents and by the arcuate homeostatic loop.",
+      "claimIds": ["c_ppg_vagal_route"]
+    },
+    {
+      "id": "large",
+      "label": "Large meal",
+      "glyph": "◑",
+      "note": "Phasic burst; gastric distension.",
+      "activity": 0.78,
+      "prose": "Gastric distension drives a phasic burst of PPG-NTS activity that projects to PVN, ARC, and CeA. Chemogenetic activation potently suppresses eating; ablation produces hyperphagia specifically after a preload. This is the canonical 'stop, this is too much' signal.",
+      "claimIds": ["c_ppg_large_burst"]
+    },
+    {
+      "id": "stress",
+      "label": "Psychogenic stress",
+      "glyph": "◕",
+      "note": "Restraint, malaise, social stress.",
+      "activity": 0.85,
+      "prose": "Restraint stress, visceral malaise, and psychogenic stressors recruit PPG-NTS strongly, projecting onto CeA and BNST — the anxiogenic / aversive-affect arm. Ablating PPG-NTS neurons blocks stress-induced hypophagia. The neurons are doing double duty: secondary satiation and aversive interoception.",
+      "claimIds": ["c_ppg_stress", "c_cea_anxiogenic"]
+    },
+    {
+      "id": "pharm",
+      "label": "Pharmacologic agonism",
+      "glyph": "●",
+      "note": "Chronic, sustained — nature never sees this.",
+      "activity": 1.0,
+      "pharm": true,
+      "prose": "Peripheral semaglutide and liraglutide do not act primarily through PPG-NTS — they act at AP/NTS sensing and via tanycytes and slow transcytosis, partially bypassing the endogenous PPG loop. The downstream targets, however, overlap: PVN, CeA, BNST, ARC — and the engagement is chronic, not phasic. A signal nature uses to mean 'something has just happened' is being sustained to mean 'something is continuously the case'.",
+      "aside": "The system is being asked to communicate satiety and aversive interoception continuously. Whether the brain treats this as supranormal satiety or as chronic mild aversive interoception is the mechanistic question downstream of every neuropsychiatric side-effect debate.",
+      "claimIds": ["c_access_sparse", "c_anx_neutral"]
+    }
+  ],
+  "targets": [
+    { "id": "pvn", "label": "PVN", "sub": "CRH · HPA", "x": 260, "y": 90, "byState": [0.02, 0.1, 0.55, 0.95, 0.7] },
+    { "id": "arc", "label": "ARC", "sub": "POMC", "x": 130, "y": 90, "byState": [0.02, 0.2, 0.55, 0.2, 0.55] },
+    { "id": "cea", "label": "CeA", "sub": "GABA · aversive", "x": 320, "y": 200, "byState": [0.02, 0.05, 0.4, 0.95, 0.6] },
+    { "id": "bnst", "label": "BNST", "sub": "neg affect", "x": 60, "y": 200, "byState": [0.02, 0.05, 0.3, 0.8, 0.55] },
+    { "id": "nac", "label": "NAc", "sub": "salience", "x": 320, "y": 280, "byState": [0.02, 0.15, 0.45, 0.3, 0.55] },
+    { "id": "dmh", "label": "DMH", "sub": "autonomic", "x": 60, "y": 280, "byState": [0.02, 0.2, 0.4, 0.55, 0.45] }
+  ]
+}
