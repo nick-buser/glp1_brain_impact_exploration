@@ -1,0 +1,74 @@
+{
+  "berridge": [
+    {
+      "key": "wanting",
+      "label": "Wanting",
+      "direction": "down",
+      "effect": 0.72,
+      "confidence": "strong",
+      "note": "Progressive-ratio breakpoint, cue-induced reinstatement, and fMRI cue reactivity are all reduced.",
+      "claimId": "c_wanting_rebalance"
+    },
+    {
+      "key": "liking",
+      "label": "Liking",
+      "direction": "flat",
+      "effect": 0.12,
+      "confidence": "speculative",
+      "note": "No rodent demonstration of a degraded orofacial liking response; the μ-opioid and CB1 hedonic hotspots are largely unprobed."
+    },
+    {
+      "key": "learning",
+      "label": "Learning",
+      "direction": "unknown",
+      "effect": 0.0,
+      "confidence": "open",
+      "note": "Barely studied. Reward-prediction-error and learning-rate effects are plausible given striatal and hippocampal changes, but uncharacterised."
+    },
+    {
+      "key": "effort",
+      "label": "Effort",
+      "direction": "unknown",
+      "effect": 0.0,
+      "confidence": "open",
+      "note": "Effort-discounting paradigms applied to GLP-1RAs are essentially absent — the cleanest assay of motivational anhedonia is missing."
+    }
+  ],
+  "tension": {
+    "leftClaimId": "c_da_blunting",
+    "rightClaimId": "c_kooji",
+    "label": "⇄ tension",
+    "note": "Reconciliation candidates, none yet decisive: (a) temporal redistribution — anticipatory dopamine falls while consummatory dopamine is preserved or rises; (b) cumulative consumption falls through brainstem aversive channels rather than mesolimbic flattening; (c) animals pull harder for the remaining reward as food runs low. A parallel preprint reports enhanced incentive value of small food rewards under chronic semaglutide — opposite to the canonical account. The reconciliation is an open question on the page, not a hedge in the prose."
+  },
+  "phenomenology": {
+    "report": "alcohol stopped calling to me",
+    "fits": [
+      {
+        "label": "Wanting ↓ · cue-salience reduction",
+        "weight": 0.78,
+        "note": "Cross-reward mesolimbic gain reduction; strong randomised-trial support."
+      },
+      {
+        "label": "Aversive interoception",
+        "weight": 0.52,
+        "note": "Central amygdala GABA arm; mild visceral malaise generalising to the drink."
+      },
+      {
+        "label": "Liking change",
+        "weight": 0.18,
+        "note": "Possible but uncharacterised — no rodent liking assay has been run."
+      },
+      {
+        "label": "Mood / anhedonia",
+        "weight": 0.12,
+        "note": "Possible in a subgroup; the population-level signal is neutral-to-favourable."
+      }
+    ]
+  },
+  "openQuestions": [
+    "Does chronic exposure cause persistent recalibration of mesolimbic gain or reward-prediction-error signalling?",
+    "Effort-discounting under GLP-1RA is largely unstudied; sucrose preference conflates appetite with hedonics.",
+    "Does reduced wanting spread to non-consummatory motivation — social, sexual, achievement-related?"
+  ],
+  "toyModel": { "wanting": 0.4, "liking": 0.85, "effort": 0.3 }
+}

@@ -8,7 +8,14 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
-import { Dataset, PpgNtsModule, validateGraph, validatePpgNts } from '../src/lib/schemas.ts'
+import {
+  Dataset,
+  PpgNtsModule,
+  WantingModule,
+  validateGraph,
+  validatePpgNts,
+  validateWanting,
+} from '../src/lib/schemas.ts'
 
 const dataDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -65,4 +72,25 @@ if (ppgErrors.length > 0) {
 
 console.log(
   `✓ ppg-nts module valid — ${ppg.data.states.length} states · ${ppg.data.targets.length} targets`,
+)
+
+// ── Wanting module ──────────────────────────────────────────────────────────
+
+const wanting = WantingModule.safeParse(read('wanting.json'))
+if (!wanting.success) {
+  for (const issue of wanting.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Wanting module failed schema validation.')
+}
+
+const wantingErrors = validateWanting(wanting.data, new Set(claims.map((c) => c.id)))
+if (wantingErrors.length > 0) {
+  for (const e of wantingErrors) console.error(`  · ${e}`)
+  fail(`Wanting module has ${wantingErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ wanting module valid — ${wanting.data.berridge.length} Berridge rows · ` +
+    `${wanting.data.phenomenology.fits.length} phenomenology fits`,
 )

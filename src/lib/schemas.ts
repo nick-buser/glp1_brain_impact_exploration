@@ -283,3 +283,70 @@ export function validatePpgNts(
   }
   return errors
 }
+
+// ── Wanting / hedonic-tone module ───────────────────────────────────────────
+//
+// The Berridge decomposition (wanting / liking / learning / effort), the
+// Kooji-vs-canonical contradiction, the phenomenology snippet, and the toy
+// motivational model. Confidence is per component; the `wanting` row and the
+// tension pair link to real claims.
+
+export const BerridgeDirection = z.enum(['down', 'flat', 'unknown'])
+export type BerridgeDirection = z.infer<typeof BerridgeDirection>
+
+export const BerridgeRow = z.object({
+  key: z.string().min(1),
+  label: z.string().min(1),
+  direction: BerridgeDirection,
+  effect: z.number().min(0).max(1), // magnitude of the reduction, 0..1
+  confidence: Confidence,
+  note: z.string().min(1),
+  claimId: z.string().optional(),
+})
+export type BerridgeRow = z.infer<typeof BerridgeRow>
+
+export const PhenomFit = z.object({
+  label: z.string().min(1),
+  weight: z.number().min(0).max(1),
+  note: z.string().min(1),
+})
+export type PhenomFit = z.infer<typeof PhenomFit>
+
+export const WantingModule = z.object({
+  berridge: z.array(BerridgeRow).min(1),
+  tension: z.object({
+    leftClaimId: z.string().min(1),
+    rightClaimId: z.string().min(1),
+    label: z.string().min(1),
+    note: z.string().min(1),
+  }),
+  phenomenology: z.object({
+    report: z.string().min(1),
+    fits: z.array(PhenomFit).min(1),
+  }),
+  openQuestions: z.array(z.string().min(1)).min(1),
+  toyModel: z.object({
+    wanting: z.number().min(0).max(1),
+    liking: z.number().min(0).max(1),
+    effort: z.number().min(0).max(1),
+  }),
+})
+export type WantingModule = z.infer<typeof WantingModule>
+
+/** Claim ids in the Berridge rows and the tension pair must resolve. */
+export function validateWanting(
+  module: WantingModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  for (const r of module.berridge) {
+    if (r.claimId && !knownClaimIds.has(r.claimId))
+      errors.push(`wanting berridge row "${r.key}" references unknown claim "${r.claimId}"`)
+  }
+  for (const side of ['leftClaimId', 'rightClaimId'] as const) {
+    const id = module.tension[side]
+    if (!knownClaimIds.has(id))
+      errors.push(`wanting tension.${side} references unknown claim "${id}"`)
+  }
+  return errors
+}

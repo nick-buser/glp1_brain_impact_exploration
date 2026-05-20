@@ -394,6 +394,47 @@ body {
   gap: 4px;
 }
 
+/* Paired-claim tension node — contradiction rendered as structure */
+.atlas .tension {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+}
+.atlas .tension > .claim:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+.atlas .tension > .claim:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+.atlas .tension-bridge {
+  position: relative;
+  width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--accent-bg) 0 4px,
+    transparent 4px 8px
+  );
+  border-top: 0.5px solid var(--accent-rule);
+  border-bottom: 0.5px solid var(--accent-rule);
+}
+.atlas .tension-bridge-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--bg-paper);
+  padding: 3px 5px;
+  border: 0.5px solid var(--accent-rule);
+  border-radius: 2px;
+  line-height: 1;
+}
+
 /* Atlas graph node hit-area cursor */
 .atlas .node-hit {
   cursor: pointer;

@@ -1,11 +1,25 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import { sections } from './lib/sections'
 import Overview from './pages/Overview'
-import PpgNts from './pages/PpgNts'
-import SectionPage from './pages/SectionPage'
+
+// Mechanism pages are code-split: framer-motion and per-module data ship only
+// to the routes that use them, keeping the landing route lean.
+const PpgNts = lazy(() => import('./pages/PpgNts'))
+const Wanting = lazy(() => import('./pages/Wanting'))
+const SectionPage = lazy(() => import('./pages/SectionPage'))
 
 const PPG_PATH = '/mechanisms/ppg-nts'
+const WANTING_PATH = '/mechanisms/wanting'
+const CUSTOM_PATHS = new Set(['/', PPG_PATH, WANTING_PATH])
+
+function RouteFallback() {
+  return (
+    <div className="micro" style={{ padding: '56px 36px', color: 'var(--ink-3)' }}>
+      Loading module…
+    </div>
+  )
+}
 
 type Theme = 'atlas-light' | 'atlas-dark'
 
@@ -113,15 +127,18 @@ export default function App() {
       </nav>
 
       <main style={{ flex: 1, minWidth: 0, overflow: 'auto', background: 'var(--bg)' }}>
-        <Routes>
-          <Route path="/" element={<Overview />} />
-          <Route path={PPG_PATH} element={<PpgNts />} />
-          {sections
-            .filter((s) => s.path !== '/' && s.path !== PPG_PATH)
-            .map((s) => (
-              <Route key={s.path} path={s.path} element={<SectionPage section={s} />} />
-            ))}
-        </Routes>
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            <Route path="/" element={<Overview />} />
+            <Route path={PPG_PATH} element={<PpgNts />} />
+            <Route path={WANTING_PATH} element={<Wanting />} />
+            {sections
+              .filter((s) => !CUSTOM_PATHS.has(s.path))
+              .map((s) => (
+                <Route key={s.path} path={s.path} element={<SectionPage section={s} />} />
+              ))}
+          </Routes>
+        </Suspense>
       </main>
     </div>
   )
