@@ -57,16 +57,20 @@
     "note": "GLP-1R present on a subset of VTA TH+ neurons; local exendin-4 reduces palatable intake."
   },
   {
-    "id": "ev_whittenburg_pr",
-    "paperId": "whittenburg_2026",
+    "id": "ev_glp1_cue_review",
+    "paperId": "dang_2026",
     "species": "human",
     "route": "periph_tx",
-    "chronicity": "chronic",
-    "drug": "semaglutide",
-    "assay": "fMRI cue-reactivity",
-    "direction": "decrease",
-    "n": 412,
-    "note": "Reduced food-cue striatal activation and lower progressive-ratio breakpoints pooled across studies."
+    "chronicity": "acute",
+    "drug": "mixed GLP-1RA",
+    "assay": "fMRI food-cue reactivity",
+    "direction": "mixed",
+    "caveats": [
+      "Systematic review of 11 small fMRI studies (most ≤20 participants per group)",
+      "preprint — not yet peer-reviewed",
+      "effects inconsistent across agents and dosing; not established for chronic treatment"
+    ],
+    "note": "Across 11 fMRI studies, acute GLP-1RA tentatively reduces food-cue reactivity in appetite and reward regions, but the signal is inconsistent and unestablished for chronic dosing."
   },
   {
     "id": "ev_kooji_photometry",
@@ -127,9 +131,9 @@
     "caveats": [
       "Observational",
       "confounding by indication",
-      "effect size implausibly large for pure pharmacology"
+      "large effect size for observational data"
     ],
-    "note": "~85% lower recorded substance-use outcomes — suggestive, not definitive."
+    "note": "~50–56% lower recorded alcohol-use-disorder outcomes (Wang et al. 2024) — suggestive, not definitive."
   },
   {
     "id": "ev_kinzig_cea",
@@ -432,5 +436,28 @@
       "healthcare-engagement and survivorship bias"
     ],
     "note": "Lower recorded incidence of dementia diagnosis under GLP-1RA prescription — suggestive, not causal."
+  },
+  {
+    "id": "ev_bornebusch_opioid",
+    "paperId": "bornebusch_2019",
+    "species": "mouse",
+    "route": "periph_ex",
+    "chronicity": "subacute",
+    "drug": "exendin-4",
+    "assay": "morphine CPP + remifentanil self-administration",
+    "direction": "no_change",
+    "caveats": ["Experimental dosing", "male mice"],
+    "note": "Exendin-4 had no effect on morphine CPP, withdrawal or hyperlocomotion and did not reduce remifentanil self-administration; the same study confirmed reduced alcohol self-administration."
+  },
+  {
+    "id": "ev_zhu_vta",
+    "paperId": "zhu_2025",
+    "species": "mouse",
+    "route": "periph_tx",
+    "chronicity": "subacute",
+    "drug": "semaglutide",
+    "assay": "photometry-calibrated optogenetics",
+    "direction": "biphasic",
+    "note": "Semaglutide suppresses VTA-DA neuron responsiveness during palatable-food consumption; responsiveness and palatable intake recover over repeated dosing."
   }
 ]

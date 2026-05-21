@@ -56,14 +56,14 @@
       "sub": "opioid use disorder",
       "confidence": "speculative",
       "angle": 200,
-      "synthesis": "Preclinical only. Liraglutide reduces heroin self-administration and reinstatement in rats, and EHR cohorts report lower opioid-use outcomes — but no opioid-use-disorder trial has read out, and the observational effect size is implausibly large.",
+      "synthesis": "Preclinical and contested. Liraglutide reduces heroin self-administration and reinstatement in rats (Douton 2022), but exendin-4 did not reduce morphine or remifentanil reward in mice (Bornebusch 2019) — the rodent opioid evidence is split. EHR cohorts report lower opioid-use outcomes, but no opioid-use-disorder trial has read out and the observational effect is large and confounding-vulnerable.",
       "matrix": {
-        "preclinical": "moderate",
+        "preclinical": "speculative",
         "humanRct": "absent",
         "observational": "speculative",
         "mechanism": "speculative"
       },
-      "claimIds": ["c_cross_opioids", "c_cross_ehr"]
+      "claimIds": ["c_cross_opioids", "c_cross_opioids_null", "c_cross_ehr"]
     },
     {
       "id": "stimulants",
@@ -96,5 +96,5 @@
       "claimIds": ["c_cross_behavioral"]
     }
   ],
-  "caution": "Two failure modes this page exists to block. (1) Borrowing confidence across domains — the strong food and alcohol evidence does not transfer to opioids or gambling, which rest on preclinical models and uncontrolled reports. (2) Reading the observational halo as pharmacology — EHR cohorts report roughly 85% lower substance-use outcomes, an effect size too large to be drug action alone and heavy with confounding by indication. The EVOKE cognitive-trial failure is the standing reminder that observational neuropsychiatric signals can evaporate under randomisation."
+  "caution": "Two failure modes this page exists to block. (1) Borrowing confidence across domains — the strong food and alcohol evidence does not transfer to opioids or gambling, which rest on preclinical models and uncontrolled reports. (2) Reading the observational halo as pharmacology — EHR cohorts report roughly 50% lower substance-use outcomes, a large effect heavy with confounding by indication. The EVOKE cognitive-trial failure is the standing reminder that observational neuropsychiatric signals can evaporate under randomisation."
 }

@@ -14,7 +14,7 @@
     "authors": ["Secher A", "Jelsing J", "Baquero AF", "et al."],
     "year": 2014,
     "journal": "J Clin Invest",
-    "doi": "10.1172/JCI72117",
+    "doi": "10.1172/JCI75276",
     "note": "Liraglutide reaches the arcuate nucleus and acts on POMC/CART neurons; access via accessible-from-circulation routes."
   },
   {
@@ -23,7 +23,7 @@
     "authors": ["Kanoski SE", "Fortin SM", "Arnold M", "et al."],
     "year": 2011,
     "journal": "Endocrinology",
-    "doi": "10.1210/en.2011-1443",
+    "doi": "10.1210/en.2011-0174",
     "note": "Vagal afferent and NTS contribution to GLP-1 / exendin-4 effects on food intake."
   },
   {
@@ -32,37 +32,53 @@
     "authors": ["Dickson SL", "Shirazi RH", "Hansson C", "et al."],
     "year": 2012,
     "journal": "J Neurosci",
-    "doi": "10.1523/JNEUROSCI.5197-11.2012",
+    "doi": "10.1523/JNEUROSCI.6326-11.2012",
     "note": "GLP-1R in the VTA and NAc; central exendin-4 reduces reward-driven food intake."
   },
   {
     "id": "kooji_2024",
-    "cite": "Kooji 2024",
-    "authors": ["Kooji et al."],
+    "cite": "Kooij 2024",
+    "authors": ["Kooij KL", "Koster DI", "Eeltink E", "et al."],
     "year": 2024,
-    "note": "In-vivo fibre photometry: consummatory VTA dopamine signals preserved or enhanced under semaglutide — complicates the simple blunting account. (Project-curated entry pending DOI verification.)"
+    "journal": "Neuroscience Applied",
+    "doi": "10.1016/j.nsa.2023.103925",
+    "note": "In-vivo fibre photometry: consummatory VTA dopamine reward signalling preserved or increased under semaglutide despite reduced appetite — complicates the simple blunting account."
   },
   {
-    "id": "whittenburg_2026",
-    "cite": "Whittenburg 2026",
-    "authors": ["Whittenburg et al."],
+    "id": "zhu_2025",
+    "cite": "Zhu 2025",
+    "authors": ["Zhu Z", "Gong R", "Rodríguez VM", "et al."],
+    "year": 2025,
+    "journal": "Science",
+    "doi": "10.1126/science.adt0773",
+    "note": "Photometry-calibrated optogenetics: VTA dopamine neurons encode palatability and drive hedonic eating; semaglutide suppresses VTA-DA responsiveness during consumption, but palatable-food appetite and VTA-DA activity recover over repeated semaglutide dosing — adds a time-course axis to the dopamine-blunting question."
+  },
+  {
+    "id": "dang_2026",
+    "cite": "Dang 2026",
+    "authors": ["Dang V", "Sambuco N", "Yammine L", "Versace F"],
     "year": 2026,
-    "note": "Systematic review of GLP-1RA effects on reward: lower progressive-ratio breakpoints and reduced food-cue striatal activation across human fMRI studies."
+    "journal": "bioRxiv (preprint)",
+    "doi": "10.64898/2026.01.31.702984",
+    "note": "Systematic review of fMRI studies of GLP-1RA effects on brain responses to reward-related cues: 11 eligible studies (mostly food cues, one alcohol). Limited evidence tentatively suggests acute GLP-1RA may reduce food-cue reactivity in appetite and reward regions, but effects are inconsistent and may attenuate over time; most studies enrolled ≤20 participants per group. Preprint — not yet peer-reviewed."
   },
   {
     "id": "hendershot_2025",
     "cite": "Hendershot 2025",
-    "authors": ["Hendershot CS", "et al."],
+    "authors": ["Hendershot CS", "Bremmer MP", "Paladino MB", "et al."],
     "year": 2025,
     "journal": "JAMA Psychiatry",
-    "note": "Randomised trial: semaglutide reduces alcohol consumption and craving in adults with alcohol use disorder."
+    "doi": "10.1001/jamapsychiatry.2024.4789",
+    "note": "Phase-2 randomised trial (n=48): low-dose semaglutide reduced laboratory alcohol self-administration, drinks per drinking day and craving; calendar drinks/day and number of drinking days were unchanged."
   },
   {
     "id": "semalco_2026",
     "cite": "SEMALCO 2026",
     "authors": ["SEMALCO trial group"],
     "year": 2026,
-    "note": "26-week randomised trial of semaglutide for alcohol use disorder; confirmatory reduction in heavy-drinking outcomes."
+    "journal": "Lancet",
+    "doi": "10.1016/S0140-6736(26)00305-3",
+    "note": "26-week randomised, placebo-controlled trial of semaglutide 2.4 mg in alcohol use disorder with comorbid obesity (n=108); significant reduction in heavy-drinking days versus placebo."
   },
   {
     "id": "chuong_2023",
@@ -76,10 +92,11 @@
   {
     "id": "ehr_sud_2024",
     "cite": "EHR cohort 2024",
-    "authors": ["Wang W", "et al."],
+    "authors": ["Wang W", "Volkow ND", "Berger NA", "et al."],
     "year": 2024,
-    "journal": "Nature Communications / Addiction",
-    "note": "Large electronic-health-record cohorts report markedly lower substance-use-disorder incidence under GLP-1RA prescription — observational, confounding-vulnerable."
+    "journal": "Nature Communications",
+    "doi": "10.1038/s41467-024-48780-6",
+    "note": "Electronic-health-record cohort (n=83,825 with obesity): semaglutide associated with ~50–56% lower incidence and recurrence of alcohol use disorder versus other anti-obesity medications — observational, confounding-vulnerable."
   },
   {
     "id": "wang_2024",
@@ -101,10 +118,12 @@
   },
   {
     "id": "evoke_2025",
-    "cite": "EVOKE 2025",
-    "authors": ["Novo Nordisk", "EVOKE / EVOKE+ investigators"],
-    "year": 2025,
-    "note": "Phase-3 EVOKE and EVOKE+ trials of oral semaglutide in mild cognitive impairment / mild Alzheimer's disease did not meet cognitive endpoints (reported CTAD, December 2025)."
+    "cite": "EVOKE 2026",
+    "authors": ["Cummings JL", "Atri A", "Sano M", "et al."],
+    "year": 2026,
+    "journal": "Lancet",
+    "doi": "10.1016/S0140-6736(26)00459-9",
+    "note": "Phase-3 EVOKE and EVOKE+ trials of oral semaglutide (up to 14 mg once daily) in early-stage symptomatic Alzheimer's disease; the primary cognitive endpoint (CDR-SB at week 104) was not met and both trials were discontinued. Topline reported December 2025; full results published 2026."
   },
   {
     "id": "holscher_review",
@@ -137,38 +156,53 @@
     "authors": ["Holt MK", "Richards JE", "Cook DR", "et al."],
     "year": 2019,
     "journal": "Diabetes",
-    "doi": "10.2337/db18-1138",
+    "doi": "10.2337/db18-0729",
     "note": "Chemogenetic activation of PPG-NTS neurons suppresses food intake; the neurons fire phasically to gastric distension."
   },
   {
     "id": "maniscalco_2015",
     "cite": "Maniscalco 2015",
-    "authors": ["Maniscalco JW", "Rinaman L"],
+    "authors": ["Maniscalco JW", "Zheng H", "Gordon PJ", "Rinaman L"],
     "year": 2015,
-    "journal": "Physiology & Behavior",
-    "note": "Stress and visceral malaise recruit hindbrain GLP-1 neurons; their ablation blocks stress-induced hypophagia."
+    "journal": "J Neurosci",
+    "doi": "10.1523/JNEUROSCI.3464-14.2015",
+    "note": "Acute stress recruits hindbrain GLP-1 neurons; negative energy balance silences them, and central GLP-1R antagonism blocks stress-induced hypophagia."
   },
   {
     "id": "egecioglu_2013",
     "cite": "Egecioglu 2013",
     "authors": ["Egecioglu E", "Engel JA", "Jerlhag E"],
     "year": 2013,
-    "note": "Exendin-4 attenuates nicotine-induced locomotor stimulation, accumbal dopamine release, and conditioned place preference in mice. (Project-curated entry; journal / DOI pending verification.)"
+    "journal": "PLoS One",
+    "doi": "10.1371/journal.pone.0077284",
+    "note": "Exendin-4 attenuates nicotine-induced locomotor stimulation, accumbal dopamine release, and conditioned place preference in mice."
   },
   {
     "id": "sorensen_2015",
     "cite": "Sørensen 2015",
     "authors": ["Sørensen G", "Reddy IA", "Weikop P", "et al."],
     "year": 2015,
-    "note": "The GLP-1 receptor agonist exendin-4 reduces cocaine self-administration and reinstatement in mice. (Project-curated entry; journal / DOI pending verification.)"
+    "journal": "Physiology & Behavior",
+    "doi": "10.1016/j.physbeh.2015.06.013",
+    "note": "The GLP-1 receptor agonist exendin-4 reduces acute and chronic cocaine self-administration and cocaine-induced striatal dopamine release in mice."
   },
   {
     "id": "douton_2022",
     "cite": "Douton 2022",
-    "authors": ["Douton JE", "Norgren R", "Grigson PS", "et al."],
+    "authors": ["Douton JE", "Horvath N", "Mills-Huffnagle S", "et al."],
     "year": 2022,
     "journal": "Addiction Biology",
-    "note": "Liraglutide reduces heroin self-administration and drug-induced reinstatement of heroin-seeking in rats. (Project-curated entry; DOI pending verification.)"
+    "doi": "10.1111/adb.13117",
+    "note": "Liraglutide reduces heroin self-administration and drug-induced reinstatement of heroin-seeking in rats; cue-induced reinstatement was not reduced at the tested pretreatment interval."
+  },
+  {
+    "id": "bornebusch_2019",
+    "cite": "Bornebusch 2019",
+    "authors": ["Bornebusch AB", "Fink-Jensen A", "Wörtwein G", "et al."],
+    "year": 2019,
+    "journal": "eNeuro",
+    "doi": "10.1523/ENEURO.0443-18.2019",
+    "note": "Exendin-4 did not reduce morphine conditioned place preference, withdrawal, hyperlocomotion, or remifentanil self-administration in mice — reinforcement if anything increased — while the same agent did reduce alcohol self-administration. A negative control for the cross-reward thesis: GLP-1's anti-addiction effect does not appear to extend to opioids."
   },
   {
     "id": "behavioral_case_reports",
@@ -183,12 +217,13 @@
     "authors": ["Heppner KM", "Kirigiti M", "Secher A", "et al."],
     "year": 2015,
     "journal": "Endocrinology",
-    "note": "GLP-1 receptor mapping in the macaque brain — amygdalar GLP-1R density substantially higher than in rodent surveys. (Project-curated entry; DOI pending verification.)"
+    "doi": "10.1210/en.2014-1675",
+    "note": "GLP-1 receptor mapping in the macaque brain — amygdalar GLP-1R expression substantially higher than in rodent surveys."
   },
   {
     "id": "banks_2020",
     "cite": "Banks 2020",
-    "authors": ["Banks WA", "Salameh TS", "Rhea EM"],
+    "authors": ["Salameh TS", "Rhea EM", "Talbot K", "Banks WA"],
     "year": 2020,
     "journal": "Biochemical Pharmacology",
     "doi": "10.1016/j.bcp.2020.114187",
@@ -200,7 +235,7 @@
     "authors": ["Blundell J", "Finlayson G", "Axelsen M", "et al."],
     "year": 2017,
     "journal": "Diabetes, Obesity and Metabolism",
-    "doi": "10.1111/dom.13105",
+    "doi": "10.1111/dom.12932",
     "note": "Once-weekly semaglutide reduced appetite, ad libitum energy intake and food cravings, and shifted food preferences away from high-fat foods, in adults with obesity."
   },
   {

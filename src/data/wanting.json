@@ -5,8 +5,8 @@
       "label": "Wanting",
       "direction": "down",
       "effect": 0.72,
-      "confidence": "strong",
-      "note": "Progressive-ratio breakpoint, cue-induced reinstatement, and fMRI cue reactivity are all reduced.",
+      "confidence": "moderate",
+      "note": "Human fMRI food-cue reactivity is reduced in reward regions, though inconsistently and mostly in small studies; rodent progressive-ratio and cue-induced reinstatement data point the same way.",
       "claimId": "c_wanting_rebalance"
     },
     {
@@ -38,7 +38,7 @@
     "leftClaimId": "c_da_blunting",
     "rightClaimId": "c_kooji",
     "label": "⇄ tension",
-    "note": "Reconciliation candidates, none yet decisive: (a) temporal redistribution — anticipatory dopamine falls while consummatory dopamine is preserved or rises; (b) cumulative consumption falls through brainstem aversive channels rather than mesolimbic flattening; (c) animals pull harder for the remaining reward as food runs low. A parallel preprint reports enhanced incentive value of small food rewards under chronic semaglutide — opposite to the canonical account. The reconciliation is an open question on the page, not a hedge in the prose."
+    "note": "Reconciliation candidates, none yet decisive: (a) temporal redistribution and recovery — anticipatory dopamine falls while consummatory dopamine is preserved or rises, and the suppression itself wanes with repeated dosing; (b) cumulative consumption falls through brainstem aversive channels rather than mesolimbic flattening; (c) animals pull harder for the remaining reward as food runs low. Zhu et al. (2025, Science) give candidate (a) direct support: photometry-calibrated optogenetics shows semaglutide suppresses VTA dopamine responsiveness during consumption, but the suppression — and palatable intake — recover over repeated dosing. A parallel preprint reports enhanced incentive value of small food rewards under chronic semaglutide — opposite to the canonical account. The reconciliation is an open question on the page, not a hedge in the prose."
   },
   "phenomenology": {
     "report": "alcohol stopped calling to me",
