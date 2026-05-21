@@ -1,0 +1,275 @@
+{
+  "components": [
+    {
+      "id": "wanting",
+      "label": "Wanting",
+      "gloss": "Incentive salience — how strongly a cue pulls. Anticipatory motivation and cue-driven seeking, before the reward is in hand.",
+      "mechanismPath": "/mechanisms/wanting",
+      "claimIds": ["c_wanting_rebalance", "c_da_blunting"]
+    },
+    {
+      "id": "liking",
+      "label": "Liking",
+      "gloss": "Hedonic impact — the moment-to-moment pleasure of the reward once it is consumed. Dissociable from wanting, and barely measured under GLP-1RAs.",
+      "mechanismPath": "/mechanisms/wanting",
+      "claimIds": []
+    },
+    {
+      "id": "learning",
+      "label": "Reward learning",
+      "gloss": "How reward associations and prediction errors update — whether a cue keeps its learned pull, or is slowly re-weighted.",
+      "mechanismPath": "/mechanisms/wanting",
+      "claimIds": ["c_neuro_healthy_cog"]
+    },
+    {
+      "id": "effort",
+      "label": "Effort / vigour",
+      "gloss": "Willingness to work or persist for a reward. The cleanest assay of motivational anhedonia — and essentially unstudied for this drug class.",
+      "mechanismPath": "/mechanisms/wanting",
+      "claimIds": []
+    },
+    {
+      "id": "aversive_interoception",
+      "label": "Aversive interoception",
+      "gloss": "A low-grade bodily 'wrongness' — sub-nausea visceral unease — that can taint a nearby reward without ever being named as sickness.",
+      "mechanismPath": "/mechanisms/amygdala-gaba",
+      "claimIds": ["c_ppg_stress", "c_cross_cea_gaba", "c_appetite_cta"]
+    },
+    {
+      "id": "nausea",
+      "label": "Nausea / malaise",
+      "gloss": "Frank gut malaise — the dose-linked, mostly transient side-effect channel. Distinct from sub-threshold aversive interoception by being noticed as sickness.",
+      "mechanismPath": "/mechanisms/appetite",
+      "claimIds": ["c_appetite_cta", "c_ppg_large_burst"]
+    },
+    {
+      "id": "mood",
+      "label": "Mood / affective tone",
+      "gloss": "Background hedonic tone — flatness, blunting, or lift — independent of any single reward. The 'Ozempic personality' channel.",
+      "mechanismPath": "/mechanisms/amygdala-gaba",
+      "claimIds": ["c_anx_neutral", "c_cea_anxiogenic"]
+    }
+  ],
+  "reports": [
+    {
+      "id": "food_flat",
+      "text": "Food just doesn't taste like much anymore.",
+      "naiveReading": "GLP-1 dulls the sense of taste, or kills the pleasure of eating.",
+      "candidates": [
+        {
+          "componentId": "wanting",
+          "likelihood": "high",
+          "weight": 0.74,
+          "rationale": "A cue that no longer pulls is experienced as a reward that has gone dull — the phenomenology of reduced wanting is easily mistaken for reduced liking. This is the best-evidenced channel: progressive-ratio breakpoints and food-cue striatal activation both fall under chronic therapy.",
+          "claimIds": ["c_wanting_rebalance"]
+        },
+        {
+          "componentId": "aversive_interoception",
+          "likelihood": "moderate",
+          "weight": 0.44,
+          "rationale": "A sub-threshold visceral unease — short of frank nausea — can quietly down-rate the appeal of a meal. At intake-suppressing doses the anorectic and aversive effects are not cleanly separable in rodents.",
+          "claimIds": ["c_appetite_cta", "c_ppg_stress"]
+        },
+        {
+          "componentId": "liking",
+          "likelihood": "uncertain",
+          "weight": 0.34,
+          "rationale": "A true degradation of hedonic impact would fit the words exactly — but no rodent study has shown a blunted orofacial liking response, and the μ-opioid and CB1 hedonic hotspots are largely unprobed. Genuinely uncertain, not low.",
+          "claimIds": []
+        },
+        {
+          "componentId": "nausea",
+          "likelihood": "low",
+          "weight": 0.26,
+          "rationale": "Frank nausea would usually be reported as sickness, not as flatness. Plausible early in titration or at higher doses, but a poor fit for a steady-state 'tastes like nothing' report.",
+          "claimIds": ["c_appetite_cta"]
+        },
+        {
+          "componentId": "mood",
+          "likelihood": "low",
+          "weight": 0.18,
+          "rationale": "A general affective flattening would usually generalise beyond food. If only food is affected, a mood-level explanation is carrying more than it should.",
+          "claimIds": ["c_anx_neutral"]
+        }
+      ],
+      "discriminator": "Wanting and liking pull apart on one question: is the meal still enjoyable once it has started? If the first few bites are as good as ever but nothing draws the person to the table, the report is wanting, not liking. If the food itself tastes muted in the mouth, liking is back in play — and that distinction has barely been measured.",
+      "caveats": [
+        "No human or rodent study cleanly isolates a GLP-1RA effect on orofacial liking; the liking channel here is a candidate, not a finding.",
+        "'Tastes flat' is a phenomenological report, not a sensory measurement — psychophysical taste-threshold data under GLP-1RAs are sparse and do not show gross hypogeusia."
+      ]
+    },
+    {
+      "id": "alcohol_quiet",
+      "text": "Alcohol stopped calling to me.",
+      "naiveReading": "GLP-1 lowers dopamine, so it switches the craving off.",
+      "candidates": [
+        {
+          "componentId": "wanting",
+          "likelihood": "high",
+          "weight": 0.8,
+          "rationale": "'Calling to me' is incentive-salience language almost verbatim — a cue that has lost its pull. Cross-reward mesolimbic gain reduction has the strongest randomised-trial support of any non-food domain.",
+          "claimIds": ["c_wanting_rebalance"]
+        },
+        {
+          "componentId": "aversive_interoception",
+          "likelihood": "moderate",
+          "weight": 0.5,
+          "rationale": "Central-amygdala GABAergic modulation is part of semaglutide's alcohol effect — not a dopamine monoculture. A mild visceral malaise generalising to the drink would also quiet the cue.",
+          "claimIds": ["c_cross_cea_gaba"]
+        },
+        {
+          "componentId": "liking",
+          "likelihood": "low",
+          "weight": 0.2,
+          "rationale": "Whether the drink itself is less pleasant once drunk is uncharacterised — no human liking assay has been run for alcohol under GLP-1RAs.",
+          "claimIds": []
+        },
+        {
+          "componentId": "mood",
+          "likelihood": "low",
+          "weight": 0.16,
+          "rationale": "A subgroup effect is possible, but population-level affective signals under chronic therapy are neutral-to-favourable, so a mood-mediated route is not the default reading.",
+          "claimIds": ["c_anx_neutral"]
+        }
+      ],
+      "discriminator": "Reduced wanting and aversive interoception both quiet the cue, but they feel different from the inside: wanting reduction is an absence — the thought simply does not arrive — while aversive interoception is a presence, a faint 'not now' from the body. Asking whether the quiet feels like relief or like mild unease separates them.",
+      "caveats": [
+        "The cross-reward evidence is strongest for alcohol and food; do not let a confident reading here generalise to gambling or other non-consummatory rewards, where the evidence is case-report only.",
+        "'Dopamine down' is not a permitted final explanation — the central-amygdala GABA arm is a real, separately evidenced part of the mechanism."
+      ]
+    },
+    {
+      "id": "emotionally_flat",
+      "text": "I feel emotionally flat — a bit numb, like the colour is turned down.",
+      "naiveReading": "Ozempic causes depression, or blunts emotion as a side effect.",
+      "candidates": [
+        {
+          "componentId": "mood",
+          "likelihood": "moderate",
+          "weight": 0.5,
+          "rationale": "A genuine shift in background affective tone is the literal reading. Population data lean neutral-to-favourable and do not support a causal depression link — but a population average does not exclude a real effect in an individual.",
+          "claimIds": ["c_anx_neutral"]
+        },
+        {
+          "componentId": "wanting",
+          "likelihood": "moderate",
+          "weight": 0.46,
+          "rationale": "Incentive-salience down-weighting that spreads beyond food — to social, sexual, or achievement cues — would be felt as flatness rather than as appetite loss. Whether reduced wanting generalises this way is an open question.",
+          "claimIds": ["c_wanting_rebalance"]
+        },
+        {
+          "componentId": "aversive_interoception",
+          "likelihood": "low",
+          "weight": 0.3,
+          "rationale": "A persistent low-grade visceral unease can read subjectively as being 'not quite present' or muted. A secondary contributor at most for a whole-affect report.",
+          "claimIds": ["c_ppg_stress"]
+        },
+        {
+          "componentId": "liking",
+          "likelihood": "uncertain",
+          "weight": 0.3,
+          "rationale": "A true broad reduction in hedonic impact would fit 'the colour is turned down' precisely — but there is no evidence for or against it, so the magnitude is genuinely unknown.",
+          "claimIds": []
+        },
+        {
+          "componentId": "learning",
+          "likelihood": "low",
+          "weight": 0.2,
+          "rationale": "Altered reward-learning could slowly flatten how vivid new experiences feel, but this is mechanistically speculative and untested in humans.",
+          "claimIds": ["c_neuro_healthy_cog"]
+        }
+      ],
+      "discriminator": "The decisive question is reach. If the flatness covers food, drink, work, sex, and social life alike, a mood-level or broad-liking explanation is doing the work. If it tracks consummatory rewards specifically and leaves, say, social warmth intact, it is wanting reduction spilling past food — a different finding with a different prognosis.",
+      "caveats": [
+        "This is the report most vulnerable to mis-mapping in both directions — dismissed as 'just the drug' or over-read as drug-induced depression. The honest output is a distribution, not a verdict.",
+        "Pre-existing or emergent depression is a clinical possibility that this mapper cannot triage; a flat-affect report that includes hopelessness or anhedonia for everything warrants clinical assessment, not a mechanism label."
+      ]
+    },
+    {
+      "id": "enjoy_once_start",
+      "text": "I still enjoy a meal once I start — I just never reach for one.",
+      "naiveReading": "If they still enjoy food, the drug can't really be acting on reward.",
+      "candidates": [
+        {
+          "componentId": "wanting",
+          "likelihood": "high",
+          "weight": 0.85,
+          "rationale": "This is the wanting/liking dissociation stated almost in textbook form: the pull is gone, the pleasure is intact. It is the cleanest phenomenological evidence that the Berridge decomposition is real and not an artefact of measurement.",
+          "claimIds": ["c_wanting_rebalance"]
+        },
+        {
+          "componentId": "effort",
+          "likelihood": "moderate",
+          "weight": 0.42,
+          "rationale": "'Never reach for one' is also an effort statement — reduced willingness to initiate or work toward the reward. Effort and wanting are adjacent but separable, and effort-discounting under GLP-1RAs is essentially unmeasured.",
+          "claimIds": []
+        },
+        {
+          "componentId": "liking",
+          "likelihood": "low",
+          "weight": 0.14,
+          "rationale": "The reader explicitly reports preserved enjoyment — so the liking channel is being affirmed as intact, not implicated. A low weight here means 'consistent with no change', which is itself informative.",
+          "claimIds": []
+        },
+        {
+          "componentId": "learning",
+          "likelihood": "uncertain",
+          "weight": 0.24,
+          "rationale": "Over months, a cue that is never acted on may lose its learned salience — but whether GLP-1RAs alter reward learning, as opposed to momentary wanting, is unknown.",
+          "claimIds": ["c_neuro_healthy_cog"]
+        }
+      ],
+      "discriminator": "Wanting and effort separate on what is missing: wanting reduction means the thought of the reward does not arrive with its usual urgency; effort reduction means the thought arrives but the cost of acting on it feels too high. Asking whether reaching for the meal feels uninteresting or feels like too much trouble tells them apart.",
+      "caveats": [
+        "Preserved liking here is a self-report, not a measured orofacial response — but it is the kind of report that, if it held up under proper assay, would settle the wanting-versus-liking question.",
+        "The effort channel is included because the words invite it, not because evidence supports a specific effort effect; treat it as a hypothesis to hold, not a finding."
+      ]
+    },
+    {
+      "id": "food_chatter",
+      "text": "The constant food chatter in my head went quiet.",
+      "naiveReading": "The drug suppresses appetite, so naturally you stop thinking about food.",
+      "candidates": [
+        {
+          "componentId": "wanting",
+          "likelihood": "high",
+          "weight": 0.82,
+          "rationale": "Intrusive, repetitive food thought is incentive salience made cognitive — cues capturing attention. Its quieting is among the most consistent qualitative reports under GLP-1RAs and fits reduced cue-driven salience directly.",
+          "claimIds": ["c_wanting_rebalance"]
+        },
+        {
+          "componentId": "learning",
+          "likelihood": "low",
+          "weight": 0.28,
+          "rationale": "If cues capture attention less often, the associations that drive intrusive thought may slowly weaken — a learning-level change. Plausible over months, but unmeasured and not separable here from moment-to-moment wanting.",
+          "claimIds": ["c_neuro_healthy_cog"]
+        },
+        {
+          "componentId": "aversive_interoception",
+          "likelihood": "low",
+          "weight": 0.2,
+          "rationale": "Earlier, easier satiety — a fuller body sooner — removes some of the internal state that food thoughts answer to. A peripheral contributor, not the main account of cognitive quieting.",
+          "claimIds": ["c_ppg_large_burst"]
+        },
+        {
+          "componentId": "effort",
+          "likelihood": "uncertain",
+          "weight": 0.18,
+          "rationale": "Resisting food chatter has an effort cost; if the chatter is gone, the effort is moot. Whether the drug also changes effort itself is unknown.",
+          "claimIds": []
+        }
+      ],
+      "discriminator": "Momentary wanting and reward learning separate on time course and reversibility: a pure wanting effect should track drug exposure and return when the drug stops; a learning effect would build over months and partly outlast discontinuation. Only longitudinal follow-up after stopping the drug can tell them apart.",
+      "caveats": [
+        "'Food noise' is a widely shared patient phrase, not a validated construct — its mechanistic decomposition here is interpretive.",
+        "The wanting and learning candidates are not rivals so much as the same change seen at two timescales; the decomposition flags which question — momentary or cumulative — a given observation can answer."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Does reduced wanting generalise beyond consummatory rewards to social, sexual, and achievement-related motivation — and if so, is that the substrate of the 'emotional flatness' reports?",
+    "Is there any genuine GLP-1RA effect on liking? No orofacial-reactivity assay has been run; the cleanest test of the wanting/liking dissociation is missing.",
+    "Do GLP-1RAs change reward learning — how associations form and decay — as opposed to only momentary incentive salience? The two predict different outcomes after the drug is stopped.",
+    "Effort-discounting under GLP-1RAs is unstudied; the assay that would best distinguish motivational anhedonia from satiety has not been applied."
+  ]
+}
