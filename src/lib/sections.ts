@@ -69,4 +69,9 @@ export const sections: Section[] = [
     title: 'Open Questions',
     claim: 'What is still unknown.',
   },
+  {
+    path: '/bibliography',
+    title: 'Bibliography',
+    claim: 'The full reference list behind every claim.',
+  },
 ]
