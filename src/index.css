@@ -1057,6 +1057,182 @@ body {
   background: var(--accent-bg);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Moderators module — preset cards, dimension controls, the regime banner,
+   the effect-channel bars, and the claim-match indicator.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.atlas .mod-presets {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.atlas .mod-preset {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 13px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+}
+.atlas .mod-preset:hover {
+  border-color: var(--rule-strong);
+}
+.atlas .mod-preset.on {
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+  box-shadow: inset 2.5px 0 0 var(--accent);
+}
+.atlas .mod-preset-label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  color: var(--ink-1);
+}
+.atlas .mod-preset-note {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin-top: 3px;
+  text-wrap: pretty;
+}
+
+.atlas .mod-ground {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 1.5px 5px;
+  border-radius: 2px;
+  border: 0.5px solid var(--rule-strong);
+}
+.atlas .mod-ground.grounded {
+  color: var(--ink-3);
+}
+.atlas .mod-ground.ungrounded {
+  color: var(--accent);
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+}
+
+.atlas .mod-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
+}
+.atlas .mod-opt-note {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin: 6px 0 0 0;
+  text-wrap: pretty;
+}
+
+/* Regime banner */
+.atlas .mod-regime {
+  padding: 13px 16px;
+  border: 0.5px solid var(--rule);
+  border-left-width: 2px;
+  border-radius: 4px;
+}
+.atlas .mod-meter {
+  height: 5px;
+  background: var(--bg-sunk);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.atlas .mod-meter-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* Effect-channel bar */
+.atlas .mod-bar {
+  position: relative;
+  height: 22px;
+}
+.atlas .mod-bar-track {
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 0.5px;
+  background: var(--rule);
+}
+.atlas .mod-bar-zero {
+  position: absolute;
+  left: 50%;
+  top: 3px;
+  bottom: 3px;
+  width: 0.5px;
+  background: var(--rule-strong);
+}
+.atlas .mod-bar-fill {
+  position: absolute;
+  top: 50%;
+  height: 10px;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  transition: width 0.4s ease, left 0.4s ease, background 0.2s linear;
+}
+.atlas .mod-bar-null {
+  position: absolute;
+  left: calc(50% - 5px);
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  border: 0.5px dashed var(--ink-4);
+  border-radius: 1px;
+}
+
+/* Claim-match indicator */
+.atlas .mod-match-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.atlas .mod-match-score {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1.5px 6px;
+  border-radius: 2px;
+  border: 0.5px solid var(--rule-strong);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.atlas .mod-match-score.s4,
+.atlas .mod-match-score.s3 {
+  color: var(--ink-1);
+  border-color: var(--ink-3);
+  background: var(--bg-sunk);
+}
+.atlas .mod-match-score.s0 {
+  color: var(--accent);
+  border-color: var(--accent-rule);
+}
+.atlas .mod-match-dims {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .atlas *,

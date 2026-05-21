@@ -12,6 +12,7 @@ const Wanting = lazy(() => import('./pages/Wanting'))
 const CrossReward = lazy(() => import('./pages/CrossReward'))
 const AversiveAffect = lazy(() => import('./pages/AversiveAffect'))
 const Neuroimmune = lazy(() => import('./pages/Neuroimmune'))
+const Moderators = lazy(() => import('./pages/Moderators'))
 const Evidence = lazy(() => import('./pages/Evidence'))
 const SectionPage = lazy(() => import('./pages/SectionPage'))
 
@@ -22,6 +23,7 @@ const WANTING_PATH = '/mechanisms/wanting'
 const CROSS_PATH = '/mechanisms/cross-reward'
 const AVERSIVE_PATH = '/mechanisms/amygdala-gaba'
 const NEURO_PATH = '/mechanisms/neuroimmune'
+const MODERATORS_PATH = '/moderators'
 const EVIDENCE_PATH = '/evidence'
 const CUSTOM_PATHS = new Set([
   '/',
@@ -32,6 +34,7 @@ const CUSTOM_PATHS = new Set([
   CROSS_PATH,
   AVERSIVE_PATH,
   NEURO_PATH,
+  MODERATORS_PATH,
   EVIDENCE_PATH,
 ])
 
@@ -159,6 +162,7 @@ export default function App() {
             <Route path={CROSS_PATH} element={<CrossReward />} />
             <Route path={AVERSIVE_PATH} element={<AversiveAffect />} />
             <Route path={NEURO_PATH} element={<Neuroimmune />} />
+            <Route path={MODERATORS_PATH} element={<Moderators />} />
             <Route path={EVIDENCE_PATH} element={<Evidence />} />
             {sections
               .filter((s) => !CUSTOM_PATHS.has(s.path))

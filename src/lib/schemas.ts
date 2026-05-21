@@ -866,3 +866,117 @@ export function validateNeuroimmune(
 
   return errors
 }
+
+// ── Moderators module ───────────────────────────────────────────────────────
+//
+// The qualitative sensitivity simulator. Seven moderator dimensions — dose,
+// route, chronicity, species, sex, baseline state, molecule — each project a
+// set of additive deltas onto a small number of effect channels, plus a
+// fragility weight that degrades translation confidence. The dashboard is
+// explicitly *not* a quantitative predictor: it makes visible how the same
+// molecule reconfigures across regimes, and where the claim graph simply does
+// not stratify (sex, baseline state are `grounded: false`). Channel claim ids
+// are the evidentiary backing and must resolve.
+
+export const ChannelKind = z.enum(['therapeutic', 'adverse', 'signed'])
+export type ChannelKind = z.infer<typeof ChannelKind>
+
+export const ModeratorOption = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  note: z.string().min(1),
+  // per-channel additive contributions; channels not named contribute 0
+  deltas: z.record(z.string(), z.number()).default({}),
+  // how much this option degrades translation confidence, 0..1
+  fragility: z.number().min(0).max(1),
+  // substrings matched against a claim's scope.drug, for molecule options
+  match: z.array(z.string().min(1)).optional(),
+})
+export type ModeratorOption = z.infer<typeof ModeratorOption>
+
+export const ModeratorDimension = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  // whether the claim graph stratifies on this dimension at all
+  grounded: z.boolean(),
+  options: z.array(ModeratorOption).min(2),
+})
+export type ModeratorDimension = z.infer<typeof ModeratorDimension>
+
+export const ModeratorChannel = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  kind: ChannelKind,
+  baseline: z.number().min(-1).max(1),
+  positive: z.string().min(1),
+  negative: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type ModeratorChannel = z.infer<typeof ModeratorChannel>
+
+export const ModeratorPreset = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  note: z.string().min(1),
+  set: z.record(z.string(), z.string()), // dimension id → option id
+})
+export type ModeratorPreset = z.infer<typeof ModeratorPreset>
+
+export const ModeratorsModule = z.object({
+  dimensions: z.array(ModeratorDimension).min(2),
+  channels: z.array(ModeratorChannel).min(2),
+  presets: z.array(ModeratorPreset).min(1),
+  openQuestions: z.array(z.string().min(1)).min(1),
+})
+export type ModeratorsModule = z.infer<typeof ModeratorsModule>
+
+/**
+ * Option deltas must name real channels; channel claim ids must resolve; every
+ * preset must set every dimension to one of that dimension's options.
+ */
+export function validateModerators(
+  module: ModeratorsModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  const channelIds = new Set(module.channels.map((c) => c.id))
+
+  for (const dim of module.dimensions) {
+    const optionIds = new Set(dim.options.map((o) => o.id))
+    if (optionIds.size !== dim.options.length)
+      errors.push(`moderators dimension "${dim.id}": duplicate option id`)
+    for (const opt of dim.options) {
+      for (const chId of Object.keys(opt.deltas)) {
+        if (!channelIds.has(chId))
+          errors.push(
+            `moderators option "${dim.id}/${opt.id}" delta names unknown channel "${chId}"`,
+          )
+      }
+    }
+  }
+
+  for (const ch of module.channels) {
+    for (const cid of ch.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`moderators channel "${ch.id}" references unknown claim "${cid}"`)
+    }
+  }
+
+  for (const preset of module.presets) {
+    for (const dim of module.dimensions) {
+      const chosen = preset.set[dim.id]
+      if (chosen === undefined) {
+        errors.push(`moderators preset "${preset.id}" does not set dimension "${dim.id}"`)
+        continue
+      }
+      if (!dim.options.some((o) => o.id === chosen))
+        errors.push(
+          `moderators preset "${preset.id}" sets "${dim.id}" to unknown option "${chosen}"`,
+        )
+    }
+  }
+
+  return errors
+}
