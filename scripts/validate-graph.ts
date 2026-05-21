@@ -14,6 +14,7 @@ import {
   AversiveModule,
   CrossRewardModule,
   Dataset,
+  ModeratorsModule,
   NeuroimmuneModule,
   PpgNtsModule,
   WantingModule,
@@ -22,6 +23,7 @@ import {
   validateAversive,
   validateCrossReward,
   validateGraph,
+  validateModerators,
   validateNeuroimmune,
   validatePpgNts,
   validateWanting,
@@ -213,4 +215,28 @@ if (neuroimmuneErrors.length > 0) {
 console.log(
   `✓ neuroimmune module valid — ${neuroimmune.data.rungs.length} ladder rungs · ` +
     `${neuroimmune.data.tracks.length} hypothesis tracks`,
+)
+
+// ── Moderators module ───────────────────────────────────────────────────────
+
+const moderators = ModeratorsModule.safeParse(read('moderators.json'))
+if (!moderators.success) {
+  for (const issue of moderators.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Moderators module failed schema validation.')
+}
+
+const moderatorErrors = validateModerators(
+  moderators.data,
+  new Set(claims.map((c) => c.id)),
+)
+if (moderatorErrors.length > 0) {
+  for (const e of moderatorErrors) console.error(`  · ${e}`)
+  fail(`Moderators module has ${moderatorErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ moderators module valid — ${moderators.data.dimensions.length} dimensions · ` +
+    `${moderators.data.channels.length} effect channels · ${moderators.data.presets.length} presets`,
 )

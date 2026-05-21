@@ -1,0 +1,342 @@
+{
+  "dimensions": [
+    {
+      "id": "dose",
+      "label": "Dose",
+      "sub": "exposure level",
+      "grounded": false,
+      "options": [
+        {
+          "id": "low",
+          "label": "Low / titrating",
+          "note": "Below or early in dose titration — sub-maximal receptor engagement.",
+          "deltas": { "appetite": -0.15, "wanting": -0.1, "aversion": -0.2, "anxiety": -0.15 },
+          "fragility": 0
+        },
+        {
+          "id": "moderate",
+          "label": "Therapeutic",
+          "note": "Therapeutic-equivalent maintenance exposure.",
+          "deltas": {},
+          "fragility": 0
+        },
+        {
+          "id": "high",
+          "label": "High / experimental",
+          "note": "Supra-therapeutic or experimental dosing — the dose-limiting side effects appear here.",
+          "deltas": { "appetite": 0.15, "wanting": 0.1, "aversion": 0.3, "anxiety": 0.25 },
+          "fragility": 0.1
+        }
+      ]
+    },
+    {
+      "id": "route",
+      "label": "Route",
+      "sub": "where the drug is delivered",
+      "grounded": true,
+      "options": [
+        {
+          "id": "periph_tx",
+          "label": "Peripheral · therapeutic",
+          "note": "Peripheral injection at a therapeutic dose — the marketed-drug route.",
+          "deltas": { "aversion": -0.1, "anxiety": -0.1 },
+          "fragility": 0
+        },
+        {
+          "id": "periph_ex",
+          "label": "Peripheral · experimental",
+          "note": "Peripheral but at experimental doses — common in rodent pharmacology.",
+          "deltas": { "appetite": 0.1, "aversion": 0.15, "anxiety": 0.1 },
+          "fragility": 0.15
+        },
+        {
+          "id": "icv",
+          "label": "Central · ICV",
+          "note": "Intracerebroventricular — brain concentrations no peripheral dose reaches.",
+          "deltas": { "appetite": 0.15, "wanting": 0.2, "aversion": 0.3, "anxiety": 0.45, "mood": -0.2 },
+          "fragility": 0.3
+        },
+        {
+          "id": "parenchymal",
+          "label": "Central · intraparenchymal",
+          "note": "Direct microinjection into a region — establishes that a node can produce an effect.",
+          "deltas": { "appetite": 0.1, "wanting": 0.15, "aversion": 0.2, "anxiety": 0.3, "mood": -0.1 },
+          "fragility": 0.3
+        }
+      ]
+    },
+    {
+      "id": "chronicity",
+      "label": "Chronicity",
+      "sub": "duration of exposure",
+      "grounded": true,
+      "options": [
+        {
+          "id": "acute",
+          "label": "Acute",
+          "note": "Single or short exposure — captures the spiky transient, not the adapted state.",
+          "deltas": { "aversion": 0.3, "anxiety": 0.3, "mood": -0.15 },
+          "fragility": 0.2
+        },
+        {
+          "id": "subacute",
+          "label": "Subacute",
+          "note": "Days to weeks — partial adaptation underway.",
+          "deltas": { "aversion": 0.05 },
+          "fragility": 0.05
+        },
+        {
+          "id": "chronic",
+          "label": "Chronic",
+          "note": "Sustained dosing — desensitisation and metabolic improvement reshape the picture.",
+          "deltas": { "appetite": 0.05, "wanting": 0.05, "aversion": -0.25, "anxiety": -0.25, "mood": 0.25 },
+          "fragility": 0
+        }
+      ]
+    },
+    {
+      "id": "species",
+      "label": "Species",
+      "sub": "model organism",
+      "grounded": true,
+      "options": [
+        {
+          "id": "human",
+          "label": "Human",
+          "note": "The translational target — but most mechanistic detail is inferred here, not measured.",
+          "deltas": { "appetite": -0.05, "anxiety": 0.05 },
+          "fragility": 0
+        },
+        {
+          "id": "nhp",
+          "label": "Non-human primate",
+          "note": "Amygdalar GLP-1R denser than rodent; the closest model to human affective circuitry.",
+          "deltas": { "anxiety": 0.1 },
+          "fragility": 0.05
+        },
+        {
+          "id": "rat",
+          "label": "Rat",
+          "note": "Much of the circuit work — but receptor distribution differs from primate.",
+          "deltas": {},
+          "fragility": 0.15
+        },
+        {
+          "id": "mouse",
+          "label": "Mouse",
+          "note": "Where the genetic tools live; hippocampal expression differs even from rat.",
+          "deltas": {},
+          "fragility": 0.15
+        }
+      ]
+    },
+    {
+      "id": "sex",
+      "label": "Sex",
+      "sub": "subject sex",
+      "grounded": false,
+      "options": [
+        {
+          "id": "pooled",
+          "label": "Pooled / unreported",
+          "note": "Sexes pooled — the default of most human pharmacology data.",
+          "deltas": {},
+          "fragility": 0
+        },
+        {
+          "id": "female",
+          "label": "Female",
+          "note": "Greater central anorectic and motivational response in rodents; estrogen interacts.",
+          "deltas": { "appetite": 0.15, "wanting": 0.15 },
+          "fragility": 0
+        },
+        {
+          "id": "male",
+          "label": "Male",
+          "note": "The default subject of most rodent work.",
+          "deltas": {},
+          "fragility": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline",
+      "label": "Baseline state",
+      "sub": "the population dosed",
+      "grounded": false,
+      "options": [
+        {
+          "id": "obesity",
+          "label": "Obesity",
+          "note": "The pivotal-trial population — more intake to suppress, metabolic gain lifts mood.",
+          "deltas": { "appetite": 0.2, "mood": 0.2 },
+          "fragility": 0
+        },
+        {
+          "id": "lean_healthy",
+          "label": "Lean / healthy",
+          "note": "Lean and metabolically healthy — effects on cognition and reward here are essentially unstudied.",
+          "deltas": { "appetite": -0.15, "mood": -0.05 },
+          "fragility": 0
+        },
+        {
+          "id": "substance_use",
+          "label": "Substance use disorder",
+          "note": "Comorbid substance use disorder — the cross-reward trial population.",
+          "deltas": { "wanting": 0.2, "mood": 0.1 },
+          "fragility": 0
+        }
+      ]
+    },
+    {
+      "id": "molecule",
+      "label": "Molecule",
+      "sub": "which agonist",
+      "grounded": true,
+      "options": [
+        {
+          "id": "semaglutide",
+          "label": "Semaglutide",
+          "note": "Potent, long-acting; the most-studied agonist across reward and metabolic endpoints.",
+          "match": ["semaglutide"],
+          "deltas": {},
+          "fragility": 0
+        },
+        {
+          "id": "liraglutide",
+          "label": "Liraglutide",
+          "note": "Daily, shorter-acting; large fMRI cue-reactivity and gastric-emptying literature.",
+          "match": ["liraglutide"],
+          "deltas": { "appetite": -0.05 },
+          "fragility": 0
+        },
+        {
+          "id": "exendin_4",
+          "label": "Exendin-4",
+          "note": "The experimental rodent tool — sharper aversive profile, rarely a clinical regime.",
+          "match": ["exendin-4", "exendin"],
+          "deltas": { "aversion": 0.15, "anxiety": 0.1 },
+          "fragility": 0.15
+        },
+        {
+          "id": "tirzepatide",
+          "label": "Tirzepatide",
+          "note": "Dual GIP/GLP-1 agonist — metabolically potent, central effects barely characterised.",
+          "match": ["tirzepatide"],
+          "deltas": { "appetite": 0.1, "wanting": 0.05 },
+          "fragility": 0.1
+        },
+        {
+          "id": "native_glp1",
+          "label": "Native GLP-1",
+          "note": "Endogenous, phasic, degraded within minutes — the signal the drugs mimic, not a drug regime.",
+          "match": ["endogenous", "glp-1(7-3", "(7-36)", "(7-37)"],
+          "deltas": { "appetite": -0.1, "aversion": -0.05 },
+          "fragility": 0.05
+        }
+      ]
+    }
+  ],
+  "channels": [
+    {
+      "id": "appetite",
+      "label": "Appetite suppression",
+      "sub": "intake & meal size",
+      "kind": "therapeutic",
+      "baseline": 0.45,
+      "positive": "intake & meal size suppressed",
+      "negative": "no appetite effect",
+      "claimIds": ["c_appetite", "c_appetite_meal_size", "c_appetite_gastric", "c_appetite_cta"]
+    },
+    {
+      "id": "wanting",
+      "label": "Wanting / craving",
+      "sub": "cue-driven incentive salience",
+      "kind": "therapeutic",
+      "baseline": 0.4,
+      "positive": "cue-driven wanting reduced",
+      "negative": "wanting unchanged",
+      "claimIds": ["c_wanting_rebalance", "c_da_blunting", "c_kooji", "c_vta_glp1r"]
+    },
+    {
+      "id": "aversion",
+      "label": "Aversion & malaise",
+      "sub": "nausea, pica, taste aversion",
+      "kind": "adverse",
+      "baseline": 0.2,
+      "positive": "nausea, malaise & taste aversion",
+      "negative": "no aversive signal",
+      "claimIds": ["c_appetite_cta", "c_cea_anxiogenic", "c_ppg_stress"]
+    },
+    {
+      "id": "anxiety",
+      "label": "Anxiety & HPA drive",
+      "sub": "stress-axis engagement",
+      "kind": "adverse",
+      "baseline": 0.15,
+      "positive": "anxiety-like behaviour & HPA drive",
+      "negative": "stress axis quiet",
+      "claimIds": ["c_cea_anxiogenic", "c_pvn_hpa", "c_anx_neutral", "c_bnst"]
+    },
+    {
+      "id": "mood",
+      "label": "Net affective tone",
+      "sub": "population-level mood",
+      "kind": "signed",
+      "baseline": 0.05,
+      "positive": "net-favourable affect",
+      "negative": "dysphoria & blunting",
+      "claimIds": ["c_anx_neutral", "c_neuro_microglia", "c_neuro_healthy_cog"]
+    }
+  ],
+  "presets": [
+    {
+      "id": "clinical",
+      "label": "Clinical register",
+      "note": "Chronic peripheral semaglutide in adults with obesity — the regime the marketed-drug claims actually live in.",
+      "set": {
+        "dose": "moderate",
+        "route": "periph_tx",
+        "chronicity": "chronic",
+        "species": "human",
+        "sex": "pooled",
+        "baseline": "obesity",
+        "molecule": "semaglutide"
+      }
+    },
+    {
+      "id": "fragile",
+      "label": "The fragile paradigm",
+      "note": "Acute ICV exendin-4 in lean male rats — the rodent mechanistic paradigm. The PRD's warning, made into a setting you can flip to.",
+      "set": {
+        "dose": "high",
+        "route": "icv",
+        "chronicity": "acute",
+        "species": "rat",
+        "sex": "male",
+        "baseline": "lean_healthy",
+        "molecule": "exendin_4"
+      }
+    },
+    {
+      "id": "aud",
+      "label": "Cross-reward trial",
+      "note": "Chronic peripheral semaglutide in adults with alcohol use disorder — the regime the addiction trials read out in.",
+      "set": {
+        "dose": "moderate",
+        "route": "periph_tx",
+        "chronicity": "chronic",
+        "species": "human",
+        "sex": "pooled",
+        "baseline": "substance_use",
+        "molecule": "semaglutide"
+      }
+    }
+  ],
+  "openQuestions": [
+    "Which patients fall in the dysphoria / anhedonia tail — and is the moderator that predicts them dose, titration speed, baseline reward sensitivity, or a GLP-1R variant?",
+    "Sex-stratified human pharmacology is largely absent. Do the female-greater rodent anorectic and motivational effects hold in humans?",
+    "How does the system respond to chronic agonism — desensitisation, receptor trafficking, compensatory plasticity — and over what timescale?",
+    "Do GIP/GLP-1 dual and triple agonists share the central moderator profile of the single agonists, or is their brain pharmacology different in kind?"
+  ]
+}
