@@ -1233,6 +1233,291 @@ body {
   color: var(--ink-3);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Phenomenology mapper / hedonic-tone module — the report picker, the
+   decomposition vocabulary, and the candidate-component readout.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Report picker */
+.atlas .ph-reports {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.atlas .ph-report {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 13px;
+  text-align: left;
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--ink-1);
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  text-wrap: pretty;
+  transition: border-color 0.12s, background 0.12s;
+}
+.atlas .ph-report:hover {
+  border-color: var(--rule-strong);
+}
+.atlas .ph-report.on {
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+  box-shadow: inset 2.5px 0 0 var(--accent);
+}
+
+/* Decomposition vocabulary glossary */
+.atlas .ph-glossary {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+}
+.atlas .ph-gloss-item {
+  padding-left: 10px;
+  border-left: 0.5px solid var(--rule-strong);
+}
+.atlas .ph-gloss-label {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-1);
+}
+.atlas .ph-gloss-gap {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 0.5px solid var(--accent-rule);
+  border-radius: 2px;
+  padding: 1px 5px;
+}
+.atlas .ph-gloss-text {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 3px 0 0 0;
+  text-wrap: pretty;
+}
+
+/* The verbatim report */
+.atlas .ph-quote {
+  padding: 13px 16px;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-left-width: 2px;
+  border-left-color: var(--ink-2);
+  border-radius: 4px;
+}
+.atlas .ph-quote-text {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--ink-1);
+  margin: 6px 0 0 0;
+  text-wrap: pretty;
+}
+
+/* The naive single-mechanism reading */
+.atlas .ph-naive {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: var(--bg-sunk);
+  border: 0.5px dashed var(--rule-strong);
+  border-radius: 3px;
+}
+.atlas .ph-naive-tag {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .ph-naive-text {
+  font-family: var(--font-serif);
+  font-size: 12.5px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-3);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent-rule);
+  text-wrap: pretty;
+}
+
+/* Candidate component card */
+.atlas .ph-cand {
+  padding: 12px 14px;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+}
+.atlas .ph-cand-head {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+.atlas .ph-cand-label {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--ink-1);
+}
+.atlas .ph-cand-link {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-decoration: none;
+}
+.atlas .ph-cand-link:hover {
+  color: var(--accent);
+}
+
+/* Likelihood label */
+.atlas .ph-like {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1.5px 6px;
+  border-radius: 2px;
+  border: 0.5px solid var(--rule-strong);
+  white-space: nowrap;
+}
+.atlas .ph-like--high {
+  color: var(--ink-1);
+  border-color: var(--ink-3);
+  background: var(--bg-sunk);
+}
+.atlas .ph-like--moderate {
+  color: var(--ink-2);
+}
+.atlas .ph-like--low {
+  color: var(--ink-3);
+}
+.atlas .ph-like--uncertain {
+  color: var(--accent);
+  border-color: var(--accent-rule);
+  border-style: dashed;
+}
+
+/* Candidate weight bar */
+.atlas .ph-bar {
+  position: relative;
+  height: 9px;
+  margin: 9px 0 8px 0;
+}
+.atlas .ph-bar-track {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-sunk);
+  border-radius: 1px;
+}
+.atlas .ph-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--ink-2);
+  border-radius: 1px;
+  transition: width 0.35s ease;
+}
+.atlas .ph-bar-fill.uncertain {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--accent-soft) 0 4px,
+    transparent 4px 8px
+  );
+  border: 0.5px solid var(--accent-rule);
+}
+
+.atlas .ph-cand-gloss {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-3);
+  margin: 0;
+  text-wrap: pretty;
+}
+.atlas .ph-cand-rationale {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-1);
+  margin: 6px 0 0 0;
+  text-wrap: pretty;
+}
+
+/* Evidence expander */
+.atlas .ph-evidence-toggle {
+  margin: 9px 0 0 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.atlas .ph-evidence-toggle:hover {
+  color: var(--accent);
+}
+.atlas .ph-no-evidence {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-3);
+  margin: 9px 0 0 0;
+  text-wrap: pretty;
+}
+
+/* The discriminating question */
+.atlas .ph-discriminator {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--accent-bg);
+  border: 0.5px solid var(--accent-rule);
+  border-radius: 4px;
+}
+.atlas .ph-discriminator-text {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-1);
+  margin: 6px 0 0 0;
+  text-wrap: pretty;
+}
+
+/* Caveat / open-question lists */
+.atlas .ph-caveats {
+  font-family: var(--font-serif);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 8px 0 0 0;
+  padding: 0 0 0 18px;
+}
+.atlas .ph-caveats li {
+  margin-bottom: 6px;
+  text-wrap: pretty;
+}
+
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .atlas *,

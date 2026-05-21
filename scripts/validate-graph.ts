@@ -16,6 +16,7 @@ import {
   Dataset,
   ModeratorsModule,
   NeuroimmuneModule,
+  PhenomenologyModule,
   PpgNtsModule,
   WantingModule,
   validateAccess,
@@ -25,6 +26,7 @@ import {
   validateGraph,
   validateModerators,
   validateNeuroimmune,
+  validatePhenomenology,
   validatePpgNts,
   validateWanting,
 } from '../src/lib/schemas.ts'
@@ -239,4 +241,28 @@ if (moderatorErrors.length > 0) {
 console.log(
   `✓ moderators module valid — ${moderators.data.dimensions.length} dimensions · ` +
     `${moderators.data.channels.length} effect channels · ${moderators.data.presets.length} presets`,
+)
+
+// ── Phenomenology mapper / hedonic-tone module ──────────────────────────────
+
+const phenomenology = PhenomenologyModule.safeParse(read('phenomenology.json'))
+if (!phenomenology.success) {
+  for (const issue of phenomenology.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Phenomenology module failed schema validation.')
+}
+
+const phenomenologyErrors = validatePhenomenology(
+  phenomenology.data,
+  new Set(claims.map((c) => c.id)),
+)
+if (phenomenologyErrors.length > 0) {
+  for (const e of phenomenologyErrors) console.error(`  · ${e}`)
+  fail(`Phenomenology module has ${phenomenologyErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ phenomenology module valid — ${phenomenology.data.components.length} components · ` +
+    `${phenomenology.data.reports.length} reports`,
 )

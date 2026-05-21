@@ -980,3 +980,108 @@ export function validateModerators(
 
   return errors
 }
+
+// ── Phenomenology mapper / hedonic-tone module ──────────────────────────────
+//
+// The interlocutor surface. A reader picks a half-articulated subjective report
+// — "food tastes flat", "alcohol stopped calling to me" — and the mapper
+// returns it as a *probabilistic component decomposition*, not an answer. The
+// module's whole argument is the anti-collapse one: a report does not name a
+// mechanism. The same sentence decomposes across several candidate components
+// (wanting, liking, learning, effort, aversive interoception, nausea, mood)
+// each carrying its own likelihood and rationale, and the standard one-line
+// reading is shown as the flattening it is. `weight` is a curated qualitative
+// model; the claim ids are the evidentiary backing and must resolve. A
+// component with no claim ids is honest, not broken — liking and effort are
+// the genuinely unstudied channels, and the UI says so.
+
+export const Likelihood = z.enum(['high', 'moderate', 'low', 'uncertain'])
+export type Likelihood = z.infer<typeof Likelihood>
+
+// One channel of the Berridge-extended decomposition vocabulary. `claimIds` may
+// be empty — that marks a component the literature has not stratified on.
+export const PhenomComponent = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  gloss: z.string().min(1), // one-line definition
+  mechanismPath: z.string().optional(), // the module route this component opens
+  claimIds: z.array(z.string().min(1)).default([]),
+})
+export type PhenomComponent = z.infer<typeof PhenomComponent>
+
+// One candidate component for a report — a likelihood, a curated weight, the
+// rationale, and the claims that back it.
+export const PhenomCandidate = z.object({
+  componentId: z.string().min(1),
+  likelihood: Likelihood,
+  weight: z.number().min(0).max(1), // qualitative fit magnitude, 0..1
+  rationale: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).default([]),
+})
+export type PhenomCandidate = z.infer<typeof PhenomCandidate>
+
+export const PhenomReport = z.object({
+  id: z.string().min(1),
+  text: z.string().min(1), // the verbatim subjective report
+  naiveReading: z.string().min(1), // the single-mechanism reading the mapper resists
+  candidates: z.array(PhenomCandidate).min(2),
+  discriminator: z.string().min(1), // what observation would tell the top fits apart
+  caveats: z.array(z.string().min(1)).min(1),
+})
+export type PhenomReport = z.infer<typeof PhenomReport>
+
+export const PhenomenologyModule = z.object({
+  components: z.array(PhenomComponent).min(2),
+  reports: z.array(PhenomReport).min(2),
+  openQuestions: z.array(z.string().min(1)).min(1),
+})
+export type PhenomenologyModule = z.infer<typeof PhenomenologyModule>
+
+/**
+ * Component and report ids must be unique; every candidate must name a real
+ * component, with no component appearing twice in one report's decomposition;
+ * component and candidate claim ids must resolve.
+ */
+export function validatePhenomenology(
+  module: PhenomenologyModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  const componentIds = new Set(module.components.map((c) => c.id))
+  if (componentIds.size !== module.components.length)
+    errors.push('phenomenology components: duplicate component id')
+
+  const reportIds = new Set(module.reports.map((r) => r.id))
+  if (reportIds.size !== module.reports.length)
+    errors.push('phenomenology reports: duplicate report id')
+
+  for (const c of module.components) {
+    for (const cid of c.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`phenomenology component "${c.id}" references unknown claim "${cid}"`)
+    }
+  }
+
+  for (const r of module.reports) {
+    const seen = new Set<string>()
+    for (const cand of r.candidates) {
+      if (!componentIds.has(cand.componentId))
+        errors.push(
+          `phenomenology report "${r.id}" names unknown component "${cand.componentId}"`,
+        )
+      if (seen.has(cand.componentId))
+        errors.push(
+          `phenomenology report "${r.id}" lists component "${cand.componentId}" twice`,
+        )
+      seen.add(cand.componentId)
+      for (const cid of cand.claimIds) {
+        if (!knownClaimIds.has(cid))
+          errors.push(
+            `phenomenology report "${r.id}" candidate "${cand.componentId}" references unknown claim "${cid}"`,
+          )
+      }
+    }
+  }
+
+  return errors
+}
