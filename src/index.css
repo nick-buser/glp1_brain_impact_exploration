@@ -1518,6 +1518,133 @@ body {
   text-wrap: pretty;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Open-questions tracker — the aggregate stewardship queue.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.atlas .oq-tally {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 11px 15px;
+  background: var(--bg-sunk);
+  border: 0.5px solid var(--rule-soft);
+  border-radius: 4px;
+}
+.atlas .oq-tally-n {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--ink-1);
+  line-height: 1;
+}
+.atlas .oq-tally-text {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.atlas .oq-tally-text strong {
+  font-weight: 600;
+  color: var(--ink-1);
+}
+
+/* Module question group */
+.atlas .oq-group {
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  background: var(--bg-paper);
+  overflow: hidden;
+}
+.atlas .oq-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 14px;
+  background: var(--bg);
+  border-bottom: 0.5px solid var(--rule);
+}
+.atlas .oq-group-title {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-1);
+}
+.atlas .oq-group-count {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 1.5px 5px;
+}
+.atlas .oq-group-link {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-decoration: none;
+}
+.atlas .oq-group-link:hover {
+  color: var(--accent);
+}
+
+.atlas .oq-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 14px 8px 14px;
+}
+.atlas .oq-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 0.5px dashed var(--rule);
+}
+.atlas .oq-item:last-child {
+  border-bottom: 0;
+}
+.atlas .oq-glyph {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+.atlas .oq-text {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-1);
+  text-wrap: pretty;
+}
+
+/* Claim-pinned question */
+.atlas .oq-claim-q {
+  border-left: 1.5px solid var(--accent-rule);
+  padding-left: 14px;
+}
+.atlas .oq-question-lead {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.atlas .oq-claim-q .oq-glyph {
+  color: var(--accent);
+}
+.atlas .oq-question {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--ink-1);
+  margin: 0;
+  text-wrap: pretty;
+}
+
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .atlas *,

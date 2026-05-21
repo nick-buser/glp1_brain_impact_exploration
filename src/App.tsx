@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import { sections } from './lib/sections'
 import Overview from './pages/Overview'
 
@@ -15,7 +15,7 @@ const Neuroimmune = lazy(() => import('./pages/Neuroimmune'))
 const HedonicTone = lazy(() => import('./pages/HedonicTone'))
 const Moderators = lazy(() => import('./pages/Moderators'))
 const Evidence = lazy(() => import('./pages/Evidence'))
-const SectionPage = lazy(() => import('./pages/SectionPage'))
+const OpenQuestions = lazy(() => import('./pages/OpenQuestions'))
 
 const ACCESS_PATH = '/mechanisms/access'
 const PPG_PATH = '/mechanisms/ppg-nts'
@@ -27,19 +27,10 @@ const NEURO_PATH = '/mechanisms/neuroimmune'
 const HEDONIC_PATH = '/mechanisms/hedonic-tone'
 const MODERATORS_PATH = '/moderators'
 const EVIDENCE_PATH = '/evidence'
-const CUSTOM_PATHS = new Set([
-  '/',
-  ACCESS_PATH,
-  PPG_PATH,
-  APPETITE_PATH,
-  WANTING_PATH,
-  CROSS_PATH,
-  AVERSIVE_PATH,
-  NEURO_PATH,
-  HEDONIC_PATH,
-  MODERATORS_PATH,
-  EVIDENCE_PATH,
-])
+const OPEN_QUESTIONS_PATH = '/open-questions'
+// The HPA / stress-axis content lives in the Aversive Affect module; the
+// standalone route survives only as a redirect for old links and the nav entry.
+const HPA_PATH = '/mechanisms/hpa'
 
 function RouteFallback() {
   return (
@@ -168,11 +159,8 @@ export default function App() {
             <Route path={HEDONIC_PATH} element={<HedonicTone />} />
             <Route path={MODERATORS_PATH} element={<Moderators />} />
             <Route path={EVIDENCE_PATH} element={<Evidence />} />
-            {sections
-              .filter((s) => !CUSTOM_PATHS.has(s.path))
-              .map((s) => (
-                <Route key={s.path} path={s.path} element={<SectionPage section={s} />} />
-              ))}
+            <Route path={OPEN_QUESTIONS_PATH} element={<OpenQuestions />} />
+            <Route path={HPA_PATH} element={<Navigate to={AVERSIVE_PATH} replace />} />
           </Routes>
         </Suspense>
       </main>
