@@ -369,5 +369,68 @@
       "rodent malaise assays (pica, conditioned taste aversion) are proxies, not a direct nausea read-out"
     ],
     "note": "Anorectic doses of exendin-4 and liraglutide also produced pica and conditioned taste aversion; intake suppression and malaise were only partly dissociable."
+  },
+  {
+    "id": "ev_holscher_microglia",
+    "paperId": "holscher_review",
+    "species": "cell",
+    "route": "ex_vivo",
+    "chronicity": "acute",
+    "drug": "multiple GLP-1RAs",
+    "assay": "microglial activation + cytokine panel",
+    "direction": "decrease",
+    "caveats": [
+      "Cellular and rodent models",
+      "anti-inflammatory readouts, not a clinical endpoint"
+    ],
+    "note": "Microglial activation and TNF-α / IL-1β / IL-6 release reduced consistently across in-vitro and ex-vivo preparations."
+  },
+  {
+    "id": "ev_insulin_convergence",
+    "paperId": "glp1_insulin_2023",
+    "species": "cell",
+    "route": "ex_vivo",
+    "chronicity": "acute",
+    "drug": "GLP-1",
+    "assay": "signalling biochemistry",
+    "direction": "increase",
+    "caveats": [
+      "Pathway-level mechanistic evidence",
+      "does not establish a clinical effect"
+    ],
+    "note": "GLP-1R and insulin-receptor cascades converge on PI3K/Akt, CREB, BDNF and mTOR; GLP-1R activation sustains these targets in insulin-resistant cells."
+  },
+  {
+    "id": "ev_evoke_biomarker",
+    "paperId": "evoke_2025",
+    "species": "human",
+    "route": "oral",
+    "chronicity": "chronic",
+    "drug": "semaglutide",
+    "assay": "RCT biomarker substudy",
+    "direction": "decrease",
+    "n": 3808,
+    "caveats": [
+      "Biomarker substudy of a trial whose primary cognitive endpoint was negative",
+      "biomarker movement is not a clinical outcome"
+    ],
+    "note": "AD-related biomarkers improved under oral semaglutide while the cognitive primary endpoint (CDR-SB) did not."
+  },
+  {
+    "id": "ev_ad_ehr",
+    "paperId": "ad_ehr_2024",
+    "species": "human",
+    "route": "periph_tx",
+    "chronicity": "chronic",
+    "drug": "mixed GLP-1RA",
+    "assay": "EHR cohort",
+    "direction": "decrease",
+    "n": 215000,
+    "caveats": [
+      "Observational",
+      "confounding by indication",
+      "healthcare-engagement and survivorship bias"
+    ],
+    "note": "Lower recorded incidence of dementia diagnosis under GLP-1RA prescription — suggestive, not causal."
   }
 ]

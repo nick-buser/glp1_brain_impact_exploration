@@ -1,0 +1,183 @@
+{
+  "rungs": [
+    {
+      "id": "cell",
+      "label": "Cell & molecular",
+      "sub": "in vitro · ex vivo",
+      "establishes": "A mechanism is real — a receptor couples to a pathway, a cytokine falls, a signalling node moves.",
+      "limit": "Says nothing about whether the mechanism matters in an intact brain, still less in a patient."
+    },
+    {
+      "id": "rodent",
+      "label": "Rodent model",
+      "sub": "mouse · rat · in vivo",
+      "establishes": "The mechanism produces an effect in a living nervous system — plasticity, behaviour, pathology.",
+      "limit": "Rodent neurodegeneration models are engineered and partial; an effect here is a candidate, not a forecast."
+    },
+    {
+      "id": "observational",
+      "label": "Human observational",
+      "sub": "EHR · cohort · association",
+      "establishes": "The effect tracks an outcome in real people, at population scale, over real time.",
+      "limit": "Association is not effect. Confounding by indication, healthcare access and survivorship all inflate the signal."
+    },
+    {
+      "id": "rct",
+      "label": "Randomised trial",
+      "sub": "RCT · causal · pre-registered",
+      "establishes": "A randomised comparison isolates whether the drug itself causes the clinical benefit.",
+      "limit": "The rung that adjudicates — expensive, slow, and where attractive hypotheses are most often found wanting."
+    }
+  ],
+  "tracks": [
+    {
+      "id": "cognition_ad",
+      "label": "Cognition · Alzheimer's disease-modification",
+      "sub": "the anchor track",
+      "hypothesis": "Chronic GLP-1 agonism slows cognitive decline in Alzheimer's disease.",
+      "verdict": "The ladder breaks at the top. Three encouraging rungs — coherent in vitro, reproducible in rodents, suggestive in cohorts — did not survive the trial built to adjudicate them. EVOKE anchors this module for one reason: this is the ordinary shape of translation, not an anomaly to explain away.",
+      "anchor": true,
+      "steps": [
+        {
+          "rungId": "cell",
+          "grade": "supportive",
+          "note": "GLP-1R coupling to PI3K/Akt and cAMP/PKA rescues insulin-resistant signalling and drives CREB and BDNF — a coherent anti-amyloid, pro-plasticity story at the molecular level.",
+          "claimIds": ["c_neuro_insulin"]
+        },
+        {
+          "rungId": "rodent",
+          "grade": "supportive",
+          "note": "Transgenic AD mice show enhanced hippocampal LTP, raised BDNF, lower microglial activation and reduced amyloid burden — the preclinical case that justified clinical translation.",
+          "claimIds": ["c_cog_rodent"]
+        },
+        {
+          "rungId": "observational",
+          "grade": "mixed",
+          "note": "EHR cohorts reported lower dementia-diagnosis incidence under GLP-1RA prescription — but the effect is confounded by indication, healthcare engagement and survivorship, and the magnitude is hard to credit as pure pharmacology.",
+          "claimIds": ["c_neuro_ad_observational"]
+        },
+        {
+          "rungId": "rct",
+          "grade": "refuted",
+          "note": "EVOKE and EVOKE+ randomised 3,808 adults with mild cognitive impairment or mild AD to oral semaglutide for two years. No benefit on the primary cognitive endpoint (CDR-SB). AD biomarkers improved — and did not translate.",
+          "claimIds": ["c_cog_evoke", "c_neuro_evoke_biomarker"]
+        }
+      ]
+    },
+    {
+      "id": "neuroinflammation",
+      "label": "Neuroinflammation · microglial quieting",
+      "sub": "anti-inflammatory mechanism",
+      "hypothesis": "GLP-1 agonism quiets neuroinflammation enough to produce clinical benefit.",
+      "verdict": "Strong and reproducible at the bench. The clinical rungs are empty — but empty because untested, not because tested and failed. The honest reading withholds a verdict rather than borrowing optimism from the rungs below.",
+      "steps": [
+        {
+          "rungId": "cell",
+          "grade": "supportive",
+          "note": "In cultured microglia and ex-vivo preparations, GLP-1R agonists reduce activation and lower TNF-α, IL-1β and IL-6 release — consistent across models.",
+          "claimIds": ["c_neuro_microglia"]
+        },
+        {
+          "rungId": "rodent",
+          "grade": "supportive",
+          "note": "Anti-inflammatory action is reproduced in rodent neurodegeneration and ischemia models, alongside preserved blood-brain-barrier integrity.",
+          "claimIds": ["c_cog_rodent"]
+        },
+        {
+          "rungId": "observational",
+          "grade": "untested",
+          "note": "No human cohort isolates a neuroinflammatory endpoint; population mood and cognition signals are downstream and non-specific. The rung is empty.",
+          "claimIds": []
+        },
+        {
+          "rungId": "rct",
+          "grade": "untested",
+          "note": "No randomised trial uses a neuroinflammatory primary endpoint. EVOKE's biomarker substudy is the nearest read and was not designed to test this hypothesis.",
+          "claimIds": ["c_neuro_evoke_biomarker"]
+        }
+      ]
+    },
+    {
+      "id": "central_insulin",
+      "label": "Central insulin signalling",
+      "sub": "the 'type 3 diabetes' route",
+      "hypothesis": "GLP-1R activation rescues central insulin signalling and protects the brain through it.",
+      "verdict": "A mechanistically attractive convergence with nothing above the bench. 'Type 3 diabetes' names a hypothesis, not a result — and EVOKE, the trial whose downstream benefit it would have to carry, was negative.",
+      "steps": [
+        {
+          "rungId": "cell",
+          "grade": "supportive",
+          "note": "GLP-1R and insulin-receptor signalling converge on PI3K/Akt, CREB, BDNF and mTOR; in insulin-resistant cells GLP-1R offers an alternative route to the same pro-survival targets.",
+          "claimIds": ["c_neuro_insulin"]
+        },
+        {
+          "rungId": "rodent",
+          "grade": "mixed",
+          "note": "Rodent work shows improved brain insulin sensitivity and plasticity, but the insulin-specific contribution is hard to separate from metabolic improvement and weight loss.",
+          "claimIds": ["c_cog_rodent"]
+        },
+        {
+          "rungId": "observational",
+          "grade": "untested",
+          "note": "No human cohort measures a central-insulin-signalling endpoint directly. The rung is empty.",
+          "claimIds": []
+        },
+        {
+          "rungId": "rct",
+          "grade": "untested",
+          "note": "No randomised trial tests central insulin signalling as a mechanism; EVOKE's failure constrains how much downstream clinical benefit it can plausibly carry.",
+          "claimIds": []
+        }
+      ]
+    },
+    {
+      "id": "mood",
+      "label": "Mood · population psychiatric signal",
+      "sub": "antidepressant hypothesis",
+      "hypothesis": "GLP-1 agonism lifts mood — a population-level antidepressant effect.",
+      "verdict": "The one track whose strongest rung is observational — exactly the configuration EVOKE warns against. The population signal is real and genuinely reassuring on safety; read as a causal mood benefit, it is the AD story before EVOKE read it.",
+      "steps": [
+        {
+          "rungId": "cell",
+          "grade": "mixed",
+          "note": "Mechanistic plausibility cuts both ways: anti-inflammatory and pro-BDNF actions favour mood, while chronic engagement of an aversive interoceptive satiety signal is the substrate of sickness behaviour.",
+          "claimIds": ["c_neuro_microglia", "c_cea_anxiogenic"]
+        },
+        {
+          "rungId": "rodent",
+          "grade": "mixed",
+          "note": "Rodent affective assays are split — plasticity and anti-inflammatory gains against reliable acute-central anxiogenesis. Direction depends on dose, route and chronicity.",
+          "claimIds": ["c_cea_anxiogenic"]
+        },
+        {
+          "rungId": "observational",
+          "grade": "supportive",
+          "note": "Large EHR cohorts find the population psychiatric signal neutral-to-favourable; suicidality leans weakly protective rather than adverse.",
+          "claimIds": ["c_anx_neutral"]
+        },
+        {
+          "rungId": "rct",
+          "grade": "untested",
+          "note": "No randomised trial uses a depression primary endpoint in a non-AD, non-obesity population. The causal question is open.",
+          "claimIds": []
+        }
+      ]
+    }
+  ],
+  "anchor": {
+    "headline": "The anchor — EVOKE / EVOKE+",
+    "prose": "In November 2025 Novo Nordisk reported that EVOKE and EVOKE+ — 3,808 adults with mild cognitive impairment or mild Alzheimer's, randomised to oral semaglutide or placebo for two years — did not slow cognitive decline. AD biomarkers improved; the clinical endpoint did not move. The result recalibrates the whole module: at the brain exposures oral semaglutide achieves, a hypothesis backed by coherent cell biology, reproducible rodent data and suggestive cohorts still failed the trial that adjudicates it. Every other track on this page should be read against that precedent.",
+    "claimIds": ["c_cog_evoke", "c_neuro_evoke_biomarker"]
+  },
+  "unstudied": {
+    "headline": "The question with no rungs",
+    "prose": "Whether GLP-1RAs alter reward-learning, prediction-error magnitude, exploration, or prefrontal control in cognitively healthy people is essentially unstudied. Given GLP-1R density in prefrontal and hippocampal regions, this is a real gap — not a rung graded low, but a ladder no one has begun to build.",
+    "claimId": "c_neuro_healthy_cog"
+  },
+  "openQuestions": [
+    "At what brain exposure — and with which blood-brain-barrier-penetrant molecule — would the cognition hypothesis get a fair test, given EVOKE used oral semaglutide?",
+    "Is the favourable population mood signal a genuine central effect, a by-product of metabolic improvement, or residual confounding?",
+    "Do the anti-inflammatory and central-insulin mechanisms contribute measurable clinical benefit anywhere, or only biomarker movement?",
+    "Could GLP-1RAs subtly recalibrate reward learning in cognitively healthy users — altering not momentary wanting but how new reward associations form?"
+  ]
+}

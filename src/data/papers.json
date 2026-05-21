@@ -219,5 +219,21 @@
     "journal": "Neuropharmacology",
     "doi": "10.1016/j.neuropharm.2011.12.022",
     "note": "Dissociating the anorectic from the nausea-like effects of peripheral GLP-1 receptor agonists exendin-4 and liraglutide in rats — anorectic doses also produce pica and conditioned taste aversion."
+  },
+  {
+    "id": "glp1_insulin_2023",
+    "cite": "GLP-1–insulin review 2023",
+    "authors": ["Hölscher C", "et al."],
+    "year": 2023,
+    "journal": "Neuropharmacology",
+    "note": "Review of GLP-1R and insulin-receptor signalling convergence and central insulin resistance in neurodegeneration — the mechanistic basis of the 'type 3 diabetes' framing of Alzheimer's disease. (Project-curated entry; DOI pending verification.)"
+  },
+  {
+    "id": "ad_ehr_2024",
+    "cite": "Dementia EHR cohort 2024",
+    "authors": ["Multiple electronic-health-record cohort analyses"],
+    "year": 2024,
+    "journal": "EClinicalMedicine / Alzheimer's & Dementia",
+    "note": "Electronic-health-record cohort analyses reporting lower dementia-diagnosis incidence under GLP-1RA prescription — the observational signal that motivated the EVOKE programme. (Project-curated aggregate entry; observational and confounding-vulnerable.)"
   }
 ]
