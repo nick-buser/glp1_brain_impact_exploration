@@ -128,9 +128,10 @@
   {
     "id": "holscher_review",
     "cite": "Hölscher review",
-    "authors": ["Hölscher C"],
+    "authors": ["Reich N", "Hölscher C"],
     "year": 2022,
-    "journal": "Neuropharmacology",
+    "journal": "Frontiers in Neuroscience",
+    "doi": "10.3389/fnins.2022.970925",
     "note": "Review of preclinical GLP-1RA neuroprotection: BDNF, anti-inflammatory action, hippocampal plasticity in rodent and cellular models."
   },
   {
@@ -256,12 +257,13 @@
     "note": "Dissociating the anorectic from the nausea-like effects of peripheral GLP-1 receptor agonists exendin-4 and liraglutide in rats — anorectic doses also produce pica and conditioned taste aversion."
   },
   {
-    "id": "glp1_insulin_2023",
-    "cite": "GLP-1–insulin review 2023",
-    "authors": ["Hölscher C", "et al."],
-    "year": 2023,
-    "journal": "Neuropharmacology",
-    "note": "Review of GLP-1R and insulin-receptor signalling convergence and central insulin resistance in neurodegeneration — the mechanistic basis of the 'type 3 diabetes' framing of Alzheimer's disease. (Project-curated entry; DOI pending verification.)"
+    "id": "glp1_insulin_2025",
+    "cite": "Hölscher 2025",
+    "authors": ["Hölscher C"],
+    "year": 2025,
+    "journal": "CNS Drugs",
+    "doi": "10.1007/s40263-025-01226-z",
+    "note": "Review of GLP-1/GIP receptor agonist neuroprotection in Alzheimer's and Parkinson's disease: downregulated brain insulin and growth-factor signalling and impaired energy utilisation as disease drivers, and their normalisation by incretin receptor agonists — the mechanistic basis of the 'type 3 diabetes' framing of Alzheimer's disease."
   },
   {
     "id": "ad_ehr_2024",
