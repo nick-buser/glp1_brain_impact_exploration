@@ -753,3 +753,116 @@ export function validateAppetite(
     errors.push('appetite thresholds: aversion must sit above satiety')
   return errors
 }
+
+// ── Neuroimmune / insulin / cognition module ────────────────────────────────
+//
+// The hype-control surface. Its object is the translation ladder: a hypothesis
+// climbs from cell to rodent to human-observational to randomised trial, and
+// each rung must be re-earned — evidence at a lower rung does not propagate
+// upward. The module's anchor is EVOKE: a cognition hypothesis with three
+// encouraging rungs that the adjudicating trial did not confirm. The ladder
+// makes two distinctions structural — a *refuted* top rung is not an *untested*
+// one, and a firm lower rung licenses nothing above it. Grades are a curated
+// reading of the literature; the claim ids are the evidentiary backing and
+// must resolve.
+
+export const LadderGrade = z.enum([
+  'supportive', // this rung's evidence supports the hypothesis
+  'mixed', // this rung's evidence is genuinely split
+  'preliminary', // early or thin evidence, leaning supportive
+  'untested', // no evidence occupies this rung — distinct from a failed test
+  'refuted', // this rung's evidence contradicts the hypothesis
+])
+export type LadderGrade = z.infer<typeof LadderGrade>
+
+// A fixed tier of the ladder — cell, rodent, observational, RCT. The order of
+// `rungs` in the module is the ladder, bottom (bench) to top (clinic).
+export const LadderRung = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  establishes: z.string().min(1), // what evidence at this tier can show
+  limit: z.string().min(1), // what it cannot show
+})
+export type LadderRung = z.infer<typeof LadderRung>
+
+// One track's standing at one rung.
+export const TrackStep = z.object({
+  rungId: z.string().min(1),
+  grade: LadderGrade,
+  note: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).default([]),
+})
+export type TrackStep = z.infer<typeof TrackStep>
+
+export const NeuroimmuneTrack = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  hypothesis: z.string().min(1), // the one-sentence claim being laddered
+  verdict: z.string().min(1),
+  anchor: z.boolean().optional(), // the EVOKE cognition track
+  steps: z.array(TrackStep).min(2), // one per rung, in ladder order
+})
+export type NeuroimmuneTrack = z.infer<typeof NeuroimmuneTrack>
+
+export const NeuroimmuneModule = z.object({
+  rungs: z.array(LadderRung).min(2),
+  tracks: z.array(NeuroimmuneTrack).min(2),
+  anchor: z.object({
+    headline: z.string().min(1),
+    prose: z.string().min(1),
+    claimIds: z.array(z.string().min(1)).min(1),
+  }),
+  unstudied: z.object({
+    headline: z.string().min(1),
+    prose: z.string().min(1),
+    claimId: z.string().min(1),
+  }),
+  openQuestions: z.array(z.string().min(1)).min(1),
+})
+export type NeuroimmuneModule = z.infer<typeof NeuroimmuneModule>
+
+/**
+ * Every track's steps must cover the declared rungs exactly once, in ladder
+ * order — a track that skipped a rung could not be drawn honestly. Step,
+ * anchor, and unstudied claim ids must resolve.
+ */
+export function validateNeuroimmune(
+  module: NeuroimmuneModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  const rungIds = module.rungs.map((r) => r.id)
+  const rungIdSet = new Set(rungIds)
+  if (rungIdSet.size !== rungIds.length)
+    errors.push('neuroimmune rungs: duplicate rung id')
+
+  for (const t of module.tracks) {
+    for (const s of t.steps) {
+      if (!rungIdSet.has(s.rungId))
+        errors.push(`neuroimmune track "${t.id}" step references unknown rung "${s.rungId}"`)
+      for (const cid of s.claimIds) {
+        if (!knownClaimIds.has(cid))
+          errors.push(`neuroimmune track "${t.id}" step "${s.rungId}" references unknown claim "${cid}"`)
+      }
+    }
+    const stepRungs = t.steps.map((s) => s.rungId)
+    if (
+      stepRungs.length !== rungIds.length ||
+      stepRungs.some((r, i) => r !== rungIds[i])
+    )
+      errors.push(
+        `neuroimmune track "${t.id}" steps must cover every rung exactly once, in ladder order`,
+      )
+  }
+
+  for (const cid of module.anchor.claimIds) {
+    if (!knownClaimIds.has(cid))
+      errors.push(`neuroimmune anchor references unknown claim "${cid}"`)
+  }
+  if (!knownClaimIds.has(module.unstudied.claimId))
+    errors.push(`neuroimmune unstudied references unknown claim "${module.unstudied.claimId}"`)
+
+  return errors
+}

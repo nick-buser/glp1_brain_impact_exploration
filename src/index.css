@@ -906,6 +906,157 @@ body {
   text-wrap: pretty;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Neuroimmune module — translation-ladder track selector, rung detail,
+   and the ladder-grade chip.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.atlas .ni-tracks {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.atlas .ni-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 9px 13px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+}
+.atlas .ni-track:hover {
+  border-color: var(--rule-strong);
+}
+.atlas .ni-track.on {
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+  box-shadow: inset 2.5px 0 0 var(--accent);
+}
+.atlas .ni-track-label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  line-height: 1.3;
+  color: var(--ink-1);
+}
+.atlas .ni-track-sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 3px;
+}
+.atlas .ni-track-tag {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 0.5px solid var(--accent-rule);
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+
+/* Rung detail card */
+.atlas .ni-rung {
+  padding: 12px 14px;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  transition: border-color 0.12s, background 0.12s;
+}
+.atlas .ni-rung.on {
+  border-color: var(--accent-rule);
+  box-shadow: inset 2.5px 0 0 var(--accent);
+}
+.atlas .ni-rung-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.atlas .ni-tier {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-1);
+}
+.atlas .ni-tier-sub {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-left: 8px;
+}
+.atlas .ni-register {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: 7px 0 0 0;
+  text-wrap: pretty;
+}
+.atlas .ni-register-key {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-right: 3px;
+}
+.atlas .ni-register-key:not(:first-child) {
+  margin-left: 6px;
+}
+
+/* Ladder-grade chip */
+.atlas .ni-grade {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.atlas .ni-grade--supportive {
+  color: var(--ink-1);
+  border-color: var(--ink-3);
+}
+.atlas .ni-grade--mixed {
+  color: var(--ink-2);
+}
+.atlas .ni-grade--preliminary {
+  color: var(--ink-3);
+}
+.atlas .ni-grade--untested {
+  color: var(--ink-3);
+  border-style: dashed;
+}
+.atlas .ni-grade--refuted {
+  color: var(--accent);
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+}
+
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .atlas *,

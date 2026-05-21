@@ -335,5 +335,55 @@
     "evidenceIds": ["ev_kanoski_cta"],
     "note": "The honest corrective to a clean 'satiety' reading: at experimental doses the anorectic and the aversive effects are not cleanly separable.",
     "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_neuro_microglia",
+    "statement": "In cultured microglia and ex-vivo preparations, GLP-1 receptor agonists reduce microglial activation and lower pro-inflammatory cytokine release — TNF-α, IL-1β, IL-6 — a consistent, reproducible cellular effect.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "cell", "route": "ex_vivo", "chronicity": "acute", "drug": "multiple GLP-1RAs", "assay": "microglial activation + cytokine panel" },
+    "evidenceIds": ["ev_holscher_microglia"],
+    "note": "Reproducible at the cellular level — the firmest rung of the neuroinflammation ladder, and the one that licenses the least about patients.",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_neuro_insulin",
+    "statement": "GLP-1 receptor signalling couples to cAMP/PKA and PI3K/Akt, overlapping insulin-receptor signalling; in central insulin resistance it offers an alternative route to shared pro-survival, pro-plasticity targets — CREB, BDNF, mTOR-mediated synthesis.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "cell", "route": "ex_vivo", "chronicity": "acute", "drug": "GLP-1", "assay": "signalling biochemistry" },
+    "evidenceIds": ["ev_insulin_convergence"],
+    "note": "The mechanistic basis of the 'type 3 diabetes' framing of Alzheimer's — coherent in vitro, unproven as a clinical lever.",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_neuro_ad_observational",
+    "statement": "Electronic-health-record cohorts report lower dementia-diagnosis incidence under GLP-1RA prescription — the observational signal that motivated the Alzheimer's trials.",
+    "confidence": "speculative",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "mixed GLP-1RA", "assay": "EHR cohort", "n": 215000 },
+    "evidenceIds": ["ev_ad_ehr"],
+    "note": "Confounded by indication, healthcare engagement and survivorship — the rung EVOKE was built to test, and which it did not confirm.",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_neuro_evoke_biomarker",
+    "statement": "In EVOKE, AD-related biomarkers improved under oral semaglutide while the cognitive primary endpoint did not — biomarker movement did not translate into clinical benefit.",
+    "confidence": "strong",
+    "polarity": "modulates",
+    "scope": { "species": "human", "route": "oral", "chronicity": "chronic", "drug": "semaglutide", "assay": "RCT biomarker substudy", "n": 3808 },
+    "evidenceIds": ["ev_evoke_biomarker"],
+    "note": "A biomarker that moves is not an outcome that matters — the dissociation at the heart of the EVOKE result.",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_neuro_healthy_cog",
+    "statement": "Whether GLP-1RAs alter reward-learning, prediction-error magnitude, exploration, or prefrontal control in cognitively healthy people is essentially unstudied; the only human signals are inconsistent fMRI changes in prefrontal regulation of food cues.",
+    "confidence": "open",
+    "polarity": "modulates",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "mixed GLP-1RA", "assay": "fMRI cue-reactivity" },
+    "evidenceIds": ["ev_whittenburg_pr"],
+    "openQuestion": "Do GLP-1RAs subtly recalibrate reward learning in cognitively healthy users — altering not momentary wanting but how new reward associations form?",
+    "lastReviewed": "2026-05-21"
   }
 ]

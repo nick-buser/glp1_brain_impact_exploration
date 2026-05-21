@@ -14,6 +14,7 @@ import {
   AversiveModule,
   CrossRewardModule,
   Dataset,
+  NeuroimmuneModule,
   PpgNtsModule,
   WantingModule,
   validateAccess,
@@ -21,6 +22,7 @@ import {
   validateAversive,
   validateCrossReward,
   validateGraph,
+  validateNeuroimmune,
   validatePpgNts,
   validateWanting,
 } from '../src/lib/schemas.ts'
@@ -187,4 +189,28 @@ if (appetiteErrors.length > 0) {
 console.log(
   `✓ appetite module valid — ${appetite.data.cascade.stages.length} cascade stages · ` +
     `${appetite.data.regimes.length} regimes · ${appetite.data.gaps.length} gaps`,
+)
+
+// ── Neuroimmune / insulin / cognition module ────────────────────────────────
+
+const neuroimmune = NeuroimmuneModule.safeParse(read('neuroimmune.json'))
+if (!neuroimmune.success) {
+  for (const issue of neuroimmune.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Neuroimmune module failed schema validation.')
+}
+
+const neuroimmuneErrors = validateNeuroimmune(
+  neuroimmune.data,
+  new Set(claims.map((c) => c.id)),
+)
+if (neuroimmuneErrors.length > 0) {
+  for (const e of neuroimmuneErrors) console.error(`  · ${e}`)
+  fail(`Neuroimmune module has ${neuroimmuneErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ neuroimmune module valid — ${neuroimmune.data.rungs.length} ladder rungs · ` +
+    `${neuroimmune.data.tracks.length} hypothesis tracks`,
 )
