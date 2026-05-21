@@ -326,5 +326,48 @@
       "A 60-minute window can miss slower multi-hour uptake."
     ],
     "note": "Among 13 incretin-receptor agonists, liraglutide, semaglutide and tirzepatide showed little entry within 1 h; albiglutide and dulaglutide entered faster. Uptake correlated with net peptide charge, not lipophilicity."
+  },
+  {
+    "id": "ev_blundell_intake",
+    "paperId": "blundell_2017",
+    "species": "human",
+    "route": "periph_tx",
+    "chronicity": "chronic",
+    "drug": "semaglutide",
+    "assay": "ad libitum meal test + appetite ratings",
+    "direction": "decrease",
+    "n": 30,
+    "note": "Once-weekly semaglutide reduced ad libitum energy intake by roughly a quarter, lowered hunger and food cravings, and improved control of eating."
+  },
+  {
+    "id": "ev_halawi_gastric",
+    "paperId": "halawi_2017",
+    "species": "human",
+    "route": "periph_tx",
+    "chronicity": "subacute",
+    "drug": "liraglutide",
+    "assay": "gastric emptying scintigraphy + satiation",
+    "direction": "decrease",
+    "n": 40,
+    "caveats": [
+      "Pilot trial",
+      "the gastric-emptying effect is strongest early and attenuates with continued dosing"
+    ],
+    "note": "Liraglutide slowed gastric emptying and reduced caloric intake to fullness; the peripheral gastric effect is largest in the first weeks of dosing."
+  },
+  {
+    "id": "ev_kanoski_cta",
+    "paperId": "kanoski_2012",
+    "species": "rat",
+    "route": "periph_ex",
+    "chronicity": "acute",
+    "drug": "exendin-4",
+    "assay": "pica + conditioned taste aversion",
+    "direction": "increase",
+    "caveats": [
+      "Experimental dosing",
+      "rodent malaise assays (pica, conditioned taste aversion) are proxies, not a direct nausea read-out"
+    ],
+    "note": "Anorectic doses of exendin-4 and liraglutide also produced pica and conditioned taste aversion; intake suppression and malaise were only partly dissociable."
   }
 ]

@@ -306,5 +306,34 @@
     "evidenceIds": ["ev_gabery_access"],
     "note": "The reason 'GLP-1 acts on the reward system' must not be read as 'the drug floods the reward system' — the route is projection traffic, not receptor occupancy.",
     "lastReviewed": "2026-04-12"
+  },
+  {
+    "id": "c_appetite_meal_size",
+    "statement": "Chronic GLP-1RA reduces ad libitum energy intake and meal size in humans and raises ratings of satiety and fullness — the directly measurable behavioural endpoint of the satiety cascade.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "ad libitum meal test", "n": 30 },
+    "evidenceIds": ["ev_blundell_intake"],
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_appetite_gastric",
+    "statement": "Slowed gastric emptying is a genuine peripheral contributor to early meal termination under GLP-1RAs, but it shows partial tachyphylaxis with chronic dosing — the sustained intake effect is not carried by gastric emptying alone.",
+    "confidence": "moderate",
+    "polarity": "modulates",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "subacute", "drug": "liraglutide", "assay": "gastric emptying scintigraphy", "n": 40 },
+    "evidenceIds": ["ev_halawi_gastric"],
+    "note": "The peripheral mechanism is real but partial — it cannot explain why appetite suppression persists once the gastric effect has waned.",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_appetite_cta",
+    "statement": "Peripheral GLP-1R agonist doses high enough to suppress intake also produce nausea-like malaise — pica and conditioned taste aversion — in rodents; intake suppression and malaise are partly dissociable but overlapping, so meal termination and visceral aversion share a substrate.",
+    "confidence": "moderate",
+    "polarity": "modulates",
+    "scope": { "species": "rat", "route": "periph_ex", "chronicity": "acute", "drug": "exendin-4", "assay": "pica + conditioned taste aversion" },
+    "evidenceIds": ["ev_kanoski_cta"],
+    "note": "The honest corrective to a clean 'satiety' reading: at experimental doses the anorectic and the aversive effects are not cleanly separable.",
+    "lastReviewed": "2026-05-21"
   }
 ]

@@ -10,12 +10,14 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import {
   AccessModule,
+  AppetiteModule,
   AversiveModule,
   CrossRewardModule,
   Dataset,
   PpgNtsModule,
   WantingModule,
   validateAccess,
+  validateAppetite,
   validateAversive,
   validateCrossReward,
   validateGraph,
@@ -164,4 +166,25 @@ if (accessErrors.length > 0) {
 console.log(
   `✓ brain-access module valid — ${access.data.routes.length} routes · ` +
     `${access.data.regions.length} regions · ${access.data.drugs.length} agonists`,
+)
+
+// ── Appetite & meal-termination module ──────────────────────────────────────
+
+const appetite = AppetiteModule.safeParse(read('appetite.json'))
+if (!appetite.success) {
+  for (const issue of appetite.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Appetite module failed schema validation.')
+}
+
+const appetiteErrors = validateAppetite(appetite.data, new Set(claims.map((c) => c.id)))
+if (appetiteErrors.length > 0) {
+  for (const e of appetiteErrors) console.error(`  · ${e}`)
+  fail(`Appetite module has ${appetiteErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ appetite module valid — ${appetite.data.cascade.stages.length} cascade stages · ` +
+    `${appetite.data.regimes.length} regimes · ${appetite.data.gaps.length} gaps`,
 )
