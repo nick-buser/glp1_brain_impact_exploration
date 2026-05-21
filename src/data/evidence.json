@@ -411,14 +411,15 @@
     "route": "oral",
     "chronicity": "chronic",
     "drug": "semaglutide",
-    "assay": "RCT biomarker substudy",
-    "direction": "decrease",
+    "assay": "RCT secondary endpoints",
+    "direction": "no_change",
     "n": 3808,
     "caveats": [
-      "Biomarker substudy of a trial whose primary cognitive endpoint was negative",
-      "biomarker movement is not a clinical outcome"
+      "EVOKE collected AD fluid biomarkers as secondary endpoints",
+      "no biomarker-outcome results have been published as of this review",
+      "the trial's only published result is the negative cognitive primary endpoint"
     ],
-    "note": "AD-related biomarkers improved under oral semaglutide while the cognitive primary endpoint (CDR-SB) did not."
+    "note": "EVOKE's published results (Lancet 2026) report the negative cognitive primary endpoint (CDR-SB); whether the AD fluid-biomarker secondary endpoints moved is unreported."
   },
   {
     "id": "ev_ad_ehr",
