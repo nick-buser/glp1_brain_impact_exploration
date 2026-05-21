@@ -59,7 +59,7 @@
         {
           "rungId": "rct",
           "grade": "refuted",
-          "note": "EVOKE and EVOKE+ randomised 3,808 adults with mild cognitive impairment or mild AD to oral semaglutide for two years. No benefit on the primary cognitive endpoint (CDR-SB). AD biomarkers improved — and did not translate.",
+          "note": "EVOKE and EVOKE+ randomised 3,808 adults with mild cognitive impairment or mild AD to oral semaglutide for two years. No benefit on the primary cognitive endpoint (CDR-SB); the trial's AD fluid-biomarker secondary endpoints remain unpublished.",
           "claimIds": ["c_cog_evoke", "c_neuro_evoke_biomarker"]
         }
       ]
@@ -92,7 +92,7 @@
         {
           "rungId": "rct",
           "grade": "untested",
-          "note": "No randomised trial uses a neuroinflammatory primary endpoint. EVOKE's biomarker substudy is the nearest read and was not designed to test this hypothesis.",
+          "note": "No randomised trial uses a neuroinflammatory primary endpoint. EVOKE collected fluid biomarkers as secondary endpoints, but those results are unpublished — and were not designed to test this hypothesis.",
           "claimIds": ["c_neuro_evoke_biomarker"]
         }
       ]
@@ -166,7 +166,7 @@
   ],
   "anchor": {
     "headline": "The anchor — EVOKE / EVOKE+",
-    "prose": "In November 2025 Novo Nordisk reported that EVOKE and EVOKE+ — 3,808 adults with mild cognitive impairment or mild Alzheimer's, randomised to oral semaglutide or placebo for two years — did not slow cognitive decline. AD biomarkers improved; the clinical endpoint did not move. The result recalibrates the whole module: at the brain exposures oral semaglutide achieves, a hypothesis backed by coherent cell biology, reproducible rodent data and suggestive cohorts still failed the trial that adjudicates it. Every other track on this page should be read against that precedent.",
+    "prose": "In November 2025 Novo Nordisk reported that EVOKE and EVOKE+ — 3,808 adults with mild cognitive impairment or mild Alzheimer's, randomised to oral semaglutide or placebo for two years — did not slow cognitive decline. The clinical primary endpoint did not move, and the trial's AD biomarker secondary endpoints have not been reported. The result recalibrates the whole module: at the brain exposures oral semaglutide achieves, a hypothesis backed by coherent cell biology, reproducible rodent data and suggestive cohorts still failed the trial that adjudicates it. Every other track on this page should be read against that precedent.",
     "claimIds": ["c_cog_evoke", "c_neuro_evoke_biomarker"]
   },
   "unstudied": {

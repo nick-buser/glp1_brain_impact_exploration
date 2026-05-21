@@ -368,12 +368,13 @@
   },
   {
     "id": "c_neuro_evoke_biomarker",
-    "statement": "In EVOKE, AD-related biomarkers improved under oral semaglutide while the cognitive primary endpoint did not — biomarker movement did not translate into clinical benefit.",
-    "confidence": "strong",
+    "statement": "EVOKE collected AD fluid biomarkers as secondary endpoints, but no biomarker-outcome results have been published; the trial's only reported result is the negative cognitive primary endpoint.",
+    "confidence": "open",
     "polarity": "modulates",
-    "scope": { "species": "human", "route": "oral", "chronicity": "chronic", "drug": "semaglutide", "assay": "RCT biomarker substudy", "n": 3808 },
+    "scope": { "species": "human", "route": "oral", "chronicity": "chronic", "drug": "semaglutide", "assay": "RCT secondary endpoints (unreported)", "n": 3808 },
     "evidenceIds": ["ev_evoke_biomarker"],
-    "note": "A biomarker that moves is not an outcome that matters — the dissociation at the heart of the EVOKE result.",
+    "openQuestion": "Did EVOKE's AD fluid-biomarker secondary endpoints move under oral semaglutide, and were they reported?",
+    "note": "Claims that EVOKE 'biomarkers improved' are not currently sourceable: the published trial (Lancet 2026) reports only the negative cognitive primary endpoint, and no EVOKE biomarker-outcome paper has appeared. Held open pending publication.",
     "lastReviewed": "2026-05-21"
   },
   {
