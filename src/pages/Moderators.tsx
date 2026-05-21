@@ -49,7 +49,7 @@ export default function Moderators() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <ModuleHeader
-        eyebrow="10 · Moderators"
+        eyebrow="09 · Moderators"
         title="The qualitative simulator — how the same molecule reconfigures across regimes."
         oneSentence="Dose, route, chronicity, species, sex, baseline state and molecule are not footnotes on a claim — they are the claim's load-bearing structure. Set a regime here and the dashboard projects it onto five effect channels and a translation-confidence score. It is a qualitative sensitivity model, not a quantitative predictor: the bars are a curated reading, the matched claims below are the real evidence."
         stewardship={{ date: '2026-05-21', fresh: true }}

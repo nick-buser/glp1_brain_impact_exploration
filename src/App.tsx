@@ -28,8 +28,9 @@ const HEDONIC_PATH = '/mechanisms/hedonic-tone'
 const MODERATORS_PATH = '/moderators'
 const EVIDENCE_PATH = '/evidence'
 const OPEN_QUESTIONS_PATH = '/open-questions'
-// The HPA / stress-axis content lives in the Aversive Affect module; the
-// standalone route survives only as a redirect for old links and the nav entry.
+// The HPA / stress-axis content lives in the Aversive Affect module, and the
+// standalone nav entry has been dropped; this route survives only to redirect
+// old links and bookmarks.
 const HPA_PATH = '/mechanisms/hpa'
 
 function RouteFallback() {

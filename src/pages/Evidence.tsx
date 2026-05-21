@@ -11,7 +11,7 @@ export default function Evidence() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <ModuleHeader
-        eyebrow="12 · Evidence workbench · The courtroom layer"
+        eyebrow="10 · Evidence workbench · The courtroom layer"
         title="Every drawn edge, put on trial."
         oneSentence="The claim graph laid flat — sort and facet to interrogate it, open any row for the evidence observations, papers, and atlas connections behind it. Selecting a claim lights up its graph neighbours; contradictions stay visible as ⇄ rows, not buried in prose."
         stewardship={{ date: '2026-05-21', fresh: true }}

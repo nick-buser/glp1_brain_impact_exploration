@@ -19,7 +19,7 @@ export default function OpenQuestions() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <ModuleHeader
-        eyebrow="12 · Open questions"
+        eyebrow="11 · Open questions"
         title="What the atlas does not yet know — and, where it can be named, what would settle it."
         oneSentence="An honest atlas tracks its own gaps. Every question here is collected from a mechanism module or a claim — nothing is authored on this page. Module-level questions mark where a mechanism is genuinely unresolved; claim-level questions are sharper, each pinned to one claim whose scope already names the evidence that would move it."
         stewardship={{ date: '2026-05-21', fresh: true }}

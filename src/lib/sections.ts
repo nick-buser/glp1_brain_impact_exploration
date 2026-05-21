@@ -41,17 +41,13 @@ export const sections: Section[] = [
   {
     path: '/mechanisms/amygdala-gaba',
     title: 'Amygdala / GABA / Aversion',
-    claim: 'The aversive-affect branch — not purely dopaminergic.',
-  },
-  {
-    path: '/mechanisms/hpa',
-    title: 'HPA / Stress / Anxiety',
-    claim: 'Dissociating HPA activation from anxiety-like behavior.',
+    claim:
+      'The aversive-affect branch — not purely dopaminergic; also carries the HPA / stress-axis story.',
   },
   {
     path: '/mechanisms/hedonic-tone',
     title: 'Hedonic Tone',
-    claim: 'Wanting vs liking vs learning vs effort.',
+    claim: 'Wanting vs liking vs learning vs effort — the phenomenology mapper.',
   },
   {
     path: '/mechanisms/neuroimmune',
