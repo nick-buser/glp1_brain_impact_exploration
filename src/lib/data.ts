@@ -9,6 +9,8 @@
 import {
   Dataset,
   validateGraph,
+  type AtlasEdge,
+  type AtlasNode,
   type Claim,
   type EvidenceObservation,
   type Paper,
@@ -96,3 +98,61 @@ export function daysSinceReviewed(claim: Claim, now = new Date()): number {
 }
 
 export const STALE_THRESHOLD_DAYS = 90
+
+// ── Reverse index: claim → atlas references ─────────────────────────────────
+//
+// The evidence workbench is a table-graph hybrid: a row is a claim, but a
+// claim is only meaningful as something the mechanism graph *leans on*. These
+// indices walk the link backwards — from a claim to the nodes and edges it
+// underwrites — so the workbench can show that linkage laterally rather than
+// burying the graph behind a drill-down.
+
+export type MechanismRefs = { nodes: AtlasNode[]; edges: AtlasEdge[] }
+
+const claimToNodes = new Map<string, AtlasNode[]>()
+const claimToEdges = new Map<string, AtlasEdge[]>()
+
+for (const node of dataset.atlas.nodes) {
+  for (const cid of node.claimIds) {
+    const arr = claimToNodes.get(cid)
+    if (arr) arr.push(node)
+    else claimToNodes.set(cid, [node])
+  }
+}
+for (const edge of dataset.atlas.edges) {
+  for (const cid of edge.claimIds) {
+    const arr = claimToEdges.get(cid)
+    if (arr) arr.push(edge)
+    else claimToEdges.set(cid, [edge])
+  }
+}
+
+/** The atlas nodes and edges whose drawing this claim authorises. */
+export function mechanismRefsForClaim(claimId: string): MechanismRefs {
+  return {
+    nodes: claimToNodes.get(claimId) ?? [],
+    edges: claimToEdges.get(claimId) ?? [],
+  }
+}
+
+/**
+ * Claims that share at least one atlas node or edge with the given claim —
+ * its graph neighbourhood. Selecting a workbench row lights these up in the
+ * table, surfacing the claim → mechanism → claim adjacency without leaving it.
+ */
+export function neighbourClaimIds(claimId: string): Set<string> {
+  const { nodes, edges } = mechanismRefsForClaim(claimId)
+  const ids = new Set<string>()
+  for (const n of nodes) for (const cid of n.claimIds) ids.add(cid)
+  for (const e of edges) for (const cid of e.claimIds) ids.add(cid)
+  ids.delete(claimId)
+  return ids
+}
+
+/** Claims this claim explicitly contradicts (the forward tension direction). */
+export function contradictedClaims(claim: Claim): Claim[] {
+  return claim.contradicts.flatMap((id) => {
+    const c = claimsById.get(id)
+    return c ? [c] : []
+  })
+}

@@ -7,11 +7,13 @@ import Overview from './pages/Overview'
 // to the routes that use them, keeping the landing route lean.
 const PpgNts = lazy(() => import('./pages/PpgNts'))
 const Wanting = lazy(() => import('./pages/Wanting'))
+const Evidence = lazy(() => import('./pages/Evidence'))
 const SectionPage = lazy(() => import('./pages/SectionPage'))
 
 const PPG_PATH = '/mechanisms/ppg-nts'
 const WANTING_PATH = '/mechanisms/wanting'
-const CUSTOM_PATHS = new Set(['/', PPG_PATH, WANTING_PATH])
+const EVIDENCE_PATH = '/evidence'
+const CUSTOM_PATHS = new Set(['/', PPG_PATH, WANTING_PATH, EVIDENCE_PATH])
 
 function RouteFallback() {
   return (
@@ -132,6 +134,7 @@ export default function App() {
             <Route path="/" element={<Overview />} />
             <Route path={PPG_PATH} element={<PpgNts />} />
             <Route path={WANTING_PATH} element={<Wanting />} />
+            <Route path={EVIDENCE_PATH} element={<Evidence />} />
             {sections
               .filter((s) => !CUSTOM_PATHS.has(s.path))
               .map((s) => (
