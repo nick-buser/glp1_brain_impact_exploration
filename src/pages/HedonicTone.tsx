@@ -45,7 +45,7 @@ export default function HedonicTone() {
         {/* Left — the report picker and the decomposition vocabulary */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -96,7 +96,7 @@ export default function HedonicTone() {
         </section>
 
         {/* Right — the decomposition readout */}
-        <section style={{ padding: '22px 32px', overflow: 'auto' }}>
+        <section style={{ padding: '22px 32px 56px', overflow: 'auto' }}>
           {/* the report, verbatim */}
           <div className="ph-quote">
             <span className="micro" style={{ color: 'var(--ink-3)' }}>

@@ -40,7 +40,7 @@ export default function CrossReward() {
         {/* Left — the radial map */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -98,7 +98,7 @@ export default function CrossReward() {
         </section>
 
         {/* Right — the matrix and the selected-domain detail */}
-        <section style={{ padding: '22px 32px', overflow: 'auto' }}>
+        <section style={{ padding: '22px 32px 56px', overflow: 'auto' }}>
           <Eyebrow>Evidence matrix · domain × evidence tier</Eyebrow>
           <p className="margin-note" style={{ fontSize: 12.5, margin: '4px 0 14px 0' }}>
             The matrix the radial is a projection of. A domain is only as strong as its

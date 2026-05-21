@@ -8,7 +8,9 @@ import type { AtlasEdge, AtlasNode, Confidence } from '../lib/schemas'
 import { lensById, projectEdge, projectNode, showBBB, type LensId } from '../lib/lens'
 
 const VIEW_W = 1380
-const VIEW_H = 720
+// Extra headroom below the lowest node (Transcytosis, y≈660) so the lens
+// legend can sit clear of that node's sub-label rather than colliding with it.
+const VIEW_H = 752
 
 const LANES: { x: number; text: string; anchor: 'middle' | 'start' }[] = [
   { x: 80, text: 'Periphery', anchor: 'middle' },
@@ -182,8 +184,9 @@ export function AtlasGraph({
         />
       ))}
 
-      {/* Lens legend */}
-      <g transform="translate(28, 678)">
+      {/* Lens legend — pinned to the bottom band, clear of the Transcytosis
+          node's sub-label which sits at y≈698 */}
+      <g transform="translate(28, 718)">
         <text
           style={{
             fontFamily: 'var(--font-mono)',

@@ -70,7 +70,7 @@ export default function Wanting() {
         {/* Bottom-left — Kooji contradiction */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             minHeight: 0,
             overflow: 'auto',
@@ -92,7 +92,7 @@ export default function Wanting() {
         {/* Bottom-right — phenomenology, toy model, open questions */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             minHeight: 0,
             overflow: 'auto',
             display: 'grid',

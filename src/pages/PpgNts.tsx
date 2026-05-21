@@ -37,7 +37,7 @@ export default function PpgNts() {
         {/* Left — the dial and the state explainer */}
         <section
           style={{
-            padding: '24px 36px',
+            padding: '24px 36px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -125,7 +125,7 @@ export default function PpgNts() {
         </section>
 
         {/* Right — projections and active claims */}
-        <section style={{ padding: '24px 36px', overflow: 'auto' }}>
+        <section style={{ padding: '24px 36px 56px', overflow: 'auto' }}>
           <Eyebrow>PPG-NTS recruitment &amp; projections</Eyebrow>
           <p className="margin-note" style={{ marginTop: 6, fontSize: 12.5 }}>
             Node fill encodes recruitment strength. Peripheral GLP-1 (the pharmacologic

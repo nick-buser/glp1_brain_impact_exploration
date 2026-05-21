@@ -41,7 +41,7 @@ export default function Appetite() {
         {/* Left — the standard explainer, and what it omits */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -77,7 +77,7 @@ export default function Appetite() {
         </section>
 
         {/* Right — meal termination as a threshold */}
-        <section style={{ padding: '22px 32px', overflow: 'auto' }}>
+        <section style={{ padding: '22px 32px 56px', overflow: 'auto' }}>
           <Eyebrow>Meal termination as a threshold · select a regime</Eyebrow>
           <p className="margin-note" style={{ fontSize: 12.5, margin: '4px 0 0 0' }}>
             A satiation signal builds over a meal; the meal ends when it crosses the satiety
