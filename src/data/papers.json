@@ -184,5 +184,14 @@
     "year": 2015,
     "journal": "Endocrinology",
     "note": "GLP-1 receptor mapping in the macaque brain — amygdalar GLP-1R density substantially higher than in rodent surveys. (Project-curated entry; DOI pending verification.)"
+  },
+  {
+    "id": "banks_2020",
+    "cite": "Banks 2020",
+    "authors": ["Banks WA", "Salameh TS", "Rhea EM"],
+    "year": 2020,
+    "journal": "Biochemical Pharmacology",
+    "doi": "10.1016/j.bcp.2020.114187",
+    "note": "Head-to-head brain-uptake pharmacokinetics of 13 incretin-receptor agonists in mice — most cross the blood-brain barrier slowly and incompletely, with marked drug-to-drug differences in rate."
   }
 ]

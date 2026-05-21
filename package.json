@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "validate": "node scripts/validate-graph.ts",
+    "fetch:structures": "node scripts/fetch-pdb.ts",
     "build": "node scripts/validate-graph.ts && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -16,6 +17,7 @@
     "@xyflow/react": "^12.10.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.39.0",
+    "molstar": "^5.9.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.15.1",

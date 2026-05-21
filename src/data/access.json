@@ -1,0 +1,235 @@
+{
+  "correction": {
+    "headline": "Brain effect is not brain penetration.",
+    "prose": "Peripheral GLP-1 receptor agonists are 4–5 kDa peptides; they do not meaningfully cross an intact blood-brain barrier. Yet they reshape appetite, reward, and affect — because they never had to flood the brain. They bind a circumscribed set of GLP-1R-bearing nodes through three privileged routes, and those nodes project onward. The deep limbic structures everyone reaches for — VTA, nucleus accumbens, amygdala, hippocampus — are touched only sparsely, and second-hand. A focal key, not a broadcast.",
+    "claimIds": ["c_access_sparse", "c_access_projection"]
+  },
+  "routes": [
+    {
+      "id": "cvo",
+      "label": "Circumventricular access",
+      "sub": "area postrema · median eminence · tanycytes",
+      "share": 0.55,
+      "drugEnters": true,
+      "prose": "The widest door. Circumventricular organs and the tanycytes lining the third ventricle sit outside the tight blood-brain barrier and express GLP-1R, so peripherally dosed drug binds neurons there directly — the area postrema and NTS in the hindbrain, the median eminence and arcuate nucleus in the mediobasal hypothalamus. The route opens onto exactly the interoceptive and satiety nodes the drug is meant to engage.",
+      "claimIds": ["c_access_cvo", "c_access_sparse"]
+    },
+    {
+      "id": "transcytosis",
+      "label": "Adsorptive transcytosis",
+      "sub": "slow · charge-dependent · drug-specific",
+      "share": 0.2,
+      "drugEnters": true,
+      "prose": "Past the circumventricular windows, the only way into bulk parenchyma is slow adsorptive transcytosis across the barrier endothelium, unfolding over hours rather than minutes. The rate tracks net peptide charge, not lipophilicity, and differs sharply between molecules — so 'crosses the blood-brain barrier' is a per-drug question, never a class property.",
+      "claimIds": ["c_access_transcytosis", "c_access_drug_diff"]
+    },
+    {
+      "id": "vagal",
+      "label": "Vagal afferent relay",
+      "sub": "gut → NTS · signal, not drug",
+      "share": 0.25,
+      "drugEnters": false,
+      "prose": "GLP-1 signalling can reach the brain without the drug entering it at all. Vagal afferents from the gut synapse in the NTS, carrying a share of the intake-suppressing signal as neural traffic rather than circulating peptide. The relay is indirect and partial — and per-neuron vagal GLP-1R is lower in humans than in rodents, so this arm may carry less of the load clinically than rodent models imply.",
+      "claimIds": ["c_vagal_relay"]
+    }
+  ],
+  "regions": [
+    {
+      "id": "me",
+      "label": "Median eminence",
+      "sub": "tanycytes · 3V floor",
+      "tier": "portal",
+      "glp1r": "high",
+      "x": 196,
+      "y": 96,
+      "routeId": "cvo",
+      "note": "Tanycytes lining the third-ventricle floor are a fenestrated, barrier-free interface — a direct chemosensory window for circulating peptide into the mediobasal hypothalamus."
+    },
+    {
+      "id": "arc",
+      "label": "Arcuate nucleus",
+      "sub": "mediobasal hypothalamus",
+      "tier": "portal",
+      "glp1r": "moderate",
+      "x": 196,
+      "y": 158,
+      "routeId": "cvo",
+      "note": "Sitting against the median eminence, the arcuate is reached without broad BBB crossing; liraglutide activates its POMC/CART neurons."
+    },
+    {
+      "id": "ap",
+      "label": "Area postrema",
+      "sub": "circumventricular organ",
+      "tier": "portal",
+      "glp1r": "high",
+      "x": 196,
+      "y": 244,
+      "routeId": "cvo",
+      "note": "The dorsal-medullary circumventricular organ — outside the barrier, densely GLP-1R-positive, and the privileged hindbrain interface for peripherally administered drug."
+    },
+    {
+      "id": "nts",
+      "label": "NTS",
+      "sub": "nucleus tractus solitarius",
+      "tier": "portal",
+      "glp1r": "high",
+      "x": 196,
+      "y": 300,
+      "routeId": "vagal",
+      "note": "The principal hindbrain integrator: it receives vagal afferent traffic from the gut, abuts the barrier-free area postrema, and houses the brain's own PPG GLP-1 neurons."
+    },
+    {
+      "id": "ls",
+      "label": "Lateral septum",
+      "sub": "septal area",
+      "tier": "transit",
+      "glp1r": "moderate",
+      "x": 320,
+      "y": 120,
+      "note": "Drug signal is detectable here but faint — a forebrain node reached only by slow transcytosis or onward projection, not a barrier-free window."
+    },
+    {
+      "id": "nac",
+      "label": "Nucleus accumbens",
+      "sub": "ventral striatum",
+      "tier": "projection",
+      "glp1r": "moderate",
+      "x": 392,
+      "y": 168,
+      "note": "A central reward node — but reached overwhelmingly second-order, by projections from accessible hindbrain and hypothalamic nuclei rather than by direct drug occupancy."
+    },
+    {
+      "id": "vta",
+      "label": "VTA",
+      "sub": "ventral tegmental area",
+      "tier": "projection",
+      "glp1r": "moderate",
+      "x": 392,
+      "y": 236,
+      "note": "Expresses GLP-1R and shapes reward, yet the peripheral drug labels it only sparsely — the wanting effects run mostly through projection traffic."
+    },
+    {
+      "id": "amy",
+      "label": "Amygdala",
+      "sub": "temporal lobe",
+      "tier": "projection",
+      "glp1r": "low",
+      "x": 392,
+      "y": 300,
+      "note": "Sparsely reached by direct drug in rodents — though primate amygdalar GLP-1R is markedly denser, so the human picture may differ."
+    },
+    {
+      "id": "hpc",
+      "label": "Hippocampus",
+      "sub": "temporal lobe",
+      "tier": "projection",
+      "glp1r": "low",
+      "x": 392,
+      "y": 84,
+      "note": "The cognition/plasticity substrate — and the deepest reach. Its sparse direct access is one reason the rodent neuroprotection story has translated poorly."
+    }
+  ],
+  "drugs": [
+    {
+      "id": "glp1",
+      "label": "Endogenous GLP-1",
+      "klass": "native incretin peptide",
+      "entry": "native",
+      "entryNote": "The reference backbone. Released by gut L-cells and brainstem PPG neurons, native GLP-1(7-37) is degraded by DPP-4 within ~1–2 minutes — it never persists long enough to act as a circulating brain drug. Every agonist below is this peptide, re-engineered to survive.",
+      "backbone": "GLP-1(7-37)",
+      "sequence": ["H","A","E","G","T","F","T","S","D","V","S","S","Y","L","E","G","Q","A","A","K","E","F","I","A","W","L","V","K","G","R","G"],
+      "mods": [],
+      "claimIds": ["c_access_cvo"]
+    },
+    {
+      "id": "exenatide",
+      "label": "Exenatide",
+      "klass": "exendin-4 · GLP-1RA",
+      "entry": "appreciable",
+      "entryNote": "A 39-residue peptide from Gila monster venom, not a modified GLP-1. A glycine at position 2 makes it intrinsically DPP-4-resistant, so it carries no fatty acid and stays small and unbound — and small, uncharged-for-its-class peptides enter the brain at appreciable rates. The clearest counterpoint to semaglutide.",
+      "backbone": "exendin-4",
+      "sequence": ["H","G","E","G","T","F","T","S","D","L","S","K","Q","M","E","E","E","A","V","R","L","F","I","E","W","L","K","N","G","G","P","S","S","G","A","P","P","P","S"],
+      "mods": [
+        {
+          "at": 1,
+          "kind": "substitution",
+          "label": "Gly-2",
+          "detail": "A glycine at position 2 (where GLP-1 has alanine) makes exendin-4 intrinsically resistant to DPP-4 cleavage — no acylation needed for stability."
+        },
+        {
+          "at": 30,
+          "kind": "extension",
+          "label": "Trp-cage tail",
+          "detail": "A nine-residue C-terminal extension absent from GLP-1, folding into a Trp-cage that stabilises the peptide. No fatty acid, no albumin tether — exenatide stays small."
+        }
+      ],
+      "claimIds": ["c_access_drug_diff", "c_access_transcytosis"]
+    },
+    {
+      "id": "liraglutide",
+      "label": "Liraglutide",
+      "klass": "acylated GLP-1RA",
+      "entry": "slow",
+      "entryNote": "GLP-1(7-37) with a C16 palmitoyl chain on Lys26. The fatty acid drives reversible albumin binding, extending the half-life to about 13 hours — and the bound, bulky complex enters the brain only slowly.",
+      "backbone": "GLP-1(7-37)",
+      "sequence": ["H","A","E","G","T","F","T","S","D","V","S","S","Y","L","E","G","Q","A","A","K","E","F","I","A","W","L","V","R","G","R","G"],
+      "mods": [
+        {
+          "at": 19,
+          "kind": "acylation",
+          "label": "C16 · γGlu",
+          "detail": "A palmitoyl (C16) fatty acid via a γ-glutamate linker on Lys26 — reversible albumin binding extends the half-life to ~13 h and slows blood-brain-barrier transit."
+        },
+        {
+          "at": 27,
+          "kind": "substitution",
+          "label": "Lys34→Arg",
+          "detail": "Removes the competing lysine so acylation is directed cleanly to Lys26."
+        }
+      ],
+      "claimIds": ["c_access_drug_diff"]
+    },
+    {
+      "id": "semaglutide",
+      "label": "Semaglutide",
+      "klass": "acylated GLP-1RA",
+      "entry": "minimal",
+      "entryNote": "GLP-1(7-37) hardened twice over: an Aib at position 8 blocks DPP-4, and a C18 diacid on Lys26 binds albumin tightly enough for once-weekly dosing. That same high-affinity tether and large effective hydrodynamic radius are what limit blood-brain-barrier transit — the design that gives the long half-life is the design that keeps it out.",
+      "backbone": "GLP-1(7-37)",
+      "sequence": ["H","Aib","E","G","T","F","T","S","D","V","S","S","Y","L","E","G","Q","A","A","K","E","F","I","A","W","L","V","R","G","R","G"],
+      "mods": [
+        {
+          "at": 1,
+          "kind": "substitution",
+          "label": "Ala8→Aib",
+          "detail": "2-aminoisobutyric acid at position 8 blocks DPP-4 cleavage at the N-terminus — the primary stability fix."
+        },
+        {
+          "at": 19,
+          "kind": "acylation",
+          "label": "C18 diacid · γGlu·2×OEG",
+          "detail": "An octadecanedioic (C18) diacid via a γ-glutamate plus two OEG spacers on Lys26. High-affinity albumin binding gives a ~1-week half-life — and a large effective hydrodynamic radius that limits BBB transit."
+        },
+        {
+          "at": 27,
+          "kind": "substitution",
+          "label": "Lys34→Arg",
+          "detail": "Directs the acylation to Lys26 by removing the competing lysine."
+        }
+      ],
+      "claimIds": ["c_access_drug_diff", "c_access_sparse"]
+    }
+  ],
+  "structure": {
+    "pdbId": "3IOL",
+    "file": "structures/glp1r-ecd.cif",
+    "label": "GLP-1 bound in the GLP-1R extracellular domain",
+    "caption": "The endogenous GLP-1 peptide (the reference backbone in the track above) nestled into the N-terminal extracellular domain of its receptor. Every marketed agonist is this peptide, re-engineered for stability and half-life — not for brain entry. Drag to rotate; the helix is the ligand.",
+    "credit": "RCSB PDB 3IOL · Underwood et al. 2010, J. Biol. Chem."
+  },
+  "openQuestions": [
+    "Does the human vagal arm carry as much of the signal as rodent models imply? Nodose-ganglion GLP-1R is expressed at lower per-neuron abundance in humans than in mice.",
+    "How much of semaglutide's modest CNS reach is a pharmacokinetic ceiling rather than biology? Molecules engineered for blood-brain-barrier penetration outperform it on hippocampal endpoints in mice.",
+    "Which deep limbic effects reflect direct low-level receptor occupancy and which are purely second-order projection traffic? Current methods struggle to separate the two."
+  ]
+}

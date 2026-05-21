@@ -9,11 +9,13 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import {
+  AccessModule,
   AversiveModule,
   CrossRewardModule,
   Dataset,
   PpgNtsModule,
   WantingModule,
+  validateAccess,
   validateAversive,
   validateCrossReward,
   validateGraph,
@@ -141,4 +143,25 @@ if (aversiveErrors.length > 0) {
 console.log(
   `✓ aversive module valid — ${aversive.data.regions.length} regions · ` +
     `${aversive.data.regimes.length} regimes`,
+)
+
+// ── Brain-access module ─────────────────────────────────────────────────────
+
+const access = AccessModule.safeParse(read('access.json'))
+if (!access.success) {
+  for (const issue of access.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Brain-access module failed schema validation.')
+}
+
+const accessErrors = validateAccess(access.data, new Set(claims.map((c) => c.id)))
+if (accessErrors.length > 0) {
+  for (const e of accessErrors) console.error(`  · ${e}`)
+  fail(`Brain-access module has ${accessErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ brain-access module valid — ${access.data.routes.length} routes · ` +
+    `${access.data.regions.length} regions · ${access.data.drugs.length} agonists`,
 )

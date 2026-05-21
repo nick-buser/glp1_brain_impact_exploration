@@ -507,3 +507,130 @@ export function validateAversive(
   }
   return errors
 }
+
+// ── Brain-access / relay module ─────────────────────────────────────────────
+//
+// How a peripheral peptide drug reaches the brain at all. The module exists to
+// dissolve one misconception: brain effect does not imply broad brain
+// penetration. GLP-1RAs reach a circumscribed set of nodes through three
+// graded routes — circumventricular/tanycyte direct access, slow adsorptive
+// transcytosis, and vagal afferent relay — and the deep limbic GLP-1R sites
+// are reached only second-order. `share` is a qualitative model of how much of
+// the central signal each route carries; the claim ids are the evidentiary
+// backing and must resolve. Peptide `mods` are indexed into `sequence`.
+
+// portal     — node sits outside the BBB; drug binds it directly
+// transit    — node reached only by slow, drug-specific adsorptive transcytosis
+// projection — deep limbic node, reached second-order via projections
+export const AccessTier = z.enum(['portal', 'transit', 'projection'])
+export type AccessTier = z.infer<typeof AccessTier>
+
+export const Glp1rDensity = z.enum(['high', 'moderate', 'low'])
+export type Glp1rDensity = z.infer<typeof Glp1rDensity>
+
+export const AccessRoute = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  share: z.number().min(0).max(1), // qualitative portion of the central signal
+  drugEnters: z.boolean(), // does the drug itself cross, or only the signal?
+  prose: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type AccessRoute = z.infer<typeof AccessRoute>
+
+export const AccessRegion = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  tier: AccessTier,
+  glp1r: Glp1rDensity,
+  x: z.number(),
+  y: z.number(),
+  routeId: z.string().optional(), // the route that reaches a portal node
+  note: z.string().min(1),
+})
+export type AccessRegion = z.infer<typeof AccessRegion>
+
+export const PeptideMod = z.object({
+  at: z.number().int().min(0), // 0-based residue index into sequence[]
+  kind: z.enum(['acylation', 'substitution', 'extension']),
+  label: z.string().min(1),
+  detail: z.string().min(1),
+})
+export type PeptideMod = z.infer<typeof PeptideMod>
+
+export const AccessDrug = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  klass: z.string().min(1),
+  entry: z.enum(['native', 'appreciable', 'slow', 'minimal', 'engineered']),
+  entryNote: z.string().min(1),
+  backbone: z.string().min(1), // e.g. "GLP-1(7-37)" or "exendin-4"
+  sequence: z.array(z.string().min(1)).min(2), // residue codes
+  mods: z.array(PeptideMod).default([]),
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type AccessDrug = z.infer<typeof AccessDrug>
+
+export const AccessModule = z.object({
+  correction: z.object({
+    headline: z.string().min(1),
+    prose: z.string().min(1),
+    claimIds: z.array(z.string().min(1)).min(1),
+  }),
+  routes: z.array(AccessRoute).min(2),
+  regions: z.array(AccessRegion).min(2),
+  drugs: z.array(AccessDrug).min(2),
+  structure: z.object({
+    pdbId: z.string().min(1),
+    file: z.string().min(1),
+    label: z.string().min(1),
+    caption: z.string().min(1),
+    credit: z.string().min(1),
+  }),
+  openQuestions: z.array(z.string().min(1)).min(1),
+})
+export type AccessModule = z.infer<typeof AccessModule>
+
+/**
+ * Claim ids in the correction, routes, and drugs must resolve; a region's
+ * routeId must name a real route; every peptide modification must index a
+ * residue that exists.
+ */
+export function validateAccess(
+  module: AccessModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  const routeIds = new Set(module.routes.map((r) => r.id))
+
+  for (const cid of module.correction.claimIds) {
+    if (!knownClaimIds.has(cid))
+      errors.push(`access correction references unknown claim "${cid}"`)
+  }
+  for (const r of module.routes) {
+    for (const cid of r.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`access route "${r.id}" references unknown claim "${cid}"`)
+    }
+  }
+  for (const region of module.regions) {
+    if (region.routeId && !routeIds.has(region.routeId))
+      errors.push(`access region "${region.id}" names unknown route "${region.routeId}"`)
+  }
+  for (const d of module.drugs) {
+    for (const cid of d.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`access drug "${d.id}" references unknown claim "${cid}"`)
+    }
+    for (const m of d.mods) {
+      if (m.at >= d.sequence.length)
+        errors.push(
+          `access drug "${d.id}" modification "${m.label}" indexes residue ${m.at}, ` +
+            `out of range (sequence length ${d.sequence.length})`,
+        )
+    }
+  }
+  return errors
+}

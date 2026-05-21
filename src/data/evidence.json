@@ -308,5 +308,23 @@
     "direction": "mixed",
     "caveats": ["Anatomical mapping, not a functional study"],
     "note": "Amygdalar GLP-1R binding and expression markedly higher in macaque than in rodent surveys."
+  },
+  {
+    "id": "ev_banks_uptake",
+    "paperId": "banks_2020",
+    "species": "mouse",
+    "route": "periph_ex",
+    "chronicity": "acute",
+    "drug": "multiple GLP-1RAs",
+    "assay": "125I brain-uptake pharmacokinetics",
+    "direction": "increase",
+    "dose": "i.v. radiolabelled tracer, 0–60 min uptake window",
+    "population": "adult CD-1 mice",
+    "caveats": [
+      "Tracer pharmacokinetics — measures peptide reaching parenchyma, not receptor occupancy or downstream effect.",
+      "Mouse blood-brain barrier; the per-agonist rank order need not hold in humans.",
+      "A 60-minute window can miss slower multi-hour uptake."
+    ],
+    "note": "Among 13 incretin-receptor agonists, liraglutide, semaglutide and tirzepatide showed little entry within 1 h; albiglutide and dulaglutide entered faster. Uptake correlated with net peptide charge, not lipophilicity."
   }
 ]

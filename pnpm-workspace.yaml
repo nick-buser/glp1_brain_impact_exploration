@@ -1,0 +1,5 @@
+# Build-script approvals for dependencies (pnpm 11+).
+# @scarf/scarf is an analytics package pulled in transitively by molstar; its
+# postinstall only enables telemetry, so we deliberately do not run it.
+allowBuilds:
+  '@scarf/scarf': false

@@ -267,5 +267,44 @@
     "evidenceIds": ["ev_heppner_amyg"],
     "openQuestion": "Does denser primate amygdalar GLP-1R translate to larger human affective effects than rodent models predict?",
     "lastReviewed": "2026-05-04"
+  },
+  {
+    "id": "c_access_cvo",
+    "statement": "Circumventricular organs (area postrema, median eminence) and third-ventricle tanycytes lie outside the blood-brain barrier and express GLP-1R, giving peripherally dosed drug a direct binding interface onto hindbrain and mediobasal hypothalamic nodes.",
+    "confidence": "strong",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "periph_tx", "chronicity": "subacute", "drug": "semaglutide", "assay": "fluorescence IHC tracing" },
+    "evidenceIds": ["ev_gabery_access", "ev_secher_arc"],
+    "note": "The widest of the three access routes — and it opens directly onto the interoceptive and satiety nodes the drug needs to reach.",
+    "lastReviewed": "2026-04-12"
+  },
+  {
+    "id": "c_access_transcytosis",
+    "statement": "Beyond the circumventricular windows, GLP-1 receptor agonists enter brain parenchyma only by slow adsorptive transcytosis over hours; the rate tracks net peptide charge rather than lipophilicity.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "mouse", "route": "periph_ex", "chronicity": "acute", "drug": "multiple GLP-1RAs", "assay": "125I brain-uptake PK" },
+    "evidenceIds": ["ev_banks_uptake"],
+    "lastReviewed": "2026-05-19"
+  },
+  {
+    "id": "c_access_drug_diff",
+    "statement": "Brain access is molecule-specific: liraglutide, semaglutide and tirzepatide enter slowly and minimally within an hour, while albiglutide and dulaglutide enter faster — the modest CNS reach of marketed agonists is a pharmacokinetic property, not a fixed class ceiling.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "mouse", "route": "periph_ex", "chronicity": "acute", "drug": "multiple GLP-1RAs", "assay": "125I brain-uptake PK" },
+    "evidenceIds": ["ev_banks_uptake"],
+    "note": "Molecules engineered explicitly for blood-brain-barrier penetration outperform semaglutide on hippocampal endpoints in rodents — the ceiling is movable.",
+    "lastReviewed": "2026-05-19"
+  },
+  {
+    "id": "c_access_projection",
+    "statement": "Deep limbic GLP-1R sites — VTA, nucleus accumbens, amygdala, hippocampus — are reached only sparsely by direct drug; most of their engagement is second-order, relayed from blood-brain-barrier-accessible hindbrain and hypothalamic nodes.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "periph_tx", "chronicity": "subacute", "drug": "semaglutide", "assay": "fluorescence IHC tracing" },
+    "evidenceIds": ["ev_gabery_access"],
+    "note": "The reason 'GLP-1 acts on the reward system' must not be read as 'the drug floods the reward system' — the route is projection traffic, not receptor occupancy.",
+    "lastReviewed": "2026-04-12"
   }
 ]
