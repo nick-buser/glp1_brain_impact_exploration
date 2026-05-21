@@ -257,5 +257,15 @@
     "evidenceIds": ["ev_behavioral_cases"],
     "openQuestion": "Does incentive-salience down-weighting extend to non-consummatory behavioural rewards, or does the apparent signal reflect report bias?",
     "lastReviewed": "2026-05-12"
+  },
+  {
+    "id": "c_amyg_primate",
+    "statement": "Amygdalar GLP-1R density is substantially higher in non-human primates than in rodents — so the rodent acute-anxiogenic findings may amplify rather than attenuate in humans, cutting against dismissing them as a pure rodent artefact.",
+    "confidence": "speculative",
+    "polarity": "modulates",
+    "scope": { "species": "nhp", "route": "ex_vivo", "chronicity": "acute", "drug": "endogenous GLP-1", "assay": "receptor mapping" },
+    "evidenceIds": ["ev_heppner_amyg"],
+    "openQuestion": "Does denser primate amygdalar GLP-1R translate to larger human affective effects than rodent models predict?",
+    "lastReviewed": "2026-05-04"
   }
 ]

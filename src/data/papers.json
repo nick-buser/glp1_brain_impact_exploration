@@ -176,5 +176,13 @@
     "authors": ["Multiple case reports / clinician communications"],
     "year": 2024,
     "note": "Case reports and clinician anecdote of reduced gambling, compulsive shopping, and nail-biting under GLP-1RA therapy — uncontrolled. (Project-curated aggregate entry.)"
+  },
+  {
+    "id": "heppner_2015",
+    "cite": "Heppner 2015",
+    "authors": ["Heppner KM", "Kirigiti M", "Secher A", "et al."],
+    "year": 2015,
+    "journal": "Endocrinology",
+    "note": "GLP-1 receptor mapping in the macaque brain — amygdalar GLP-1R density substantially higher than in rodent surveys. (Project-curated entry; DOI pending verification.)"
   }
 ]

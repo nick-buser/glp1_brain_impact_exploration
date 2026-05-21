@@ -9,10 +9,12 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import {
+  AversiveModule,
   CrossRewardModule,
   Dataset,
   PpgNtsModule,
   WantingModule,
+  validateAversive,
   validateCrossReward,
   validateGraph,
   validatePpgNts,
@@ -118,4 +120,25 @@ if (crossRewardErrors.length > 0) {
 
 console.log(
   `✓ cross-reward module valid — ${crossReward.data.domains.length} reward domains`,
+)
+
+// ── Aversive-affect module ──────────────────────────────────────────────────
+
+const aversive = AversiveModule.safeParse(read('aversive.json'))
+if (!aversive.success) {
+  for (const issue of aversive.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Aversive module failed schema validation.')
+}
+
+const aversiveErrors = validateAversive(aversive.data, new Set(claims.map((c) => c.id)))
+if (aversiveErrors.length > 0) {
+  for (const e of aversiveErrors) console.error(`  · ${e}`)
+  fail(`Aversive module has ${aversiveErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ aversive module valid — ${aversive.data.regions.length} regions · ` +
+    `${aversive.data.regimes.length} regimes`,
 )

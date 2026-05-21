@@ -296,5 +296,17 @@
     "direction": "decrease",
     "caveats": ["Uncontrolled", "case reports / anecdote", "vulnerable to report bias"],
     "note": "Reduced gambling and compulsive shopping described in scattered case reports."
+  },
+  {
+    "id": "ev_heppner_amyg",
+    "paperId": "heppner_2015",
+    "species": "nhp",
+    "route": "ex_vivo",
+    "chronicity": "acute",
+    "drug": "endogenous GLP-1",
+    "assay": "GLP-1R autoradiography + in-situ hybridisation",
+    "direction": "mixed",
+    "caveats": ["Anatomical mapping, not a functional study"],
+    "note": "Amygdalar GLP-1R binding and expression markedly higher in macaque than in rodent surveys."
   }
 ]

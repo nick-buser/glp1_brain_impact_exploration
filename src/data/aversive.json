@@ -1,0 +1,85 @@
+{
+  "source": {
+    "label": "PPG-NTS",
+    "sub": "hindbrain GLP-1 neurons",
+    "note": "The endogenous source. PPG-NTS axons synapse directly onto PVN CRH neurons and project to the central amygdala and BNST — the stress axis is genuinely GLP-1 circuitry, not an off-target effect."
+  },
+  "regions": [
+    {
+      "id": "pvn",
+      "label": "PVN",
+      "sub": "paraventricular nucleus",
+      "drives": { "hpa": 0.85, "anxiety": 0.15 },
+      "outcome": "HPA axis ↑ — CRH · ACTH · corticosterone",
+      "note": "GLP-1R sits on PVN CRH neurons, so central GLP-1 raises corticosterone. But GLP-1 injected into the PVN does not produce anxiety-like behaviour on the elevated plus maze — stress hormones without the felt state.",
+      "claimIds": ["c_pvn_hpa"]
+    },
+    {
+      "id": "cea",
+      "label": "CeA",
+      "sub": "central amygdala",
+      "drives": { "hpa": 0.2, "anxiety": 0.9 },
+      "outcome": "Anxiety-like behaviour ↑",
+      "note": "GLP-1 into the central amygdala produces anxiety-like behaviour without robustly engaging the HPA axis — the mirror image of the PVN. The felt state without the hormones.",
+      "claimIds": ["c_cea_anxiogenic"]
+    },
+    {
+      "id": "bnst",
+      "label": "BNST",
+      "sub": "bed nucleus of the stria terminalis",
+      "drives": { "hpa": 0.3, "anxiety": 0.7 },
+      "outcome": "Sustained negative affect",
+      "note": "A CeA→BNST projection carries acute anxiety into longer-lasting negative-affect states — the extended-amygdala arm that plausibly underlies dysphoria rather than a discrete fear response.",
+      "claimIds": ["c_bnst"]
+    }
+  ],
+  "regimes": [
+    {
+      "id": "acute-central",
+      "label": "Acute · central · high dose",
+      "scope": { "species": "rat", "route": "icv", "chronicity": "acute", "drug": "GLP-1(7-36)", "assay": "elevated plus maze + CORT" },
+      "sign": "anxiogenic",
+      "signNote": "Reliably anxiogenic and HPA-activating",
+      "prose": "In rodents, an acute central bolus of GLP-1 or exendin-4 is reliably anxiogenic and raises corticosterone. This is where the PVN/CeA dissociation was mapped — and it is rodent · central · acute, the translation-fragile register. It is real circuitry, but it is not the regime patients are dosed in.",
+      "claimIds": ["c_cea_anxiogenic", "c_pvn_hpa", "c_bnst"]
+    },
+    {
+      "id": "primate-gap",
+      "label": "Primate amygdala · the gap",
+      "scope": { "species": "nhp", "route": "ex_vivo", "chronicity": "acute", "drug": "endogenous GLP-1", "assay": "receptor mapping" },
+      "sign": "mixed",
+      "signNote": "Effects may amplify, not attenuate",
+      "prose": "The reflex move — 'rodent · central · acute, therefore it won't translate' — is too quick. Amygdalar GLP-1R is substantially denser in macaques than in rodents, so the affective arm could be larger in humans, not smaller. The rodent anxiogenic finding is fragile to dismiss as readily as it is fragile to trust.",
+      "claimIds": ["c_amyg_primate"]
+    },
+    {
+      "id": "chronic-peripheral",
+      "label": "Chronic · peripheral · therapeutic",
+      "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "EHR cohort", "n": 240618 },
+      "sign": "favourable",
+      "signNote": "Neutral to mildly favourable",
+      "prose": "At the dose and route patients actually receive — chronic, peripheral, therapeutic — population data are neutral to mildly favourable on affect, and suicidality signals lean weakly protective. Candidate reconciliations: desensitisation of stress circuitry under chronic agonism, and the genuine anxiolytic effect of metabolic improvement itself. The reconciliation is not yet proven.",
+      "claimIds": ["c_anx_neutral"]
+    }
+  ],
+  "contrast": {
+    "wanting": {
+      "label": "Mesolimbic dopamine · wanting",
+      "phrase": "less pull toward",
+      "note": "Incentive salience for the reward falls — the cue stops recruiting approach. The reward is still there; the drive to seek it is down. Patients describe this as relief, or as a quiet they did not ask for.",
+      "claimId": "c_wanting_rebalance"
+    },
+    "aversion": {
+      "label": "Amygdala-GABA · aversive interoception",
+      "phrase": "more stop / avoid / malaise",
+      "note": "A visceral 'something is off' signal attaches to consumption — closer to mild sickness behaviour than to indifference. This is the same satiety/visceral-malaise valence the system evolved to carry.",
+      "claimId": "c_cross_cea_gaba"
+    },
+    "note": "Both branches reduce intake, and most patients experience some of each. They are not the same experience — a drug effect that reads as relief through the wanting branch can read as low-grade malaise through the aversive one. Collapsing the page into 'dopamine goes down' loses exactly this."
+  },
+  "openQuestions": [
+    "Does chronic therapeutic dosing desensitise stress circuitry, or does the rodent anxiogenic signal simply not scale to peripheral exposure? The reconciliation is unproven.",
+    "Primate amygdalar GLP-1R is denser than rodent — do human affective effects amplify rather than attenuate the rodent picture?",
+    "Which patients carry the susceptibility for nausea, dysphoria, and emotional flattening — and is it the aversive circuitry itself or a separate vulnerability?"
+  ]
+}

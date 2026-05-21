@@ -418,3 +418,92 @@ export function validateCrossReward(
   }
   return errors
 }
+
+// ── Aversive-affect / stress-axis module ────────────────────────────────────
+//
+// The aversive branch of GLP-1 signalling — the corrective to a dopamine
+// monoculture. Two structural facts the module makes visible: (1) PVN and CeA
+// dissociate — PVN drives the HPA axis without anxiety, CeA drives anxiety
+// without the HPA axis; (2) the affective sign is regime-dependent — acute
+// central rodent dosing is anxiogenic, chronic peripheral human dosing is
+// neutral-to-favourable. `drives` is a qualitative model; the claim ids are
+// the evidentiary backing and must resolve.
+
+export const AffectiveSign = z.enum(['anxiogenic', 'mixed', 'favourable'])
+export type AffectiveSign = z.infer<typeof AffectiveSign>
+
+export const AversiveRegion = z.object({
+  id: z.string().min(1), // 'pvn' | 'cea' | 'bnst' — the diagram keys layout off this
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  drives: z.object({
+    hpa: z.number().min(0).max(1), // HPA-axis activation
+    anxiety: z.number().min(0).max(1), // anxiety-like behaviour
+  }),
+  outcome: z.string().min(1),
+  note: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type AversiveRegion = z.infer<typeof AversiveRegion>
+
+export const AversiveRegime = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  scope: Scope,
+  sign: AffectiveSign,
+  signNote: z.string().min(1),
+  prose: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type AversiveRegime = z.infer<typeof AversiveRegime>
+
+export const AversiveChannel = z.object({
+  label: z.string().min(1),
+  phrase: z.string().min(1),
+  note: z.string().min(1),
+  claimId: z.string().optional(),
+})
+export type AversiveChannel = z.infer<typeof AversiveChannel>
+
+export const AversiveModule = z.object({
+  source: z.object({
+    label: z.string().min(1),
+    sub: z.string().min(1),
+    note: z.string().min(1),
+  }),
+  regions: z.array(AversiveRegion).min(2),
+  regimes: z.array(AversiveRegime).min(2),
+  contrast: z.object({
+    wanting: AversiveChannel,
+    aversion: AversiveChannel,
+    note: z.string().min(1),
+  }),
+  openQuestions: z.array(z.string().min(1)).min(1),
+})
+export type AversiveModule = z.infer<typeof AversiveModule>
+
+/** Claim ids in the regions, regimes, and contrast channels must resolve. */
+export function validateAversive(
+  module: AversiveModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  for (const r of module.regions) {
+    for (const cid of r.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`aversive region "${r.id}" references unknown claim "${cid}"`)
+    }
+  }
+  for (const r of module.regimes) {
+    for (const cid of r.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`aversive regime "${r.id}" references unknown claim "${cid}"`)
+    }
+  }
+  for (const side of ['wanting', 'aversion'] as const) {
+    const id = module.contrast[side].claimId
+    if (id && !knownClaimIds.has(id))
+      errors.push(`aversive contrast.${side} references unknown claim "${id}"`)
+  }
+  return errors
+}

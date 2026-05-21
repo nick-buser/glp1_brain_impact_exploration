@@ -708,6 +708,46 @@ body {
   color: var(--ink-4);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Aversive-affect module — the regime selector.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.atlas .av-regimes {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.atlas .av-regime {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 13px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: var(--bg-paper);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+}
+.atlas .av-regime:hover {
+  border-color: var(--rule-strong);
+}
+.atlas .av-regime.on {
+  border-color: var(--accent-rule);
+  background: var(--accent-bg);
+  box-shadow: inset 2.5px 0 0 var(--accent);
+}
+.atlas .av-regime-label {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  color: var(--ink-1);
+}
+
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .atlas *,

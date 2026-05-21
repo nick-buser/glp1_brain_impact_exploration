@@ -8,14 +8,23 @@ import Overview from './pages/Overview'
 const PpgNts = lazy(() => import('./pages/PpgNts'))
 const Wanting = lazy(() => import('./pages/Wanting'))
 const CrossReward = lazy(() => import('./pages/CrossReward'))
+const AversiveAffect = lazy(() => import('./pages/AversiveAffect'))
 const Evidence = lazy(() => import('./pages/Evidence'))
 const SectionPage = lazy(() => import('./pages/SectionPage'))
 
 const PPG_PATH = '/mechanisms/ppg-nts'
 const WANTING_PATH = '/mechanisms/wanting'
 const CROSS_PATH = '/mechanisms/cross-reward'
+const AVERSIVE_PATH = '/mechanisms/amygdala-gaba'
 const EVIDENCE_PATH = '/evidence'
-const CUSTOM_PATHS = new Set(['/', PPG_PATH, WANTING_PATH, CROSS_PATH, EVIDENCE_PATH])
+const CUSTOM_PATHS = new Set([
+  '/',
+  PPG_PATH,
+  WANTING_PATH,
+  CROSS_PATH,
+  AVERSIVE_PATH,
+  EVIDENCE_PATH,
+])
 
 function RouteFallback() {
   return (
@@ -137,6 +146,7 @@ export default function App() {
             <Route path={PPG_PATH} element={<PpgNts />} />
             <Route path={WANTING_PATH} element={<Wanting />} />
             <Route path={CROSS_PATH} element={<CrossReward />} />
+            <Route path={AVERSIVE_PATH} element={<AversiveAffect />} />
             <Route path={EVIDENCE_PATH} element={<Evidence />} />
             {sections
               .filter((s) => !CUSTOM_PATHS.has(s.path))
