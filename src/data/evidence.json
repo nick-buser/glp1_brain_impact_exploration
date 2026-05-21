@@ -391,7 +391,7 @@
   },
   {
     "id": "ev_insulin_convergence",
-    "paperId": "glp1_insulin_2023",
+    "paperId": "glp1_insulin_2025",
     "species": "cell",
     "route": "ex_vivo",
     "chronicity": "acute",
