@@ -32,7 +32,7 @@ export default function Neuroimmune() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <ModuleHeader
-        eyebrow="09 · Neuroimmune / insulin / cognition"
+        eyebrow="08 · Neuroimmune / insulin / cognition"
         title="The translation ladder — and why an encouraging mechanism is not yet a result."
         oneSentence="Reduced neuroinflammation, rescued central insulin signalling, and pro-plasticity effects are real and reproducible at the bench — and they are the rationale behind every claim that GLP-1 drugs protect the brain. This module grades each hypothesis rung by rung, from cell to randomised trial, because evidence does not propagate upward. The anchor is EVOKE: a cognition hypothesis with three encouraging rungs that the trial built to adjudicate it did not confirm."
         stewardship={{ date: '2026-05-21', fresh: true }}

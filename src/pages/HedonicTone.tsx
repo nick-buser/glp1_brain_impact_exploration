@@ -28,7 +28,7 @@ export default function HedonicTone() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <ModuleHeader
-        eyebrow="08 · Hedonic tone · Phenomenology mapper"
+        eyebrow="07 · Hedonic tone · Phenomenology mapper"
         title="A subjective report is not a mechanism. The mapper hands back structure, not an answer."
         oneSentence="Pick a half-articulated report — “food tastes flat”, “alcohol stopped calling to me” — and the mapper returns it as a decomposition across candidate components, each with a likelihood and a rationale. The standard one-line reading is shown as the flattening it is. This is the interlocutor surface: it makes the reader's reasoning about their own experience cheaper and more disciplined, and it never pretends to know what they are feeling."
         stewardship={{ date: '2026-05-21', fresh: true }}
