@@ -49,7 +49,7 @@ export default function Neuroimmune() {
         {/* Left — the translation ladder */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -135,7 +135,7 @@ export default function Neuroimmune() {
         </section>
 
         {/* Right — the rung-by-rung grading of the selected hypothesis */}
-        <section style={{ padding: '22px 32px', overflow: 'auto' }}>
+        <section style={{ padding: '22px 32px 56px', overflow: 'auto' }}>
           <Eyebrow>{track.label} · where it stands</Eyebrow>
 
           <div

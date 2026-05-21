@@ -66,7 +66,7 @@ export default function Moderators() {
         {/* Left — the moderator controls */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -159,7 +159,7 @@ export default function Moderators() {
         </section>
 
         {/* Right — the simulated readout */}
-        <section style={{ padding: '22px 32px', overflow: 'auto' }}>
+        <section style={{ padding: '22px 32px 56px', overflow: 'auto' }}>
           {/* regime banner */}
           <div
             className="mod-regime"

@@ -74,7 +74,7 @@ export default function AversiveAffect() {
         {/* Left — the contrast and the dissociation */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -107,7 +107,7 @@ export default function AversiveAffect() {
         </section>
 
         {/* Right — the regime selector and its evidence */}
-        <section style={{ padding: '22px 32px', overflow: 'auto' }}>
+        <section style={{ padding: '22px 32px 56px', overflow: 'auto' }}>
           <Eyebrow>Same drug, opposite sign · dose · route · timing</Eyebrow>
           <p className="margin-note" style={{ fontSize: 12.5, margin: '4px 0 0 0' }}>
             The affective sign is not a property of the drug — it is a property of the

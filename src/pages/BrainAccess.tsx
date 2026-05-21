@@ -82,6 +82,9 @@ class ViewerBoundary extends Component<{ children: ReactNode }, { failed: boolea
 export default function BrainAccess() {
   const [routeId, setRouteId] = useState('cvo')
   const [drugId, setDrugId] = useState('semaglutide')
+  // The Mol* viewer is a ~600 kB chunk. Gate it behind an explicit action so
+  // the chunk is only fetched when a reader actually wants the 3D structure.
+  const [viewerOn, setViewerOn] = useState(false)
 
   const route =
     accessModule.routes.find((r) => r.id === routeId) ?? accessModule.routes[0]
@@ -111,7 +114,7 @@ export default function BrainAccess() {
         {/* ── Left — the access routes ───────────────────────────────── */}
         <section
           style={{
-            padding: '22px 32px',
+            padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             overflow: 'auto',
           }}
@@ -248,7 +251,7 @@ export default function BrainAccess() {
         </section>
 
         {/* ── Right — the molecule ───────────────────────────────────── */}
-        <section style={{ padding: '22px 32px', overflow: 'auto' }}>
+        <section style={{ padding: '22px 32px 56px', overflow: 'auto' }}>
           <Eyebrow>What has to get in · select an agonist</Eyebrow>
           <p className="margin-note" style={{ fontSize: 12.5, margin: '4px 0 0 0' }}>
             Every marketed agonist is the GLP-1 peptide, re-engineered. The track shows
@@ -332,27 +335,55 @@ export default function BrainAccess() {
             <p className="margin-note" style={{ fontSize: 12.5, margin: '4px 0 8px 0' }}>
               {structure.label}.
             </p>
-            <ViewerBoundary>
-              <Suspense
-                fallback={
-                  <div
-                    className="panel-sunk"
-                    style={{
-                      height: 300,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <span className="micro" style={{ color: 'var(--ink-3)' }}>
-                      Loading Mol* viewer…
-                    </span>
-                  </div>
-                }
+            {viewerOn ? (
+              <ViewerBoundary>
+                <Suspense
+                  fallback={
+                    <div
+                      className="panel-sunk"
+                      style={{
+                        height: 300,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <span className="micro" style={{ color: 'var(--ink-3)' }}>
+                        Loading Mol* viewer…
+                      </span>
+                    </div>
+                  }
+                >
+                  <MolstarViewer url={structureUrl} height={300} />
+                </Suspense>
+              </ViewerBoundary>
+            ) : (
+              <button
+                type="button"
+                className="panel-sunk"
+                onClick={() => setViewerOn(true)}
+                style={{
+                  height: 300,
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 6,
+                  cursor: 'pointer',
+                  border: '0.5px solid var(--rule-strong)',
+                  borderRadius: 4,
+                }}
               >
-                <MolstarViewer url={structureUrl} height={300} />
-              </Suspense>
-            </ViewerBoundary>
+                <span style={{ fontSize: 22, color: 'var(--ink-3)' }}>⊕</span>
+                <span style={{ color: 'var(--ink-1)', fontSize: 13 }}>
+                  Load interactive 3D structure
+                </span>
+                <span className="micro" style={{ color: 'var(--ink-3)' }}>
+                  Mol* viewer · ~600&nbsp;kB · loads on demand
+                </span>
+              </button>
+            )}
             <p className="margin-note" style={{ fontSize: 11.5, margin: '8px 0 0 0' }}>
               {structure.caption}
             </p>
