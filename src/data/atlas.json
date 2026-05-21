@@ -12,7 +12,7 @@
     { "id": "arc", "label": "ARC", "sub": "POMC / AgRP", "kind": "region", "lane": "brainstem", "x": 410, "y": 310, "size": 50, "claimIds": ["c_appetite", "c_pvn_hpa"] },
     { "id": "pvn", "label": "PVN", "sub": "CRH · stress", "kind": "region", "lane": "brainstem", "x": 580, "y": 360, "size": 56, "claimIds": ["c_pvn_hpa"] },
 
-    { "id": "vta", "label": "VTA", "sub": "dopamine", "kind": "region", "lane": "limbic", "x": 750, "y": 470, "size": 58, "claimIds": ["c_vta_glp1r", "c_da_blunting", "c_kooji"], "contradiction": true },
+    { "id": "vta", "label": "VTA", "sub": "dopamine", "kind": "region", "lane": "limbic", "x": 750, "y": 470, "size": 58, "claimIds": ["c_vta_glp1r", "c_da_blunting", "c_kooji", "c_vta_da_timecourse"], "contradiction": true },
     { "id": "nac", "label": "NAc", "sub": "shell · core", "kind": "region", "lane": "limbic", "x": 900, "y": 430, "size": 58, "claimIds": ["c_wanting_rebalance", "c_cross_alcohol"] },
     { "id": "vp", "label": "VP", "sub": "hedonic hotspot", "kind": "region", "lane": "limbic", "x": 1040, "y": 400, "size": 50, "claimIds": ["c_wanting_rebalance"] },
     { "id": "cea", "label": "CeA", "sub": "GABA · aversive", "kind": "region", "lane": "limbic", "x": 750, "y": 620, "size": 56, "claimIds": ["c_cross_cea_gaba", "c_cea_anxiogenic"] },
@@ -23,7 +23,7 @@
     { "id": "pfc", "label": "PFC", "sub": "top-down", "kind": "region", "lane": "cortex", "x": 1040, "y": 240, "size": 46, "claimIds": ["c_pfc"] },
 
     { "id": "out_appetite", "label": "Appetite ↓", "kind": "outcome", "lane": "outcome", "x": 1200, "y": 310, "claimIds": ["c_appetite"] },
-    { "id": "out_wanting", "label": "Wanting ↓", "kind": "outcome", "lane": "outcome", "x": 1220, "y": 430, "claimIds": ["c_wanting_rebalance", "c_da_blunting", "c_kooji"], "contradiction": true },
+    { "id": "out_wanting", "label": "Wanting ↓", "kind": "outcome", "lane": "outcome", "x": 1220, "y": 430, "claimIds": ["c_wanting_rebalance", "c_da_blunting", "c_kooji", "c_vta_da_timecourse"], "contradiction": true },
     { "id": "out_cross", "label": "Cross-reward ↓", "kind": "outcome", "lane": "outcome", "x": 1220, "y": 540, "claimIds": ["c_cross_alcohol", "c_cross_cea_gaba", "c_cross_ehr"] },
     { "id": "out_anx", "label": "Anxiety / HPA", "kind": "outcome", "lane": "outcome", "x": 1220, "y": 640, "claimIds": ["c_pvn_hpa", "c_cea_anxiogenic", "c_anx_neutral"], "bidirectional": true },
     { "id": "out_cog", "label": "Cognition · AD", "kind": "outcome", "lane": "outcome", "x": 1200, "y": 175, "claimIds": ["c_cog_evoke", "c_cog_rodent"], "contradiction": true }
@@ -47,10 +47,10 @@
 
     { "id": "e_pvn_anx", "from": "pvn", "to": "out_anx", "confidence": "moderate", "label": "HPA only", "claimIds": ["c_pvn_hpa"] },
 
-    { "id": "e_vta_nac", "from": "vta", "to": "nac", "confidence": "strong", "label": "DA", "claimIds": ["c_da_blunting"] },
-    { "id": "e_nac_vp", "from": "nac", "to": "vp", "confidence": "strong", "claimIds": ["c_wanting_rebalance"] },
+    { "id": "e_vta_nac", "from": "vta", "to": "nac", "confidence": "speculative", "label": "DA", "claimIds": ["c_da_blunting"] },
+    { "id": "e_nac_vp", "from": "nac", "to": "vp", "confidence": "moderate", "claimIds": ["c_wanting_rebalance"] },
     { "id": "e_vta_wanting", "from": "vta", "to": "out_wanting", "confidence": "contradicted", "contradiction": true, "claimIds": ["c_da_blunting", "c_kooji"] },
-    { "id": "e_nac_wanting", "from": "nac", "to": "out_wanting", "confidence": "strong", "claimIds": ["c_wanting_rebalance"] },
+    { "id": "e_nac_wanting", "from": "nac", "to": "out_wanting", "confidence": "moderate", "claimIds": ["c_wanting_rebalance"] },
     { "id": "e_vp_wanting", "from": "vp", "to": "out_wanting", "confidence": "speculative", "claimIds": ["c_wanting_rebalance"] },
     { "id": "e_nac_cross", "from": "nac", "to": "out_cross", "confidence": "strong", "claimIds": ["c_cross_alcohol"] },
     { "id": "e_cea_cross", "from": "cea", "to": "out_cross", "confidence": "moderate", "label": "GABA", "claimIds": ["c_cross_cea_gaba"] },

@@ -39,22 +39,22 @@
   },
   {
     "id": "c_wanting_rebalance",
-    "statement": "GLP-1RA reduces motivational salience for high-energy palatable rewards — lower progressive-ratio breakpoints and reduced food-cue striatal activation. The defensible synthesis is rebalancing of incentive salience, not blunting.",
-    "confidence": "strong",
+    "statement": "GLP-1RA appears to reduce motivational salience for high-energy palatable rewards — human fMRI studies tentatively show reduced food-cue reactivity in reward regions. The defensible synthesis is a rebalancing of incentive salience rather than blunting, though the human evidence is inconsistent and mostly from small studies.",
+    "confidence": "moderate",
     "polarity": "supports",
-    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI cue-reactivity", "n": 412 },
-    "evidenceIds": ["ev_whittenburg_pr"],
-    "lastReviewed": "2026-04-30"
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI food-cue reactivity" },
+    "evidenceIds": ["ev_glp1_cue_review"],
+    "lastReviewed": "2026-05-21"
   },
   {
     "id": "c_da_blunting",
-    "statement": "Cue-evoked mesolimbic dopamine signalling is reduced under GLP-1RA — the canonical 'dopamine down' account of reduced wanting.",
-    "confidence": "moderate",
+    "statement": "Cue-evoked activation of reward regions is reduced under GLP-1RA in human fMRI — commonly read as the 'dopamine down' account of reduced wanting, though BOLD signal does not directly index dopamine and the effect is inconsistent across studies.",
+    "confidence": "speculative",
     "polarity": "supports",
-    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI cue-reactivity" },
-    "evidenceIds": ["ev_whittenburg_pr"],
-    "note": "'Dopamine down' is not permitted as a final explanation — see the contradicting photometry claim.",
-    "lastReviewed": "2026-01-18"
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI food-cue reactivity" },
+    "evidenceIds": ["ev_glp1_cue_review"],
+    "note": "'Dopamine down' is not permitted as a final explanation — see the contradicting photometry claim (c_kooji) and the time-course reconciliation (c_vta_da_timecourse).",
+    "lastReviewed": "2026-05-21"
   },
   {
     "id": "c_kooji",
@@ -96,12 +96,12 @@
   },
   {
     "id": "c_cross_ehr",
-    "statement": "Large EHR cohorts report roughly 85% lower recorded substance-use outcomes under GLP-1RA — implausibly large as pure pharmacology, and best presented as suggestive rather than definitive.",
+    "statement": "Large EHR cohorts report roughly 50% lower recorded substance-use outcomes under GLP-1RA (≈50–56% for alcohol use disorder) — a large effect for observational data, vulnerable to confounding by indication, and best presented as suggestive rather than definitive.",
     "confidence": "speculative",
     "polarity": "supports",
     "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "EHR cohort", "n": 83825 },
     "evidenceIds": ["ev_ehr_sud"],
-    "lastReviewed": "2026-01-09"
+    "lastReviewed": "2026-05-21"
   },
   {
     "id": "c_cea_anxiogenic",
@@ -168,7 +168,7 @@
     "confidence": "speculative",
     "polarity": "modulates",
     "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "fMRI resting-state" },
-    "evidenceIds": ["ev_whittenburg_pr"],
+    "evidenceIds": ["ev_glp1_cue_review"],
     "openQuestion": "Is reduced cue reactivity driven by cortical reappraisal or by subcortical reweighting?",
     "lastReviewed": "2026-02-10"
   },
@@ -235,8 +235,8 @@
     "polarity": "supports",
     "scope": { "species": "rat", "route": "periph_ex", "chronicity": "subacute", "drug": "liraglutide", "assay": "heroin self-administration" },
     "evidenceIds": ["ev_douton_opioid", "ev_ehr_sud"],
-    "note": "The EHR opioid signal carries the same implausibly large effect size and confounding-by-indication problem flagged across the cross-reward page.",
-    "lastReviewed": "2026-04-22"
+    "note": "The EHR opioid signal carries the same large effect size and confounding-by-indication problem flagged across the cross-reward page.",
+    "lastReviewed": "2026-05-21"
   },
   {
     "id": "c_cross_cocaine",
@@ -382,8 +382,29 @@
     "confidence": "open",
     "polarity": "modulates",
     "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "mixed GLP-1RA", "assay": "fMRI cue-reactivity" },
-    "evidenceIds": ["ev_whittenburg_pr"],
+    "evidenceIds": ["ev_glp1_cue_review"],
     "openQuestion": "Do GLP-1RAs subtly recalibrate reward learning in cognitively healthy users — altering not momentary wanting but how new reward associations form?",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_cross_opioids_null",
+    "statement": "GLP-1RA's anti-addiction effect may not extend to opioids: exendin-4 did not reduce morphine reward, withdrawal, or remifentanil self-administration in mice, even as it reduced alcohol intake in the same study.",
+    "confidence": "contradicted",
+    "polarity": "contradicts",
+    "scope": { "species": "mouse", "route": "periph_ex", "chronicity": "subacute", "drug": "exendin-4", "assay": "morphine CPP + remifentanil self-administration" },
+    "evidenceIds": ["ev_bornebusch_opioid"],
+    "contradicts": ["c_cross_opioids"],
+    "note": "The rodent opioid literature is genuinely split — Douton 2022 (liraglutide, heroin) positive, Bornebusch 2019 (exendin-4, morphine/remifentanil) null. The contradiction belongs on the cross-reward graph rather than buried.",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "id": "c_vta_da_timecourse",
+    "statement": "Semaglutide acutely suppresses VTA dopamine-neuron responsiveness during palatable-food consumption in mice, but the suppression — and palatable-food intake — partially recover over repeated dosing. The dopamine effect is real but time-dependent, not a fixed 'blunting'.",
+    "confidence": "moderate",
+    "polarity": "modulates",
+    "scope": { "species": "mouse", "route": "periph_tx", "chronicity": "subacute", "drug": "semaglutide", "assay": "photometry-calibrated optogenetics" },
+    "evidenceIds": ["ev_zhu_vta"],
+    "note": "Reconciles the apparent c_da_blunting / c_kooji contradiction: the dopamine signal is suppressed early and recovers later, so cross-sectional studies catch it pointing in opposite directions depending on timing.",
     "lastReviewed": "2026-05-21"
   }
 ]
