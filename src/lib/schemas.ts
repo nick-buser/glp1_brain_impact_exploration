@@ -350,3 +350,71 @@ export function validateWanting(
   }
   return errors
 }
+
+// ── Cross-reward module ─────────────────────────────────────────────────────
+//
+// The evidence-graded radial map. Each reward domain carries an overall
+// confidence — which ring of the radial it sits on — and a four-tier evidence
+// matrix (preclinical / human RCT / observational / mechanism). The slice
+// exists to make overgeneralisation visible: confidence must track domain, so
+// food and alcohol read as firm while gambling reads as open. `absent` is a
+// distinct matrix grade — "no studies" is not the same as "studied, open".
+
+export const MatrixGrade = z.enum([
+  'strong',
+  'moderate',
+  'speculative',
+  'open',
+  'absent',
+])
+export type MatrixGrade = z.infer<typeof MatrixGrade>
+
+export const CrossRewardMatrix = z.object({
+  preclinical: MatrixGrade,
+  humanRct: MatrixGrade,
+  observational: MatrixGrade,
+  mechanism: MatrixGrade,
+})
+export type CrossRewardMatrix = z.infer<typeof CrossRewardMatrix>
+
+export const CrossRewardDomain = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  confidence: Confidence, // overall best-evidence grade — sets the radial ring
+  angle: z.number(), // degrees clockwise from straight up; fixed layout
+  proximal: z.boolean().optional(), // the proximate evolutionary target (food)
+  synthesis: z.string().min(1),
+  matrix: CrossRewardMatrix,
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type CrossRewardDomain = z.infer<typeof CrossRewardDomain>
+
+export const CrossRewardModule = z.object({
+  hub: z.object({
+    note: z.string().min(1),
+    claimIds: z.array(z.string().min(1)).min(1),
+  }),
+  domains: z.array(CrossRewardDomain).min(2),
+  caution: z.string().min(1), // the overgeneralisation caution
+})
+export type CrossRewardModule = z.infer<typeof CrossRewardModule>
+
+/** Every claim id in the hub and the domains must resolve. */
+export function validateCrossReward(
+  module: CrossRewardModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  for (const cid of module.hub.claimIds) {
+    if (!knownClaimIds.has(cid))
+      errors.push(`cross-reward hub references unknown claim "${cid}"`)
+  }
+  for (const d of module.domains) {
+    for (const cid of d.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`cross-reward domain "${d.id}" references unknown claim "${cid}"`)
+    }
+  }
+  return errors
+}

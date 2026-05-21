@@ -1,0 +1,100 @@
+{
+  "hub": {
+    "note": "The shared substrate: GLP-1RAs down-weight incentive salience through mesolimbic dopamine circuitry and central-amygdala GABA transmission. Because reward domains converge on that substrate, an effect tuned for food bleeds outward — but the bleed weakens with every step away from the metabolic core.",
+    "claimIds": ["c_wanting_rebalance", "c_cross_cea_gaba"]
+  },
+  "domains": [
+    {
+      "id": "food",
+      "label": "Food",
+      "sub": "palatable energy",
+      "confidence": "strong",
+      "angle": 0,
+      "proximal": true,
+      "synthesis": "The proximate evolutionary target. Reduced motivational salience for high-energy palatable food is demonstrated across rodent operant work, human fMRI cue-reactivity, and the obesity indication itself — every evidence tier points the same way.",
+      "matrix": {
+        "preclinical": "strong",
+        "humanRct": "strong",
+        "observational": "strong",
+        "mechanism": "strong"
+      },
+      "claimIds": ["c_wanting_rebalance", "c_vta_glp1r"]
+    },
+    {
+      "id": "alcohol",
+      "label": "Alcohol",
+      "sub": "alcohol use disorder",
+      "confidence": "strong",
+      "angle": 90,
+      "synthesis": "The strongest cross-reward case outside food. Two human randomised trials (Hendershot 2025, SEMALCO 2026) show reduced consumption and craving, and the mechanism is not purely dopaminergic — central-amygdala GABA is implicated. Observational cohorts agree but inflate the effect.",
+      "matrix": {
+        "preclinical": "strong",
+        "humanRct": "strong",
+        "observational": "moderate",
+        "mechanism": "moderate"
+      },
+      "claimIds": ["c_cross_alcohol", "c_cross_cea_gaba"]
+    },
+    {
+      "id": "nicotine",
+      "label": "Nicotine",
+      "sub": "tobacco / nicotine",
+      "confidence": "moderate",
+      "angle": 145,
+      "synthesis": "Moderate and mostly preclinical. Exendin-4 blunts nicotine-induced accumbal dopamine and place preference in rodents; the human signal is a secondary outcome — fewer cigarettes per day in the smoker subgroup of an alcohol trial — not a dedicated smoking RCT.",
+      "matrix": {
+        "preclinical": "moderate",
+        "humanRct": "speculative",
+        "observational": "speculative",
+        "mechanism": "speculative"
+      },
+      "claimIds": ["c_cross_nicotine"]
+    },
+    {
+      "id": "opioids",
+      "label": "Opioids",
+      "sub": "opioid use disorder",
+      "confidence": "speculative",
+      "angle": 200,
+      "synthesis": "Preclinical only. Liraglutide reduces heroin self-administration and reinstatement in rats, and EHR cohorts report lower opioid-use outcomes — but no opioid-use-disorder trial has read out, and the observational effect size is implausibly large.",
+      "matrix": {
+        "preclinical": "moderate",
+        "humanRct": "absent",
+        "observational": "speculative",
+        "mechanism": "speculative"
+      },
+      "claimIds": ["c_cross_opioids", "c_cross_ehr"]
+    },
+    {
+      "id": "stimulants",
+      "label": "Stimulants",
+      "sub": "cocaine / stimulants",
+      "confidence": "speculative",
+      "angle": 250,
+      "synthesis": "Preclinical only, and mechanistically the weakest fit. Exendin-4 reduces cocaine self-administration in mice, but stimulant addiction is less coupled to metabolic and satiety signalling, and no human stimulant trial exists.",
+      "matrix": {
+        "preclinical": "moderate",
+        "humanRct": "absent",
+        "observational": "speculative",
+        "mechanism": "speculative"
+      },
+      "claimIds": ["c_cross_cocaine"]
+    },
+    {
+      "id": "behavioral",
+      "label": "Behavioural",
+      "sub": "gambling · shopping",
+      "confidence": "open",
+      "angle": 310,
+      "synthesis": "Open. Reduced gambling, compulsive shopping, and nail-biting under GLP-1RAs appear only as case reports and clinician anecdote. A shared incentive-salience mechanism is assumed, not shown — and uncontrolled reports are the format most vulnerable to bias.",
+      "matrix": {
+        "preclinical": "absent",
+        "humanRct": "absent",
+        "observational": "speculative",
+        "mechanism": "open"
+      },
+      "claimIds": ["c_cross_behavioral"]
+    }
+  ],
+  "caution": "Two failure modes this page exists to block. (1) Borrowing confidence across domains — the strong food and alcohol evidence does not transfer to opioids or gambling, which rest on preclinical models and uncontrolled reports. (2) Reading the observational halo as pharmacology — EHR cohorts report roughly 85% lower substance-use outcomes, an effect size too large to be drug action alone and heavy with confounding by indication. The EVOKE cognitive-trial failure is the standing reminder that observational neuropsychiatric signals can evaporate under randomisation."
+}

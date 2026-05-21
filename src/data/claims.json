@@ -217,5 +217,45 @@
     "scope": { "species": "rat", "route": "parenchymal", "chronicity": "acute", "drug": "lesion", "assay": "stress hypophagia" },
     "evidenceIds": ["ev_maniscalco_stress"],
     "lastReviewed": "2026-03-26"
+  },
+  {
+    "id": "c_cross_nicotine",
+    "statement": "GLP-1RA reduces nicotine reward: exendin-4 blunts nicotine-induced accumbal dopamine and conditioned place preference in rodents, and cigarettes per day fell in the smoker subgroup of a semaglutide alcohol trial. The human signal is secondary, not a dedicated smoking trial.",
+    "confidence": "moderate",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "RCT secondary outcome", "n": 48 },
+    "evidenceIds": ["ev_egecioglu_nic", "ev_hendershot_nic"],
+    "note": "Tirzepatide is barely studied in this paradigm; the rodent work is acute experimental dosing.",
+    "lastReviewed": "2026-05-08"
+  },
+  {
+    "id": "c_cross_opioids",
+    "statement": "Liraglutide reduces heroin self-administration and drug-induced reinstatement in rats; human evidence is observational only — no opioid-use-disorder randomised trial has read out.",
+    "confidence": "speculative",
+    "polarity": "supports",
+    "scope": { "species": "rat", "route": "periph_ex", "chronicity": "subacute", "drug": "liraglutide", "assay": "heroin self-administration" },
+    "evidenceIds": ["ev_douton_opioid", "ev_ehr_sud"],
+    "note": "The EHR opioid signal carries the same implausibly large effect size and confounding-by-indication problem flagged across the cross-reward page.",
+    "lastReviewed": "2026-04-22"
+  },
+  {
+    "id": "c_cross_cocaine",
+    "statement": "Exendin-4 reduces cocaine self-administration and reinstatement in mice. There is no human stimulant-use trial, and stimulant addiction is mechanistically less coupled to metabolic and satiety signalling than alcohol or food.",
+    "confidence": "speculative",
+    "polarity": "supports",
+    "scope": { "species": "mouse", "route": "periph_ex", "chronicity": "acute", "drug": "exendin-4", "assay": "cocaine self-administration" },
+    "evidenceIds": ["ev_sorensen_coc"],
+    "note": "Preclinical only — to be read as a mechanistic hypothesis, not a clinical claim.",
+    "lastReviewed": "2026-04-15"
+  },
+  {
+    "id": "c_cross_behavioral",
+    "statement": "Reduced gambling, compulsive shopping, and other non-consummatory behavioural rewards under GLP-1RAs are reported only as case reports and clinician anecdote — uncontrolled, and assuming rather than showing a shared incentive-salience mechanism.",
+    "confidence": "open",
+    "polarity": "supports",
+    "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "mixed GLP-1RA", "assay": "case series" },
+    "evidenceIds": ["ev_behavioral_cases"],
+    "openQuestion": "Does incentive-salience down-weighting extend to non-consummatory behavioural rewards, or does the apparent signal reflect report bias?",
+    "lastReviewed": "2026-05-12"
   }
 ]

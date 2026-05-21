@@ -235,5 +235,66 @@
     "direction": "decrease",
     "caveats": ["Lesion model"],
     "note": "Ablating hindbrain GLP-1 neurons blocks stress-induced hypophagia."
+  },
+  {
+    "id": "ev_egecioglu_nic",
+    "paperId": "egecioglu_2013",
+    "species": "mouse",
+    "route": "periph_ex",
+    "chronicity": "acute",
+    "drug": "exendin-4",
+    "assay": "nicotine CPP + accumbal microdialysis",
+    "direction": "decrease",
+    "caveats": ["Experimental dosing", "acute"],
+    "note": "Nicotine-induced accumbal dopamine release and conditioned place preference attenuated."
+  },
+  {
+    "id": "ev_hendershot_nic",
+    "paperId": "hendershot_2025",
+    "species": "human",
+    "route": "periph_tx",
+    "chronicity": "chronic",
+    "drug": "semaglutide",
+    "assay": "RCT secondary outcome",
+    "direction": "decrease",
+    "n": 48,
+    "caveats": ["Secondary outcome", "smoker subgroup of an AUD trial"],
+    "note": "Cigarettes per day fell in the smoker subgroup — not a powered smoking endpoint."
+  },
+  {
+    "id": "ev_sorensen_coc",
+    "paperId": "sorensen_2015",
+    "species": "mouse",
+    "route": "periph_ex",
+    "chronicity": "acute",
+    "drug": "exendin-4",
+    "assay": "cocaine self-administration",
+    "direction": "decrease",
+    "caveats": ["Experimental dosing"],
+    "note": "Cocaine self-administration and cue-induced reinstatement reduced in mice."
+  },
+  {
+    "id": "ev_douton_opioid",
+    "paperId": "douton_2022",
+    "species": "rat",
+    "route": "periph_ex",
+    "chronicity": "subacute",
+    "drug": "liraglutide",
+    "assay": "heroin self-administration + reinstatement",
+    "direction": "decrease",
+    "caveats": ["Experimental dosing"],
+    "note": "Heroin self-administration and drug-induced reinstatement of heroin-seeking reduced."
+  },
+  {
+    "id": "ev_behavioral_cases",
+    "paperId": "behavioral_case_reports",
+    "species": "human",
+    "route": "periph_tx",
+    "chronicity": "chronic",
+    "drug": "mixed GLP-1RA",
+    "assay": "case reports",
+    "direction": "decrease",
+    "caveats": ["Uncontrolled", "case reports / anecdote", "vulnerable to report bias"],
+    "note": "Reduced gambling and compulsive shopping described in scattered case reports."
   }
 ]

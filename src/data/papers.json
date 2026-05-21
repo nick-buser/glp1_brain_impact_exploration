@@ -147,5 +147,34 @@
     "year": 2015,
     "journal": "Physiology & Behavior",
     "note": "Stress and visceral malaise recruit hindbrain GLP-1 neurons; their ablation blocks stress-induced hypophagia."
+  },
+  {
+    "id": "egecioglu_2013",
+    "cite": "Egecioglu 2013",
+    "authors": ["Egecioglu E", "Engel JA", "Jerlhag E"],
+    "year": 2013,
+    "note": "Exendin-4 attenuates nicotine-induced locomotor stimulation, accumbal dopamine release, and conditioned place preference in mice. (Project-curated entry; journal / DOI pending verification.)"
+  },
+  {
+    "id": "sorensen_2015",
+    "cite": "Sørensen 2015",
+    "authors": ["Sørensen G", "Reddy IA", "Weikop P", "et al."],
+    "year": 2015,
+    "note": "The GLP-1 receptor agonist exendin-4 reduces cocaine self-administration and reinstatement in mice. (Project-curated entry; journal / DOI pending verification.)"
+  },
+  {
+    "id": "douton_2022",
+    "cite": "Douton 2022",
+    "authors": ["Douton JE", "Norgren R", "Grigson PS", "et al."],
+    "year": 2022,
+    "journal": "Addiction Biology",
+    "note": "Liraglutide reduces heroin self-administration and drug-induced reinstatement of heroin-seeking in rats. (Project-curated entry; DOI pending verification.)"
+  },
+  {
+    "id": "behavioral_case_reports",
+    "cite": "Case reports 2024",
+    "authors": ["Multiple case reports / clinician communications"],
+    "year": 2024,
+    "note": "Case reports and clinician anecdote of reduced gambling, compulsive shopping, and nail-biting under GLP-1RA therapy — uncontrolled. (Project-curated aggregate entry.)"
   }
 ]

@@ -619,6 +619,95 @@ body {
   font-size: 13px;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Cross-reward evidence matrix — domain × evidence tier.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.atlas .xr-matrix {
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-paper);
+}
+.atlas .xr-matrix-head,
+.atlas .xr-matrix-row {
+  display: grid;
+  grid-template-columns: 124px repeat(4, 1fr);
+  align-items: stretch;
+}
+.atlas .xr-matrix-head {
+  background: var(--bg);
+  border-bottom: 0.5px solid var(--rule-strong);
+}
+.atlas .xr-matrix-row {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 0.5px solid var(--rule);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.atlas .xr-matrix-row:last-child {
+  border-bottom: 0;
+}
+.atlas .xr-matrix-row:hover {
+  background: var(--bg-tint);
+}
+.atlas .xr-matrix-row.on {
+  background: var(--accent-bg);
+}
+.atlas .xr-matrix-corner,
+.atlas .xr-matrix-tier {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 8px 10px;
+}
+.atlas .xr-matrix-tier {
+  border-left: 0.5px solid var(--rule);
+  text-align: center;
+}
+.atlas .xr-matrix-domain {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 9px 10px;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--ink-1);
+}
+.atlas .xr-matrix-row.on .xr-matrix-domain {
+  box-shadow: inset 2.5px 0 0 var(--accent);
+}
+.atlas .xr-matrix-sub {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.atlas .xr-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 6px;
+  border-left: 0.5px solid var(--rule);
+}
+.atlas .xr-cell-glyph {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-4);
+}
+
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .atlas *,

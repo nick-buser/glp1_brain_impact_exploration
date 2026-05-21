@@ -9,9 +9,11 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import {
+  CrossRewardModule,
   Dataset,
   PpgNtsModule,
   WantingModule,
+  validateCrossReward,
   validateGraph,
   validatePpgNts,
   validateWanting,
@@ -93,4 +95,27 @@ if (wantingErrors.length > 0) {
 console.log(
   `✓ wanting module valid — ${wanting.data.berridge.length} Berridge rows · ` +
     `${wanting.data.phenomenology.fits.length} phenomenology fits`,
+)
+
+// ── Cross-reward module ─────────────────────────────────────────────────────
+
+const crossReward = CrossRewardModule.safeParse(read('cross-reward.json'))
+if (!crossReward.success) {
+  for (const issue of crossReward.error.issues) {
+    console.error(`  · ${issue.path.join('.')}: ${issue.message}`)
+  }
+  fail('Cross-reward module failed schema validation.')
+}
+
+const crossRewardErrors = validateCrossReward(
+  crossReward.data,
+  new Set(claims.map((c) => c.id)),
+)
+if (crossRewardErrors.length > 0) {
+  for (const e of crossRewardErrors) console.error(`  · ${e}`)
+  fail(`Cross-reward module has ${crossRewardErrors.length} integrity error(s).`)
+}
+
+console.log(
+  `✓ cross-reward module valid — ${crossReward.data.domains.length} reward domains`,
 )
