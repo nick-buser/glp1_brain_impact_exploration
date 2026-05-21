@@ -7,6 +7,7 @@ import Overview from './pages/Overview'
 // to the routes that use them, keeping the landing route lean.
 const BrainAccess = lazy(() => import('./pages/BrainAccess'))
 const PpgNts = lazy(() => import('./pages/PpgNts'))
+const Appetite = lazy(() => import('./pages/Appetite'))
 const Wanting = lazy(() => import('./pages/Wanting'))
 const CrossReward = lazy(() => import('./pages/CrossReward'))
 const AversiveAffect = lazy(() => import('./pages/AversiveAffect'))
@@ -15,6 +16,7 @@ const SectionPage = lazy(() => import('./pages/SectionPage'))
 
 const ACCESS_PATH = '/mechanisms/access'
 const PPG_PATH = '/mechanisms/ppg-nts'
+const APPETITE_PATH = '/mechanisms/appetite'
 const WANTING_PATH = '/mechanisms/wanting'
 const CROSS_PATH = '/mechanisms/cross-reward'
 const AVERSIVE_PATH = '/mechanisms/amygdala-gaba'
@@ -23,6 +25,7 @@ const CUSTOM_PATHS = new Set([
   '/',
   ACCESS_PATH,
   PPG_PATH,
+  APPETITE_PATH,
   WANTING_PATH,
   CROSS_PATH,
   AVERSIVE_PATH,
@@ -148,6 +151,7 @@ export default function App() {
             <Route path="/" element={<Overview />} />
             <Route path={ACCESS_PATH} element={<BrainAccess />} />
             <Route path={PPG_PATH} element={<PpgNts />} />
+            <Route path={APPETITE_PATH} element={<Appetite />} />
             <Route path={WANTING_PATH} element={<Wanting />} />
             <Route path={CROSS_PATH} element={<CrossReward />} />
             <Route path={AVERSIVE_PATH} element={<AversiveAffect />} />

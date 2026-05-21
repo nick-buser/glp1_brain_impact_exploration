@@ -1,0 +1,143 @@
+{
+  "thresholds": { "satiety": 0.55, "aversion": 0.9 },
+  "baseline": {
+    "label": "Endogenous · unrestrained meal",
+    "gain": 0.3,
+    "note": "With no drug on board the satiation signal accumulates slowly; a meal runs most of its course before the signal reaches the threshold that ends it."
+  },
+  "cascade": {
+    "stages": [
+      {
+        "id": "circulation",
+        "label": "GLP-1RA",
+        "sub": "circulating analogue",
+        "tier": "gut",
+        "note": "The therapeutic peptide persists in blood for days — unlike native gut GLP-1, which is degraded within minutes. It is sensed wherever the blood-brain barrier is open.",
+        "claimIds": ["c_access_cvo"]
+      },
+      {
+        "id": "distension",
+        "label": "Gastric stretch",
+        "sub": "mechanical signal",
+        "tier": "gut",
+        "note": "Stretch receptors in the stomach wall report meal volume — a mechanical satiation signal carried by sensory vagal fibres.",
+        "claimIds": ["c_ppg_large_burst"]
+      },
+      {
+        "id": "emptying",
+        "label": "Gastric emptying",
+        "sub": "slowed by drug",
+        "tier": "gut",
+        "note": "GLP-1RAs slow the stomach, prolonging distension and blunting the post-meal glucose rise — a genuine peripheral contributor that partly habituates with chronic dosing.",
+        "claimIds": ["c_appetite_gastric"]
+      },
+      {
+        "id": "vagal",
+        "label": "Vagal afferents",
+        "sub": "gut → NTS",
+        "tier": "relay",
+        "note": "Sensory vagal fibres carry gut mechanical and chemical signals to the nucleus tractus solitarius — an indirect, partial route, not the only one.",
+        "claimIds": ["c_vagal_relay"]
+      },
+      {
+        "id": "apnts",
+        "label": "Area postrema",
+        "sub": "BBB-free · NTS",
+        "tier": "brainstem",
+        "note": "The area postrema lies outside the blood-brain barrier — the privileged interface where circulating drug is sensed directly. The NTS integrates that with vagal input.",
+        "claimIds": ["c_access_cvo"]
+      },
+      {
+        "id": "arc",
+        "label": "Arcuate nucleus",
+        "sub": "POMC ↑ · AgRP ↓",
+        "tier": "hypothalamus",
+        "note": "Melanocortin balance shifts toward satiety: POMC neurons are activated, AgRP hunger-drive neurons suppressed.",
+        "claimIds": ["c_appetite"]
+      },
+      {
+        "id": "pvn",
+        "label": "Paraventricular",
+        "sub": "PVN · integration",
+        "tier": "hypothalamus",
+        "note": "The PVN integrates arcuate and brainstem input into a coordinated meal-termination output.",
+        "claimIds": ["c_appetite"]
+      },
+      {
+        "id": "terminate",
+        "label": "Meal terminates",
+        "sub": "reduced meal size",
+        "tier": "outcome",
+        "note": "The meal ends earlier and smaller; ad libitum energy intake and subjective hunger both fall — the directly measurable endpoint.",
+        "claimIds": ["c_appetite_meal_size"]
+      }
+    ],
+    "edges": [
+      { "from": "circulation", "to": "apnts", "note": "sensed directly at the BBB-free area postrema" },
+      { "from": "distension", "to": "vagal" },
+      { "from": "emptying", "to": "vagal", "note": "slowed emptying sustains the stretch signal" },
+      { "from": "vagal", "to": "apnts" },
+      { "from": "apnts", "to": "arc" },
+      { "from": "apnts", "to": "pvn" },
+      { "from": "arc", "to": "terminate" },
+      { "from": "pvn", "to": "terminate" }
+    ]
+  },
+  "regimes": [
+    {
+      "id": "liraglutide",
+      "label": "Liraglutide · daily therapeutic",
+      "gain": 0.55,
+      "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "liraglutide", "assay": "gastric emptying + satiation", "n": 40 },
+      "prose": "Daily liraglutide reduces intake partly through the periphery you can measure: it slows gastric emptying and raises satiation, so the meal ends sooner. The gastric-emptying effect is largest early and partly habituates — the arcuate and brainstem signalling carry more of the sustained effect.",
+      "claimIds": ["c_appetite_gastric", "c_appetite_meal_size"]
+    },
+    {
+      "id": "semaglutide",
+      "label": "Semaglutide · weekly therapeutic",
+      "gain": 0.78,
+      "scope": { "species": "human", "route": "periph_tx", "chronicity": "chronic", "drug": "semaglutide", "assay": "ad libitum meal test", "n": 30 },
+      "prose": "Weekly semaglutide drives the satiation signal steeper still: ad libitum energy intake falls by roughly a quarter and hunger ratings drop. The margin to the aversion threshold narrows — nausea is the dose-limiting side effect, and on this curve it is the same accumulating signal reaching the malaise line near a full meal's worth of intake.",
+      "claimIds": ["c_appetite_meal_size", "c_appetite"]
+    },
+    {
+      "id": "experimental",
+      "label": "Exendin-4 · experimental · acute",
+      "gain": 1.0,
+      "scope": { "species": "rat", "route": "periph_ex", "chronicity": "acute", "drug": "exendin-4", "assay": "pica + conditioned taste aversion" },
+      "prose": "Acute high-dose experimental dosing in rodents drives the signal so steeply that the curve crosses the aversion threshold well within a single meal. This is the regime in which conditioned taste aversion and pica are reliably produced — a reminder that 'suppresses intake' and 'produces malaise' are the same curve read at two heights, not two separate findings.",
+      "claimIds": ["c_appetite_cta"]
+    }
+  ],
+  "gaps": [
+    {
+      "id": "phasic",
+      "label": "The cascade is drawn as tonic",
+      "sub": "see PPG-NTS",
+      "path": "/mechanisms/ppg-nts",
+      "note": "A static cascade implies a steady satiety dial. The brain's own GLP-1 signal is phasic — recruited in bursts by large meals and stress, near-silent otherwise. A drug holds that transient signal on continuously.",
+      "claimId": "c_ppg_phasic"
+    },
+    {
+      "id": "wanting",
+      "label": "It says nothing about wanting",
+      "sub": "see Mesolimbic Wanting",
+      "path": "/mechanisms/wanting",
+      "note": "Homeostatic satiety does not explain reduced cue-driven craving, lower progressive-ratio breakpoints, or why the effect generalises to alcohol and nicotine. That is a mesolimbic incentive-salience story the cascade has no node for.",
+      "claimId": "c_wanting_rebalance"
+    },
+    {
+      "id": "aversion",
+      "label": "It cannot tell satiety from malaise",
+      "sub": "see Amygdala / GABA / Aversion",
+      "path": "/mechanisms/amygdala-gaba",
+      "note": "The cascade ends at a single node — 'meal terminates'. The curve shows there are two thresholds, not one: the same signal that ends a meal, pushed further, is nausea and visceral aversion.",
+      "claimId": "c_cea_anxiogenic"
+    }
+  ],
+  "openQuestions": [
+    "How much of chronic GLP-1RA intake suppression is peripheral (gastric emptying, satiation) versus central (arcuate, brainstem) once gastric-emptying tachyphylaxis is accounted for?",
+    "Is the aversion threshold a fixed property of the circuitry, or does it recalibrate under chronic dosing — and would that explain why nausea typically wanes while appetite suppression persists?",
+    "Does the melanocortin (POMC / AgRP) account add anything the brainstem satiation circuitry does not, or is the arcuate's role largely permissive?"
+  ]
+}

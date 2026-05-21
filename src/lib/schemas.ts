@@ -634,3 +634,122 @@ export function validateAccess(
   }
   return errors
 }
+
+// ── Appetite & meal-termination module ──────────────────────────────────────
+//
+// The standard-explainer surface. Most accounts of "how GLP-1 drugs work" stop
+// at the gut → brainstem → hypothalamus satiety cascade — and the cascade is
+// real. This module renders it, and renders equally what it leaves out. The
+// meal-termination curve carries the central honesty: a satiation signal
+// accumulates over a meal, the meal ends when it crosses a satiety threshold,
+// and pushed harder the same curve crosses an aversion threshold — nausea and
+// meal-stopping are points on one substrate, not two mechanisms. `gain` and
+// the threshold values are a qualitative model; claim ids are the evidentiary
+// backing and must resolve.
+
+export const AppetiteTier = z.enum([
+  'gut',
+  'relay',
+  'brainstem',
+  'hypothalamus',
+  'outcome',
+])
+export type AppetiteTier = z.infer<typeof AppetiteTier>
+
+export const AppetiteStage = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  tier: AppetiteTier,
+  note: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type AppetiteStage = z.infer<typeof AppetiteStage>
+
+export const AppetiteEdge = z.object({
+  from: z.string().min(1),
+  to: z.string().min(1),
+  note: z.string().optional(),
+})
+export type AppetiteEdge = z.infer<typeof AppetiteEdge>
+
+export const AppetiteRegime = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  gain: z.number().min(0).max(1), // satiation-signal accumulation rate
+  scope: Scope,
+  prose: z.string().min(1),
+  claimIds: z.array(z.string().min(1)).min(1),
+})
+export type AppetiteRegime = z.infer<typeof AppetiteRegime>
+
+// What the standard explainer leaves out — each gap names the module that
+// addresses it, so "visibly incomplete" is structure rather than an apology.
+export const AppetiteGap = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  sub: z.string().min(1),
+  path: z.string().min(1), // route of the module that addresses the gap
+  note: z.string().min(1),
+  claimId: z.string().optional(),
+})
+export type AppetiteGap = z.infer<typeof AppetiteGap>
+
+export const AppetiteModule = z.object({
+  thresholds: z.object({
+    satiety: z.number().min(0).max(1),
+    aversion: z.number().min(0).max(1),
+  }),
+  baseline: z.object({
+    label: z.string().min(1),
+    gain: z.number().min(0).max(1),
+    note: z.string().min(1),
+  }),
+  cascade: z.object({
+    stages: z.array(AppetiteStage).min(2),
+    edges: z.array(AppetiteEdge),
+  }),
+  regimes: z.array(AppetiteRegime).min(2),
+  gaps: z.array(AppetiteGap).min(2),
+  openQuestions: z.array(z.string().min(1)).min(1),
+})
+export type AppetiteModule = z.infer<typeof AppetiteModule>
+
+/**
+ * Cascade edges must reference real stages; stage, regime, and gap claim ids
+ * must resolve; the aversion threshold must sit above the satiety threshold —
+ * if it did not, the curve's two-threshold story would be incoherent.
+ */
+export function validateAppetite(
+  module: AppetiteModule,
+  knownClaimIds: Set<string>,
+): string[] {
+  const errors: string[] = []
+  const stageIds = new Set(module.cascade.stages.map((s) => s.id))
+
+  for (const s of module.cascade.stages) {
+    for (const cid of s.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`appetite stage "${s.id}" references unknown claim "${cid}"`)
+    }
+  }
+  for (const e of module.cascade.edges) {
+    if (!stageIds.has(e.from))
+      errors.push(`appetite cascade edge references unknown stage "${e.from}"`)
+    if (!stageIds.has(e.to))
+      errors.push(`appetite cascade edge references unknown stage "${e.to}"`)
+  }
+  for (const r of module.regimes) {
+    for (const cid of r.claimIds) {
+      if (!knownClaimIds.has(cid))
+        errors.push(`appetite regime "${r.id}" references unknown claim "${cid}"`)
+    }
+  }
+  for (const g of module.gaps) {
+    if (g.claimId && !knownClaimIds.has(g.claimId))
+      errors.push(`appetite gap "${g.id}" references unknown claim "${g.claimId}"`)
+  }
+  if (module.thresholds.aversion <= module.thresholds.satiety)
+    errors.push('appetite thresholds: aversion must sit above satiety')
+  return errors
+}

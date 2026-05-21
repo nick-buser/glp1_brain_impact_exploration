@@ -193,5 +193,31 @@
     "journal": "Biochemical Pharmacology",
     "doi": "10.1016/j.bcp.2020.114187",
     "note": "Head-to-head brain-uptake pharmacokinetics of 13 incretin-receptor agonists in mice — most cross the blood-brain barrier slowly and incompletely, with marked drug-to-drug differences in rate."
+  },
+  {
+    "id": "blundell_2017",
+    "cite": "Blundell 2017",
+    "authors": ["Blundell J", "Finlayson G", "Axelsen M", "et al."],
+    "year": 2017,
+    "journal": "Diabetes, Obesity and Metabolism",
+    "doi": "10.1111/dom.13105",
+    "note": "Once-weekly semaglutide reduced appetite, ad libitum energy intake and food cravings, and shifted food preferences away from high-fat foods, in adults with obesity."
+  },
+  {
+    "id": "halawi_2017",
+    "cite": "Halawi 2017",
+    "authors": ["Halawi H", "Khemani D", "Eckert D", "et al."],
+    "year": 2017,
+    "journal": "Lancet Gastroenterology & Hepatology",
+    "note": "Randomised placebo-controlled pilot trial: liraglutide slowed gastric emptying, increased satiation and reduced caloric intake in adults with obesity."
+  },
+  {
+    "id": "kanoski_2012",
+    "cite": "Kanoski 2012",
+    "authors": ["Kanoski SE", "Rupprecht LE", "Fortin SM", "et al."],
+    "year": 2012,
+    "journal": "Neuropharmacology",
+    "doi": "10.1016/j.neuropharm.2011.12.022",
+    "note": "Dissociating the anorectic from the nausea-like effects of peripheral GLP-1 receptor agonists exendin-4 and liraglutide in rats — anorectic doses also produce pica and conditioned taste aversion."
   }
 ]
