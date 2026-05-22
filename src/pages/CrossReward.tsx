@@ -30,6 +30,7 @@ export default function CrossReward() {
       />
 
       <div
+        className="page-col-2"
         style={{
           flex: 1,
           minHeight: 0,

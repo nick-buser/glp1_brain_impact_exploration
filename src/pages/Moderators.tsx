@@ -56,6 +56,7 @@ export default function Moderators() {
       />
 
       <div
+        className="page-col-2"
         style={{
           flex: 1,
           minHeight: 0,

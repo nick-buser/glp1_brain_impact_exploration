@@ -86,7 +86,7 @@ export default function Overview() {
       <LensSwitcher value={lens} onChange={setLens} />
 
       {/* Graph + provenance rail */}
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px' }}>
+      <div className="page-col-2" style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px' }}>
         <main
           style={{
             position: 'relative',
