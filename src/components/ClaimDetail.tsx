@@ -5,6 +5,7 @@
 // reads as a navigable pair rather than a dead-end caveat.
 
 import type { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import {
   contradictedClaims,
   mechanismRefsForClaim,
@@ -303,8 +304,8 @@ export function ClaimDetail({
                     ))}
                   </ul>
                 )}
-                {ev.paper.doi && (
-                  <div style={{ marginTop: 6 }}>
+                <div style={{ marginTop: 6 }}>
+                  {ev.paper.doi ? (
                     <a
                       href={`https://doi.org/${ev.paper.doi}`}
                       target="_blank"
@@ -314,8 +315,18 @@ export function ClaimDetail({
                     >
                       doi.org/{ev.paper.doi}
                     </a>
-                  </div>
-                )}
+                  ) : (
+                    // No registered DOI — point at the paper's bibliography
+                    // entry so the citation is still reachable.
+                    <Link
+                      to={`/bibliography#${ev.paper.id}`}
+                      className="micro"
+                      style={{ color: 'var(--ink-2)', textTransform: 'none' }}
+                    >
+                      {ev.paper.cite} · in bibliography ↗
+                    </Link>
+                  )}
+                </div>
               </div>
             )
           })}
