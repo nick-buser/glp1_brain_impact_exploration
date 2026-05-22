@@ -279,6 +279,7 @@ body {
 }
 .atlas .claim-cite {
   cursor: pointer;
+  color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--rule);
   text-underline-offset: 2px;
@@ -286,6 +287,9 @@ body {
 .atlas .claim-cite:hover {
   color: var(--ink-1);
   text-decoration-color: var(--accent);
+}
+.atlas .claim-cite-sep {
+  color: var(--ink-4);
 }
 
 /* Lens switcher */
