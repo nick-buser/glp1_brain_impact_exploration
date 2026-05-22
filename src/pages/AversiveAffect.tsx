@@ -64,6 +64,7 @@ export default function AversiveAffect() {
       />
 
       <div
+        className="page-col-2"
         style={{
           flex: 1,
           minHeight: 0,

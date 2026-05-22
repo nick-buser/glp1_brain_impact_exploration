@@ -1660,6 +1660,74 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   Phase 2 — Mobile layout: collapse two-column page grids, fix components.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Two-column page grid → single column */
+  .atlas .page-col-2 {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    overflow-y: auto;
+  }
+
+  /* Sections within collapsed grids: reduce padding, swap right→bottom border */
+  .atlas .page-col-2 > section {
+    padding: 16px 16px 36px !important;
+    border-right: 0 !important;
+    border-bottom: 0.5px solid var(--rule);
+    overflow: visible !important;
+  }
+  .atlas .page-col-2 > section:last-child {
+    border-bottom: 0;
+  }
+
+  /* Overview: AtlasGraph needs a minimum height when stacked above ProvenancePanel */
+  .atlas .page-col-2 > main {
+    min-height: 280px;
+  }
+
+  /* Tension component: stack claims vertically rather than side-by-side */
+  .atlas .tension {
+    grid-template-columns: 1fr !important;
+  }
+  .atlas .tension-bridge {
+    width: auto !important;
+    height: 28px;
+    flex-direction: row;
+  }
+  .atlas .tension > .claim:first-child {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 0.5px solid var(--rule) !important;
+    border-bottom: 0 !important;
+  }
+  .atlas .tension > .claim:last-child {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 4px !important;
+    border-left: 0.5px solid var(--rule) !important;
+    border-top: 0 !important;
+  }
+
+  /* EvidenceMatrix: allow horizontal scroll rather than squishing */
+  .atlas .xr-matrix {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .atlas .xr-matrix-head,
+  .atlas .xr-matrix-row {
+    min-width: 320px;
+  }
+
+  /* Single-column prose pages: tighten side padding */
+  .atlas .oq-group,
+  .atlas .oq-tally {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    Mobile shell — responsive nav (hamburger + slide-over overlay)
 
    Desktop (≥768px): sidebar is always visible, mobile bar is hidden,

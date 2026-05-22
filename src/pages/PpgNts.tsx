@@ -27,6 +27,7 @@ export default function PpgNts() {
       />
 
       <div
+        className="page-col-2"
         style={{
           flex: 1,
           minHeight: 0,

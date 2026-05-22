@@ -35,6 +35,7 @@ export default function HedonicTone() {
       />
 
       <div
+        className="page-col-2"
         style={{
           flex: 1,
           minHeight: 0,

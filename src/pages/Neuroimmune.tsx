@@ -39,6 +39,7 @@ export default function Neuroimmune() {
       />
 
       <div
+        className="page-col-2"
         style={{
           flex: 1,
           minHeight: 0,
