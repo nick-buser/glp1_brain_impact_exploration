@@ -16,6 +16,7 @@ const HedonicTone = lazy(() => import('./pages/HedonicTone'))
 const Moderators = lazy(() => import('./pages/Moderators'))
 const Evidence = lazy(() => import('./pages/Evidence'))
 const OpenQuestions = lazy(() => import('./pages/OpenQuestions'))
+const Bibliography = lazy(() => import('./pages/Bibliography'))
 
 const ACCESS_PATH = '/mechanisms/access'
 const PPG_PATH = '/mechanisms/ppg-nts'
@@ -28,6 +29,7 @@ const HEDONIC_PATH = '/mechanisms/hedonic-tone'
 const MODERATORS_PATH = '/moderators'
 const EVIDENCE_PATH = '/evidence'
 const OPEN_QUESTIONS_PATH = '/open-questions'
+const BIBLIOGRAPHY_PATH = '/bibliography'
 // The HPA / stress-axis content lives in the Aversive Affect module, and the
 // standalone nav entry has been dropped; this route survives only to redirect
 // old links and bookmarks.
@@ -161,6 +163,7 @@ export default function App() {
             <Route path={MODERATORS_PATH} element={<Moderators />} />
             <Route path={EVIDENCE_PATH} element={<Evidence />} />
             <Route path={OPEN_QUESTIONS_PATH} element={<OpenQuestions />} />
+            <Route path={BIBLIOGRAPHY_PATH} element={<Bibliography />} />
             <Route path={HPA_PATH} element={<Navigate to={AVERSIVE_PATH} replace />} />
           </Routes>
         </Suspense>
