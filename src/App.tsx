@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
-import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
+import { NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { sections } from './lib/sections'
 import Overview from './pages/Overview'
 
@@ -45,18 +45,166 @@ function RouteFallback() {
 
 type Theme = 'atlas-light' | 'atlas-dark'
 
+function NavContents({
+  theme,
+  onThemeToggle,
+  onNavClose,
+}: {
+  theme: Theme
+  onThemeToggle: () => void
+  onNavClose: () => void
+}) {
+  return (
+    <>
+      <div style={{ padding: '18px 20px 12px 20px' }}>
+        <div className="eyebrow">GLP-1 Brain Mechanism Atlas</div>
+        <p
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 13,
+            color: 'var(--ink-2)',
+            margin: '6px 0 0 0',
+            lineHeight: 1.4,
+            fontStyle: 'italic',
+          }}
+        >
+          A workbench over a moving literature.
+        </p>
+      </div>
+      <hr className="hr" />
+
+      <ul style={{ listStyle: 'none', margin: 0, padding: '8px 0', flex: 1 }}>
+        {sections.map((s, i) => (
+          <li key={s.path}>
+            <NavLink
+              to={s.path}
+              end={s.path === '/'}
+              onClick={onNavClose}
+              style={({ isActive }) => ({
+                display: 'grid',
+                gridTemplateColumns: '26px 1fr',
+                gap: 8,
+                alignItems: 'baseline',
+                padding: '7px 20px',
+                textDecoration: 'none',
+                background: isActive ? 'var(--accent-bg)' : 'transparent',
+                borderLeft: isActive
+                  ? '1.5px solid var(--accent)'
+                  : '1.5px solid transparent',
+              })}
+            >
+              {({ isActive }) => (
+                <>
+                  <span className="micro" style={{ color: 'var(--ink-3)' }}>
+                    {String(i).padStart(2, '0')}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 13,
+                      lineHeight: 1.3,
+                      color: isActive ? 'var(--ink-1)' : 'var(--ink-2)',
+                      fontWeight: isActive ? 500 : 400,
+                    }}
+                  >
+                    {s.title}
+                  </span>
+                </>
+              )}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+
+      <hr className="hr" />
+      <button
+        type="button"
+        onClick={onThemeToggle}
+        className="micro"
+        style={{
+          margin: '10px 20px',
+          padding: '6px 8px',
+          background: 'transparent',
+          border: '0.5px solid var(--rule-strong)',
+          borderRadius: 2,
+          color: 'var(--ink-2)',
+          cursor: 'pointer',
+          textAlign: 'left',
+        }}
+      >
+        {theme === 'atlas-light' ? '◑ Deep ink' : '◐ Warm paper'}
+      </button>
+    </>
+  )
+}
+
 export default function App() {
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem('atlas-theme') as Theme) || 'atlas-light',
   )
+  const [navOpen, setNavOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     localStorage.setItem('atlas-theme', theme)
   }, [theme])
 
+  // Close mobile nav when the route changes (user tapped a link)
+  useEffect(() => {
+    setNavOpen(false)
+  }, [location.pathname])
+
+  // Close mobile nav on Escape
+  useEffect(() => {
+    if (!navOpen) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setNavOpen(false)
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [navOpen])
+
+  // Lock body scroll while the mobile nav overlay is open
+  useEffect(() => {
+    document.body.classList.toggle('atlas-nav-open', navOpen)
+    return () => document.body.classList.remove('atlas-nav-open')
+  }, [navOpen])
+
+  const toggleTheme = () =>
+    setTheme((t) => (t === 'atlas-light' ? 'atlas-dark' : 'atlas-light'))
+
   return (
     <div className={`atlas ${theme}`} style={{ height: '100%', display: 'flex' }}>
+      {/* Mobile top bar — hidden on desktop via CSS */}
+      <div className="atlas-mobile-bar">
+        <button
+          type="button"
+          className="atlas-hamburger"
+          aria-label="Open navigation"
+          aria-expanded={navOpen}
+          onClick={() => setNavOpen(true)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <span className="eyebrow" style={{ color: 'var(--ink-2)', letterSpacing: '0.09em' }}>
+          GLP-1 Brain Atlas
+        </span>
+      </div>
+
+      {/* Mobile backdrop — only in the DOM when the nav is open */}
+      {navOpen && (
+        <div
+          className="atlas-nav-backdrop"
+          aria-hidden="true"
+          onClick={() => setNavOpen(false)}
+        />
+      )}
+
+      {/* Nav — desktop: fixed 232 px sidebar; mobile: slide-over overlay */}
       <nav
+        className={`atlas-nav${navOpen ? ' atlas-nav--open' : ''}`}
         style={{
           width: 232,
           flexShrink: 0,
@@ -67,85 +215,23 @@ export default function App() {
           overflow: 'auto',
         }}
       >
-        <div style={{ padding: '18px 20px 12px 20px' }}>
-          <div className="eyebrow">GLP-1 Brain Mechanism Atlas</div>
-          <p
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 13,
-              color: 'var(--ink-2)',
-              margin: '6px 0 0 0',
-              lineHeight: 1.4,
-              fontStyle: 'italic',
-            }}
+        {/* Close button row — hidden on desktop via CSS */}
+        <div className="atlas-nav-close-row">
+          <button
+            type="button"
+            className="atlas-nav-close"
+            aria-label="Close navigation"
+            onClick={() => setNavOpen(false)}
           >
-            A workbench over a moving literature.
-          </p>
+            ✕
+          </button>
         </div>
-        <hr className="hr" />
 
-        <ul style={{ listStyle: 'none', margin: 0, padding: '8px 0', flex: 1 }}>
-          {sections.map((s, i) => (
-            <li key={s.path}>
-              <NavLink
-                to={s.path}
-                end={s.path === '/'}
-                style={({ isActive }) => ({
-                  display: 'grid',
-                  gridTemplateColumns: '26px 1fr',
-                  gap: 8,
-                  alignItems: 'baseline',
-                  padding: '7px 20px',
-                  textDecoration: 'none',
-                  background: isActive ? 'var(--accent-bg)' : 'transparent',
-                  borderLeft: isActive
-                    ? '1.5px solid var(--accent)'
-                    : '1.5px solid transparent',
-                })}
-              >
-                {({ isActive }) => (
-                  <>
-                    <span className="micro" style={{ color: 'var(--ink-3)' }}>
-                      {String(i).padStart(2, '0')}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-serif)',
-                        fontSize: 13,
-                        lineHeight: 1.3,
-                        color: isActive ? 'var(--ink-1)' : 'var(--ink-2)',
-                        fontWeight: isActive ? 500 : 400,
-                      }}
-                    >
-                      {s.title}
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-
-        <hr className="hr" />
-        <button
-          type="button"
-          onClick={() =>
-            setTheme((t) => (t === 'atlas-light' ? 'atlas-dark' : 'atlas-light'))
-          }
-          className="micro"
-          style={{
-            margin: '10px 20px',
-            padding: '6px 8px',
-            background: 'transparent',
-            border: '0.5px solid var(--rule-strong)',
-            borderRadius: 2,
-            color: 'var(--ink-2)',
-            cursor: 'pointer',
-            textAlign: 'left',
-          }}
-        >
-          {theme === 'atlas-light' ? '◑ Deep ink' : '◐ Warm paper'}
-        </button>
+        <NavContents
+          theme={theme}
+          onThemeToggle={toggleTheme}
+          onNavClose={() => setNavOpen(false)}
+        />
       </nav>
 
       <main style={{ flex: 1, minWidth: 0, overflow: 'auto', background: 'var(--bg)' }}>
