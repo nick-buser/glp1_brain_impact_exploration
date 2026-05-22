@@ -1,7 +1,8 @@
 // Atlas component primitives — the shared visual vocabulary.
 // Ported from designs/shared.jsx into typed React.
 
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import type {
   Chronicity,
   Confidence as ConfidenceLevel,
@@ -221,16 +222,9 @@ export function Confidence({
 
 // ── Claim card ──────────────────────────────────────────────────────────────
 
-export function ClaimCard({
-  resolved,
-  onCite,
-}: {
-  resolved: ResolvedClaim
-  onCite?: () => void
-}) {
+export function ClaimCard({ resolved }: { resolved: ResolvedClaim }) {
   const { claim, papers } = resolved
   const stale = daysSinceReviewed(claim) > STALE_THRESHOLD_DAYS
-  const first = papers[0]
 
   return (
     <div className="claim">
@@ -247,14 +241,20 @@ export function ClaimCard({
             <span style={{ color: 'var(--ink-3)', marginLeft: 8 }}>· stale &gt;90d</span>
           )}
         </span>
-        {first && (
-          <span
-            className="claim-cite"
-            onClick={onCite}
-            title={papers.map((p) => p.cite).join(', ')}
-          >
-            {first.cite}
-            {papers.length > 1 ? ` +${papers.length - 1}` : ''}
+        {papers.length > 0 && (
+          <span className="claim-cites">
+            {papers.map((p, i) => (
+              <Fragment key={p.id}>
+                {i > 0 && <span className="claim-cite-sep"> · </span>}
+                <Link
+                  to={`/bibliography#${p.id}`}
+                  className="claim-cite"
+                  title={`${p.cite} — open in bibliography`}
+                >
+                  {p.cite}
+                </Link>
+              </Fragment>
+            ))}
           </span>
         )}
       </div>
