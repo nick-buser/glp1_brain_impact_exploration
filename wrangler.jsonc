@@ -1,0 +1,8 @@
+{
+  "name": "glp1-brain-impact-exploration",
+  "compatibility_date": "2026-05-21",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
