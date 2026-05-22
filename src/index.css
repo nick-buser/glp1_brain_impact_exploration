@@ -1682,9 +1682,18 @@ body {
     border-bottom: 0;
   }
 
-  /* Overview: AtlasGraph needs a minimum height when stacked above ProvenancePanel */
+  /* Overview: AtlasGraph — explicit height so height:100% on the SVG resolves,
+     and overflow-x so the graph can be panned horizontally on narrow screens. */
   .atlas .page-col-2 > main {
-    min-height: 280px;
+    height: 320px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Force the AtlasGraph SVG wider than the viewport so users can scroll through
+     the full 1380-wide graph rather than seeing it shrunk to ~27% scale. */
+  .atlas .page-col-2 > main > svg {
+    width: 700px;
+    height: 100%;
   }
 
   /* Tension component: stack claims vertically rather than side-by-side */
