@@ -1660,6 +1660,29 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   Mobile gate — full-screen cover on narrow viewports.
+   The interactive diagrams and split-panel layout require a desktop; rather
+   than showing a degraded experience, we cover the app and say so directly.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.atlas .atlas-mobile-gate {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .atlas .atlas-mobile-gate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 200;
+    padding: 40px 32px 56px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    Phase 2 — Mobile layout: collapse two-column page grids, fix components.
    ───────────────────────────────────────────────────────────────────────── */
 

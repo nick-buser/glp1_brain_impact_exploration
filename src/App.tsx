@@ -175,6 +175,40 @@ export default function App() {
 
   return (
     <div className={`atlas ${theme}`} style={{ height: '100%', display: 'flex' }}>
+      {/* Mobile gate — covers the whole viewport on narrow screens */}
+      <div className="atlas-mobile-gate" role="alert" aria-live="polite">
+        <div className="eyebrow" style={{ marginBottom: 16, letterSpacing: '0.09em' }}>
+          GLP-1 Brain Mechanism Atlas
+        </div>
+        <p
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 26,
+            fontWeight: 300,
+            lineHeight: 1.15,
+            letterSpacing: '-0.012em',
+            color: 'var(--ink-1)',
+            margin: '0 0 16px 0',
+          }}
+        >
+          Built for a larger screen.
+        </p>
+        <p
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 15,
+            lineHeight: 1.55,
+            color: 'var(--ink-2)',
+            margin: 0,
+            maxWidth: 340,
+            textWrap: 'pretty',
+          }}
+        >
+          The interactive diagrams, force-directed mechanism graph, and
+          split-panel module layout need room to work. Open on a laptop
+          or desktop to explore.
+        </p>
+      </div>
       {/* Mobile top bar — hidden on desktop via CSS */}
       <div className="atlas-mobile-bar">
         <button
