@@ -1,0 +1,4 @@
+# SPA fallback for react-router (BrowserRouter).
+# Cloudflare Pages serves real static assets first; this only catches
+# unmatched client-side routes like /appetite on direct load or refresh.
+/*    /index.html    200
