@@ -99,6 +99,20 @@ export function daysSinceReviewed(claim: Claim, now = new Date()): number {
 
 export const STALE_THRESHOLD_DAYS = 90
 
+// ── Workbench signature ─────────────────────────────────────────────────────
+// The atlas is explicitly framed as "a workbench over a moving literature";
+// every page renders these facts in its footer so the user always knows what
+// state of the dataset they are standing on.
+
+export const DATASET_VERSION = 'v0.1'
+
+/** The most recent `lastReviewed` date across all claims — the workbench's
+ *  effective "as-of" stamp. Computed once at module load. */
+export const lastReviewedAt: string = dataset.claims.reduce(
+  (acc, c) => (c.lastReviewed > acc ? c.lastReviewed : acc),
+  '0000-00-00',
+)
+
 // ── Reverse index: claim → atlas references ─────────────────────────────────
 //
 // The evidence workbench is a table-graph hybrid: a row is a claim, but a

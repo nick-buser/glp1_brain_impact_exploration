@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { PageFooter } from './components/atlas'
 import { sections } from './lib/sections'
 import Overview from './pages/Overview'
 
@@ -268,25 +269,37 @@ export default function App() {
         />
       </nav>
 
-      <main style={{ flex: 1, minWidth: 0, overflow: 'auto', background: 'var(--bg)' }}>
-        <Suspense fallback={<RouteFallback />}>
-          <Routes>
-            <Route path="/" element={<Overview />} />
-            <Route path={ACCESS_PATH} element={<BrainAccess />} />
-            <Route path={PPG_PATH} element={<PpgNts />} />
-            <Route path={APPETITE_PATH} element={<Appetite />} />
-            <Route path={WANTING_PATH} element={<Wanting />} />
-            <Route path={CROSS_PATH} element={<CrossReward />} />
-            <Route path={AVERSIVE_PATH} element={<AversiveAffect />} />
-            <Route path={NEURO_PATH} element={<Neuroimmune />} />
-            <Route path={HEDONIC_PATH} element={<HedonicTone />} />
-            <Route path={MODERATORS_PATH} element={<Moderators />} />
-            <Route path={EVIDENCE_PATH} element={<Evidence />} />
-            <Route path={OPEN_QUESTIONS_PATH} element={<OpenQuestions />} />
-            <Route path={BIBLIOGRAPHY_PATH} element={<Bibliography />} />
-            <Route path={HPA_PATH} element={<Navigate to={AVERSIVE_PATH} replace />} />
-          </Routes>
-        </Suspense>
+      <main
+        style={{
+          flex: 1,
+          minWidth: 0,
+          background: 'var(--bg)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ flex: 1, minHeight: 0, overflow: 'auto' }}>
+          <Suspense fallback={<RouteFallback />}>
+            <Routes>
+              <Route path="/" element={<Overview />} />
+              <Route path={ACCESS_PATH} element={<BrainAccess />} />
+              <Route path={PPG_PATH} element={<PpgNts />} />
+              <Route path={APPETITE_PATH} element={<Appetite />} />
+              <Route path={WANTING_PATH} element={<Wanting />} />
+              <Route path={CROSS_PATH} element={<CrossReward />} />
+              <Route path={AVERSIVE_PATH} element={<AversiveAffect />} />
+              <Route path={NEURO_PATH} element={<Neuroimmune />} />
+              <Route path={HEDONIC_PATH} element={<HedonicTone />} />
+              <Route path={MODERATORS_PATH} element={<Moderators />} />
+              <Route path={EVIDENCE_PATH} element={<Evidence />} />
+              <Route path={OPEN_QUESTIONS_PATH} element={<OpenQuestions />} />
+              <Route path={BIBLIOGRAPHY_PATH} element={<Bibliography />} />
+              <Route path={HPA_PATH} element={<Navigate to={AVERSIVE_PATH} replace />} />
+            </Routes>
+          </Suspense>
+        </div>
+        <PageFooter />
       </main>
     </div>
   )

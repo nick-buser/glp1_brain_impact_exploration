@@ -1683,6 +1683,64 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   Page footer — `|_|` bottom-edge marker rendered below every route's
+   content. Reads the bottom of the main viewport as a scroll well, not a
+   static cropped box.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.atlas .page-footer {
+  flex-shrink: 0;
+  padding: 8px 28px 10px;
+  border-top: 0.5px solid var(--rule);
+  background: var(--bg);
+}
+.atlas .page-footer-well {
+  position: relative;
+  height: 10px;
+  border-left: 0.5px solid var(--rule-strong);
+  border-right: 0.5px solid var(--rule-strong);
+  border-bottom: 0.5px solid var(--rule-strong);
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+.atlas .page-footer-sig {
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: var(--bg);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.atlas .page-footer-sep {
+  color: var(--ink-4);
+}
+.atlas .page-footer-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink-4);
+  flex-shrink: 0;
+}
+.atlas .page-footer-dot.fresh {
+  background: var(--accent);
+}
+
+@media (max-width: 767px) {
+  .atlas .page-footer {
+    padding: 6px 16px 8px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    Phase 2 — Mobile layout: collapse two-column page grids, fix components.
    ───────────────────────────────────────────────────────────────────────── */
 
