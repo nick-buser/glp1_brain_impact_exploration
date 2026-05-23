@@ -27,70 +27,56 @@ export default function Wanting() {
           minHeight: 0,
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gridTemplateRows: 'auto 1fr',
         }}
       >
-        {/* Top-left — Berridge decomposition */}
-        <section
-          style={{
-            padding: '22px 32px',
-            borderRight: '0.5px solid var(--rule)',
-            borderBottom: '0.5px solid var(--rule)',
-          }}
-        >
-          <Eyebrow>Berridge decomposition</Eyebrow>
-          <h3
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 18,
-              fontWeight: 400,
-              margin: '4px 0 6px 0',
-            }}
-          >
-            Reduced <em>wanting</em> ≠ damaged hedonic capacity.
-          </h3>
-          <p className="margin-note" style={{ fontSize: 12.5, margin: 0 }}>
-            The components are dissociable. A subjective “food tastes flat” is most likely
-            reduced wanting and reduced motivational engagement — not loss of the orofacial
-            liking response.
-          </p>
-          <BerridgeBars />
-        </section>
-
-        {/* Top-right — circuit */}
-        <section style={{ padding: '22px 32px', borderBottom: '0.5px solid var(--rule)' }}>
-          <Eyebrow>Circuit · VTA → NAc → VP → PFC</Eyebrow>
-          <p className="margin-note" style={{ fontSize: 12.5, margin: '2px 0 0 0' }}>
-            The VTA expresses GLP-1R on a subset of TH⁺ neurons; the NAc shell and ventral
-            pallidum host the μ-opioid and CB1 hedonic hotspots that mediate liking — where
-            GLP-1R is only modest.
-          </p>
-          <CircuitDiagram />
-        </section>
-
-        {/* Bottom-left — Kooji contradiction */}
+        {/* Left — Berridge decomposition + Kooji contradiction */}
         <section
           style={{
             padding: '22px 32px 56px',
             borderRight: '0.5px solid var(--rule)',
             minHeight: 0,
             overflow: 'auto',
+            display: 'grid',
+            gap: 22,
+            alignContent: 'start',
           }}
         >
-          <Eyebrow accent>⇄ Kooji tension · contradiction as structure</Eyebrow>
-          <p className="margin-note" style={{ fontSize: 12.5, margin: '4px 0 14px 0' }}>
-            Two non-trivial findings. Neither is hidden in a footnote; both carry full scope
-            and provenance. The reconciliation is an open question on the page.
-          </p>
-          <PairedClaim
-            left={tension.left}
-            right={tension.right}
-            label={tension.label}
-            note={tension.note}
-          />
+          <div>
+            <Eyebrow>Berridge decomposition</Eyebrow>
+            <h3
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 18,
+                fontWeight: 400,
+                margin: '4px 0 6px 0',
+              }}
+            >
+              Reduced <em>wanting</em> ≠ damaged hedonic capacity.
+            </h3>
+            <p className="margin-note" style={{ fontSize: 12.5, margin: 0 }}>
+              The components are dissociable. A subjective “food tastes flat” is most likely
+              reduced wanting and reduced motivational engagement — not loss of the orofacial
+              liking response.
+            </p>
+            <BerridgeBars />
+          </div>
+
+          <div>
+            <Eyebrow accent>⇄ Kooji tension · contradiction as structure</Eyebrow>
+            <p className="margin-note" style={{ fontSize: 12.5, margin: '4px 0 14px 0' }}>
+              Two non-trivial findings. Neither is hidden in a footnote; both carry full scope
+              and provenance. The reconciliation is an open question on the page.
+            </p>
+            <PairedClaim
+              left={tension.left}
+              right={tension.right}
+              label={tension.label}
+              note={tension.note}
+            />
+          </div>
         </section>
 
-        {/* Bottom-right — phenomenology, toy model, open questions */}
+        {/* Right — circuit + phenomenology + toy model + open questions */}
         <section
           style={{
             padding: '22px 32px 56px',
@@ -101,6 +87,16 @@ export default function Wanting() {
             alignContent: 'start',
           }}
         >
+          <div>
+            <Eyebrow>Circuit · VTA → NAc → VP → PFC</Eyebrow>
+            <p className="margin-note" style={{ fontSize: 12.5, margin: '2px 0 0 0' }}>
+              The VTA expresses GLP-1R on a subset of TH⁺ neurons; the NAc shell and ventral
+              pallidum host the μ-opioid and CB1 hedonic hotspots that mediate liking — where
+              GLP-1R is only modest.
+            </p>
+            <CircuitDiagram />
+          </div>
+
           <div>
             <Eyebrow>Phenomenology mapping · from report to component</Eyebrow>
             <PhenomenologySnippet />
