@@ -29,6 +29,22 @@ export function Eyebrow({
   )
 }
 
+// ── Page footer ─────────────────────────────────────────────────────────────
+// A `|_|`-shaped strip rendered below every route. Its purpose is purely
+// orientational: it marks the bottom edge of the main viewport so the two
+// column-scrolling regions inside a page read as scroll wells, not as static
+// boxes that happen to be cropped.
+
+export function PageFooter() {
+  return (
+    <div className="page-footer" role="presentation" aria-hidden="true">
+      <div className="page-footer-well">
+        <span className="page-footer-end">end of page</span>
+      </div>
+    </div>
+  )
+}
+
 // ── Stewardship pip ─────────────────────────────────────────────────────────
 
 export function StewardshipPip({ date, fresh }: { date: string; fresh?: boolean }) {
