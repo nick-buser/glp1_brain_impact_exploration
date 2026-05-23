@@ -1688,6 +1688,14 @@ body {
    static cropped box.
    ───────────────────────────────────────────────────────────────────────── */
 
+/* Each column inside the two-column page grid is its own scroll well. The
+   slightly recessed `--bg-sunk` background bounds the column as a discrete
+   box; the existing inline borderRight between columns becomes the divider
+   between two adjacent wells; inner `--bg-paper` cards pop against it. */
+.atlas .page-col-2 > section {
+  background: var(--bg-sunk);
+}
+
 .atlas .page-footer {
   flex-shrink: 0;
   padding: 8px 28px 10px;
