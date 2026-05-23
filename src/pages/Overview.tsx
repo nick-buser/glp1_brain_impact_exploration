@@ -7,7 +7,7 @@ import { AtlasGraph } from '../components/AtlasGraph'
 import { LensSwitcher } from '../components/LensSwitcher'
 import { ProvenancePanel } from '../components/ProvenancePanel'
 import { StewardshipPip } from '../components/atlas'
-import { dataset, daysSinceReviewed, nodesById } from '../lib/data'
+import { DATASET_VERSION, dataset, daysSinceReviewed, nodesById } from '../lib/data'
 import type { LensId } from '../lib/lens'
 
 export default function Overview() {
@@ -57,7 +57,7 @@ export default function Overview() {
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
             <div className="micro" style={{ marginBottom: 6 }}>
-              v0.1 · {dataset.claims.length} claims · {dataset.papers.length} papers
+              {DATASET_VERSION} · {dataset.claims.length} claims · {dataset.papers.length} papers
             </div>
             <StewardshipPip date="2026-04-12" fresh />
           </div>

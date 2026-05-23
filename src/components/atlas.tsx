@@ -11,7 +11,13 @@ import type {
   Species,
 } from '../lib/schemas'
 import type { ResolvedClaim } from '../lib/data'
-import { daysSinceReviewed, STALE_THRESHOLD_DAYS } from '../lib/data'
+import {
+  DATASET_VERSION,
+  dataset,
+  daysSinceReviewed,
+  lastReviewedAt,
+  STALE_THRESHOLD_DAYS,
+} from '../lib/data'
 
 // ── Eyebrow ─────────────────────────────────────────────────────────────────
 
@@ -30,16 +36,27 @@ export function Eyebrow({
 }
 
 // ── Page footer ─────────────────────────────────────────────────────────────
-// A `|_|`-shaped strip rendered below every route. Its purpose is purely
-// orientational: it marks the bottom edge of the main viewport so the two
-// column-scrolling regions inside a page read as scroll wells, not as static
-// boxes that happen to be cropped.
+// A `|_|`-shaped strip rendered below every route. The shape marks the bottom
+// edge of the main viewport so the two column-scrolling regions inside a page
+// read as scroll wells (not static cropped boxes). The label is the workbench
+// signature: dataset version, most-recent review date across all claims, and
+// claim/paper counts — so every page tells the user what state of the moving
+// literature they are standing on.
 
 export function PageFooter() {
   return (
-    <div className="page-footer" role="presentation" aria-hidden="true">
+    <div className="page-footer" role="contentinfo">
       <div className="page-footer-well">
-        <span className="page-footer-end">end of page</span>
+        <span className="page-footer-sig">
+          <span className="page-footer-dot fresh" aria-hidden="true" />
+          reviewed {lastReviewedAt}
+          <span className="page-footer-sep" aria-hidden="true">·</span>
+          {DATASET_VERSION}
+          <span className="page-footer-sep" aria-hidden="true">·</span>
+          {dataset.claims.length} claims
+          <span className="page-footer-sep" aria-hidden="true">·</span>
+          {dataset.papers.length} papers
+        </span>
       </div>
     </div>
   )

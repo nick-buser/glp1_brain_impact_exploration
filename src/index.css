@@ -1703,19 +1703,35 @@ body {
   border-bottom-left-radius: 1px;
   border-bottom-right-radius: 1px;
 }
-.atlas .page-footer-end {
+.atlas .page-footer-sig {
   position: absolute;
   left: 50%;
   bottom: -7px;
   transform: translateX(-50%);
-  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
   background: var(--bg);
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 9.5px;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-3);
   white-space: nowrap;
+}
+.atlas .page-footer-sep {
+  color: var(--ink-4);
+}
+.atlas .page-footer-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink-4);
+  flex-shrink: 0;
+}
+.atlas .page-footer-dot.fresh {
+  background: var(--accent);
 }
 
 @media (max-width: 767px) {
