@@ -12,12 +12,14 @@ const CY = 250
 const HUB_R = 44
 
 // Confidence → ring radius. The outer a domain sits, the thinner its case.
+// Strong-ring radius has to clear HUB_R + node half-width (44 + 48) at the
+// 90°/270° axes; everything else scales out from there.
 const RING: Record<ConfidenceLevel, number> = {
-  strong: 72,
-  moderate: 120,
-  speculative: 168,
-  contradicted: 168,
-  open: 212,
+  strong: 108,
+  moderate: 156,
+  speculative: 200,
+  contradicted: 200,
+  open: 240,
 }
 const COLOR: Record<ConfidenceLevel, string> = {
   strong: 'var(--ink-1)',
@@ -58,11 +60,11 @@ export function CrossRewardRadial({
 }) {
   return (
     <svg
-      viewBox="0 0 470 480"
+      viewBox="0 0 540 540"
       width="100%"
       role="img"
       aria-label="Evidence-graded radial map of GLP-1RA cross-reward effects"
-      style={{ display: 'block', maxHeight: 470, marginTop: 8 }}
+      style={{ display: 'block', maxHeight: 520, marginTop: 8 }}
     >
       {/* confidence rings — outer rings are less certain */}
       {RINGS.map((c) => (
