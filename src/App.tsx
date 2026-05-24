@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
-import { NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import { PageFooter } from './components/atlas'
 import { sections } from './lib/sections'
 import Overview from './pages/Overview'
@@ -44,7 +44,12 @@ function RouteFallback() {
   )
 }
 
-type Theme = 'atlas-light' | 'atlas-dark'
+const THEMES = ['atlas-light', 'atlas-dark'] as const
+type Theme = (typeof THEMES)[number]
+
+function isTheme(value: unknown): value is Theme {
+  return typeof value === 'string' && (THEMES as readonly string[]).includes(value)
+}
 
 function NavContents({
   theme,
@@ -140,20 +145,18 @@ function NavContents({
 }
 
 export default function App() {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem('atlas-theme') as Theme) || 'atlas-light',
-  )
+  const [theme, setTheme] = useState<Theme>(() => {
+    const saved = localStorage.getItem('atlas-theme')
+    return isTheme(saved) ? saved : 'atlas-light'
+  })
   const [navOpen, setNavOpen] = useState(false)
-  const location = useLocation()
 
   useEffect(() => {
     localStorage.setItem('atlas-theme', theme)
   }, [theme])
 
-  // Close mobile nav when the route changes (user tapped a link)
-  useEffect(() => {
-    setNavOpen(false)
-  }, [location.pathname])
+  // NavLink onClick handlers (via onNavClose) close the mobile nav on
+  // tap — no route-change effect needed.
 
   // Close mobile nav on Escape
   useEffect(() => {
